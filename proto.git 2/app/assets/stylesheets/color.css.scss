@@ -1,0 +1,33 @@
+$mainColor: #a1cf77;
+$lightColor: lighten($mainColor, 15);
+$shadowColor: #578646;
+$darkColor: #1B2A16;
+$subDarkColor: #1B394A;
+$starColor: #eab706;
+
+$inverseFontColor: #FFFFFF;
+$fontColor: $darkColor;
+$helpFontColor: #aaaaaa;
+$mainFontColor: $mainColor;
+$linkFontColor: #237fd5;
+$linkVisitedFontColor: darken(#237fd5, 5%);
+$linkHoverFontColor: lighten($linkFontColor, 20%);
+$linkActiveFontColor: #faa;
+$hoverBgColor: lighten($mainColor, 35%);
+$hoverBorderColor: lighten($mainColor, 25%);
+
+$lightGray: #eee;
+$darkGray: lighten($subDarkColor, 20%);
+$maleColor: #386ab8;
+$femaleColor: #d64441;
+
+$reportColor: #eab706;
+$questionColor: #77ced9;
+$diaryColor: #f2727b;
+
+$rankingProductColor: #ff7896;
+$rankingUserColor: #96d7e6;
+
+$tutorialColor: #ff9500;
+
+$newWritingColor: #fa5;

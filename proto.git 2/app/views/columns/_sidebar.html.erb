@@ -1,0 +1,19 @@
+  <div>
+    <h2 class="hidden">Menus</h2>
+    <div class="widget">
+      <h3><%=t 'views.list.column_categories' %></h3>
+      <ul class="columns-menu">
+        <% column_categories.each do |category| %>
+          <li><%= link_to t("views.column_categories.#{category}"), column_substance_path(category) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="widget">
+      <h3><%=t 'views.open_serials' %></h3>
+      <ul class="columns-menu">
+        <% Serial.opened.limit(5).each do |serial| %>
+          <li><%= link_to serial.title, serial %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>

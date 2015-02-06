@@ -1,0 +1,21 @@
+<article id="follows" class="content-panel mass-container">
+  <header>
+    <h1><%=t 'views.label.followers', name: t('views.with_title', name: @target.name) %></h1>
+  </header>
+
+  <div class="content-body">
+    <%= render 'sidebar' %>
+
+    <div id="follows-main">
+      <% if @followers.length > 0 %>
+        <ul class="users-list">
+          <% @followers.each do |follower| %>
+            <%= render 'follows/item', follow: follower %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="no-items active"><%=t 'views.no_followers' %></p>
+      <% end %>
+    </div>
+  </div>
+</article>

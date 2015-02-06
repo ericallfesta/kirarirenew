@@ -1,0 +1,24 @@
+<header>
+  <h1><%= heading 'rankings' %></h1>
+</header>
+
+<section class="content-panel pickup products">
+  <h2><span class="ranking-type"><%=t 'views.rankings.all_products' %></span><span class="best3">BEST3</span></h2>
+  <ol class="ranking-items products-bricks items3">
+    <%  Product.top(nil, 3).each_with_index do | product, i| %>
+      <%= render 'products/item_brick', product: product, number: i + 1  %>
+    <% end %>
+  </ol>
+  <!--<div class="pull-right more">
+    <%= link_to t('views.label.more'), ranking_path("all"), class: 'btn btn-more btn-small' %>
+  </div>-->
+</section>
+
+<section class="content-panel pickup users">
+  <h2><span class="ranking-type"><%=t 'views.rankings.users' %></span><span class="best3">BEST3</span></h2>
+  <ol class="ranking-items users-bricks items3">
+    <%  User.top(3).each_with_index do | user, i| %>
+      <%= render user, number: i + 1 %>
+    <% end %>
+  </ol>
+</section>

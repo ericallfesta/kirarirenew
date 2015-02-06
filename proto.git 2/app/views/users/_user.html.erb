@@ -1,0 +1,42 @@
+<li>
+  <% if defined? number %>
+    <div class="rank rank<%= number %>"><span class="num"><%= number %></span> 位</div>
+  <% end %>
+  <div class="thumbnail">
+    <%= link_to user do %>
+      <%= image_tag user.image.thumbnail, :size => "140x140" %>
+    <% end %>
+  </div>
+  <div class="info linefix" data-linefix="1">
+    <%= link_to user.name, user %>
+    <p class="bio"><%= truncate user.bio %></p>
+    <ul class="indicators">
+      <li title="<%= t("views.user_status.follower") %>">
+        <%= icon 'follower' %>
+        <span class="num"><%= user.followers.length %></span>
+      </li>
+      <li title="<%= t("views.user_status.following") %>">
+        <%= icon 'following' %>
+        <span class="num"><%= user.followees.length %></span>
+      </li>
+      <li title="<%= t("views.user_status.kirari") %>">
+        <%= icon 'kirari' %>
+        <span class="num"><%= user.favorites_total %></span>
+      </li>
+      <li title="<%= t("views.user_status.report") %>">
+        <%= icon 'report' %>
+        <span class="num"><%= user.reports.length %></span>
+      </li>
+      <li title="<%= t("views.user_status.question") %>">
+        <%= icon 'question' %>
+        <span class="num"><%= user.questions.length %></span>
+      </li>
+      <li title="<%= t("views.user_status.diary") %>">
+        <%= icon 'diary' %>
+        <span class="num"><%= user.diaries.length %></span>
+      </li>
+    </ul>
+
+    <%= render 'users/follow', user: user %>
+  </div>
+</li>

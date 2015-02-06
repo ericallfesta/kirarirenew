@@ -1,0 +1,64 @@
+// h2 h3 h4 h5 h6 p div span strong small section article a br ol ul li br
+
+@mixin calculate-font-size($size) {
+  font-size: $size;
+  line-height: $size * 1.7;
+}
+
+.allowed_markup_block {
+  @include calculate-font-size(11.5pt);
+
+  section, article {
+    margin-bottom: 40px;
+  }
+
+  h2, h3, h4, h5, h6 {
+    @include calculate-font-size(15pt);
+    margin-bottom: 5px;
+  }
+
+  .font-bold { font-weight: bold; }
+  .font-normal { font-weight: normal; }
+
+  .font-size-xs { @include calculate-font-size(8pt); }
+  .font-size-sm { @include calculate-font-size(10pt); }
+  .font-size-md { @include calculate-font-size(12pt); }
+  .font-size-lg { @include calculate-font-size(15pt); }
+  .font-size-xl { @include calculate-font-size(24pt); }
+
+  .font-color-grey { color: #999999; }
+  .font-color-blue { color: #317084; }
+  .font-color-red { color: #a94442; }
+  .font-color-green { color: #3c763d; }
+
+  .font-hiragino {
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    letter-spacing: 2pt;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  ol, ul {
+    padding-left: 30px;
+
+    &.unstyled {
+      list-style: none;
+      padding: 0;
+    }
+
+    &.list-nested {
+      padding-left: 25px;
+
+      li {
+        position: relative;
+
+        > span {
+          position: absolute;
+          left: -25px;
+        }
+      }
+    }
+  }
+}

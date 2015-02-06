@@ -1,0 +1,11 @@
+<li>
+  <p>
+    <%= tag.name %>
+    <%= link_to '詳細', admin_category_url(tag), class: 'text-sm' %>
+  </p>
+  <% if tag.children.present? %>
+    <ul>
+      <%= render tag.children %>
+    </ul>
+  <% end %>
+</li>

@@ -1,0 +1,122 @@
+#sidebar {
+	float: right;
+
+	.content-panel {
+		padding: 10px;
+		border: 1px solid #eee;
+		background: #fff;
+	}
+
+	.btn-more {
+		margin-top: 10px;
+	}
+
+	section {
+		h1 {
+			font-size: 11pt;
+			font-weight: normal;
+			margin-bottom: 5px;
+			border-bottom: solid 1px #cccccc;
+			padding-bottom: 5px;
+			line-height: 167%;
+		}
+
+		margin-bottom: 20px;
+	}
+
+	.start-kirari {
+		position: relative;
+		width: 300px;
+		height: 250px;
+		background: #eee;
+		margin-bottom: 18px;
+		background: asset-url('background_start_kirari.jpg');
+
+		a {
+			position: absolute;
+			top: 97px;
+			left: 45px;
+			display: block;
+			width: 210px;
+			height: 60px;
+			text-indent: -9999px;
+			background: asset-url('button_start_kirari.jpg');
+
+			&:hover {
+				background: asset-url('button_start_kirari_hover.jpg');
+			}
+		}
+	}
+
+	.features-container {
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			text-indent: -9999px;
+			width: 300px;
+			height: 60px;
+			margin: 0 0 10px;
+			padding: 0;
+
+			a {
+				margin: 0;
+				padding: 0;
+				width: 300px;
+				height: 60px;
+				display: block;
+				background-size: 300px 60px;
+			}
+		}
+	}
+
+	.popular-keywords {
+		height: 230px;
+		padding: 10px;
+		border: 1px solid #eee;
+		background: #fff;
+
+		ul {
+			margin: 0;
+			padding: 2px 0;
+
+			li {
+				list-style: none;
+
+				a {
+					display: block;
+					margin: 0 -10px;
+					padding: 3px 10px;
+					border-bottom: 1px solid #eee;
+					font-size: 12px;
+					color: #555;
+					@include list-hover-effects-sidebar;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+				&:last-child a {
+					border-bottom: none;
+				}
+			}
+		}
+		.other-methods {
+			margin: 20px 0;
+			font-size: 90%;
+		}
+	}
+}
+
+.container-rankings.page-pickup #sidebar,
+.container-basic.page-index #sidebar,
+.container-basic.page-result #sidebar,
+.container-activities.page-index #sidebar,
+.container-columns.page-index #sidebar,
+.container-campaigns.page-index #sidebar,
+.container-stamps.page-index #sidebar {
+	margin-top: 60px;
+}

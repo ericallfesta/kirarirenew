@@ -1,0 +1,57 @@
+<div class="content-panel">
+  <article class="content-body">
+    <header>
+      <h2>
+        <div class="series-name"><%= link_to @column.serial.title, @column.serial if @column.serial.present? %></div>
+        <div class="article-title"><%= page_heading [(t('views.column_number', number: @column.serial_num) + ' ' if @column.serial_num.present?), @column.title].join %></div>
+      </h2>
+      <div class="information">
+        <span class="writer">by <a href="#writer"><%= @column.writer.name %></a></span>
+        <time><%= l @column.published_at, format: :short %></time>
+      </div>
+      <%= render 'shared/social', url: column_url(@column, only_path: false) %>
+    </header>
+
+    <div class="hero-image"><%= image_tag @column.image %></div>
+    <div class="body"><%= br @column.body.html_safe %></div>
+
+    <footer>
+      <%= render 'shared/social', url: column_url(@column, only_path: false) %>
+      <div id="writer">
+        <h3>ライター紹介</h3>
+        <div class="image">
+          <%= image_tag @column.writer.image, width: 100 %>
+        </div>
+        <div class="detail">
+          <div class="name"><%= @column.writer.name %></div>
+          <div class="bio"><%= @column.writer.bio %></div>
+        </div>
+      </div>
+    </footer>
+  </article>
+</div>
+
+<div class="content-panel series-list">
+  <div class="content-body">
+    <% if @column.serial %>
+      <h3><%= @column.serial.title %> の他の記事</h3>
+      <ul class="backissues">
+        <% @column.serial.columns.published.order(serial_num: :asc).each do |column| %>
+        <li><%= link_to_unless_current column.title, column %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if false %>
+    <h3>おすすめ記事</h3>
+    <!--そのうちランキングと関連記事をそれぞれ出したいが、とりあえず週間アクセスランキングとする-->
+    <ul class="ranking">
+      <li><a href="#">記事名記事名記事名記事名</a></li>
+      <li><a href="#">記事名記事名記事名記事名</a></li>
+      <li><a href="#">記事名記事名記事名記事名</a></li>
+      <li><a href="#">記事名記事名記事名記事名</a></li>
+      <li><a href="#">記事名記事名記事名記事名</a></li>
+    </ul>
+    <% end %>
+  </div>
+</div>

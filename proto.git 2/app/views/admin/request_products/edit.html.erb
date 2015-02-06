@@ -1,0 +1,42 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '商品登録依頼' => admin_request_products_url, '編集' => nil} %>
+
+<%= form_for @request_product, url: [:admin, @request_product], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @request_product %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, { class: 'form-control', disabled: true } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :brand, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :brand, { class: 'form-control', disabled: true } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :product_url, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :product_url, { class: 'form-control', disabled: true } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :brand_url, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :brand_url, { class: 'form-control', disabled: true } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :status, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :status, ['waiting', 'registered', 'refused'], { include_blank: false }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

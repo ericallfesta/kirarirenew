@@ -1,0 +1,80 @@
+@import "compass/css3/transition";
+
+#request-form {
+	position: fixed;
+	bottom: -175px;
+	right: 20px;
+	background-color: $mainColor;
+	background-color: rgba($mainColor, 0.8);
+	padding: 10px;
+	width: 200px;
+	font-size: 80%;
+	@include border-top-radius(5px);
+	@include transition-property(width, bottom);
+	@include transition-duration(300ms);
+
+	&.show {
+		bottom: 0;
+		width: 550px;
+		background-color: $mainColor;
+	}
+
+	h3 {
+		padding: 0 0 10px;
+		text-align: center;
+		color: $inverseFontColor;
+		font-size: 100%;
+		cursor: pointer;
+	}
+
+	textarea {
+		display: block;
+		width: 100%;
+		height: 120px;
+		@include box-sizing(border-box);
+		@include border-radius(2px);
+		background-color: white;
+		margin-bottom: 10px;
+	}
+
+	input[type=submit] {
+		color: $inverseFontColor;
+		font-weight: bold;
+		background-color: darken($mainColor, 20);
+		width: 100%;
+		@include border-radius(2px);
+	}
+
+	.overlay, .complete {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include border-top-radius(5px);
+		@include box-sizing(border-box);
+		color: $inverseFontColor;
+		text-align: center;
+		padding-top: 20%;
+		background-color: $mainColor;
+	}
+
+	.overlay {
+		background-image: asset-url('loading.gif');
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	&.loading {
+		.overlay {
+			display: block;
+		}
+	}
+
+	&.complete {
+		.complete {
+			display: block;
+		}
+	}
+}

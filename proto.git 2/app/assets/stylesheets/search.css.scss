@@ -1,0 +1,70 @@
+#search.sectioning-container {
+	& > header {
+		h1 {
+			margin-bottom: 10px;
+		}
+	}
+
+	section {
+		@include clearfix;
+	}
+
+	#search-by-query{
+		.content-body{
+			margin: 30px;
+			text-align: center;
+
+			input[type=text] {
+				width: 500px;
+				@include border-radius(3px);
+			}
+			input[type=submit] {
+				width: 100px;
+				background: #aaa;
+				color: #fff;
+				@include border-radius(3px);
+
+				&:hover {
+					background: #ccc;
+				}
+			}
+		}
+	}
+
+	.content-panel.bodymap {
+		header {
+			width: auto;
+			text-indent: 0;
+			background: #fff;
+
+			p {
+				margin: 20px;
+				text-align: center;
+				font-size: 90%;
+				color: #888;
+			}
+		}
+	}
+
+	#search-results {
+		.back-to-product-search {
+			float: right;
+			padding: 2px 10px;
+			font-size: 80%;
+		}
+	}
+}
+
+ul.kana {
+	float: left;
+	width: 50%;
+	border-right: 1px solid #eee;
+	box-sizing: border-box;
+}
+
+ul.brands {
+	float: left;
+	width: 50%;
+	height: 150px;
+	overflow-y: scroll;
+}

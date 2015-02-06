@@ -1,0 +1,53 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '特集管理' => nil} %>
+
+<table class="table table-bordered">
+  <tr>
+    <th><%= RequestProduct.human_attribute_name :brand %></th>
+    <th><%= RequestProduct.human_attribute_name :name %></th>
+    <th><%= RequestProduct.human_attribute_name :status %></th>
+    <th><%= RequestProduct.human_attribute_name :user %></th>
+    <th><%= RequestProduct.human_attribute_name :product %></th>
+    <th></th>
+  </tr>
+<% @request_products.each do |request| %>
+  <tr>
+    <td>
+      <%= request.brand.presence || '-' %>
+      <small class="text-muted"><%= link_to request.brand_url, request.brand_url if request.brand_url.present? %></small>
+    </td>
+    <td>
+      <%= request.name %>
+      <small class="text-muted"><%= link_to request.product_url, request.product_url if request.product_url.present? %></small>
+    </td>
+    <td class="text-center">
+      <% if request.status == 'waiting' %>
+        <span class="text-danger">
+          <span class="glyphicon glyphicon-warning-sign"></span><br> Waiting
+        </span>
+      <% elsif request.status == 'registered' %>
+        <span class="text-success">
+          <span class="glyphicon glyphicon-ok"></span><br> Registered
+        </span>
+      <% elsif request.status == 'refused' %>
+        <span class="text-muted">
+          <span class="glyphicon glyphicon-trash"></span><br> Refused
+        </span>
+      <% end %>
+    </td>
+    <td><%= link_to request.user.display_name + 'さん', request.user %></td>
+    <td><%= link_to "##{request.product.id} #{request.product.name}" , request.product if request.product.present? %></td>
+    <td>
+      <div class="btn-group col-sm-12">
+        <%= link_to new_admin_request_product_product_path(request), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-plus"></i> 商品登録
+        <% end %>
+        <%= link_to edit_admin_request_product_path(request), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @request_products, theme: 'admin' %>

@@ -1,0 +1,9 @@
+<form class="form comment-form" data-writing-collection="<%= writing.type.pluralize.underscore %>" data-writing-id="<%= writing.id %>" role="form" id="new-comment">
+  <h3><%=t 'views.write_new_comment' %></h3>
+  <div class="group">
+    <%= text_area_tag :body, nil, rows: 8, class: 'control block', placeholder: t('views.label.new_comment') %>
+  </div>
+  <div class="actions">
+    <%= submit_tag t('views.post_comment'), class: 'btn btn-submit' %>
+  </div>
+</form>

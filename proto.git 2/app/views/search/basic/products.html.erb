@@ -1,0 +1,23 @@
+<% page_heading t('views.heading.search_result') %>
+<div class="sectioning-container search-result">
+
+  <section class="content-panel">
+    <header>
+      <h2><%=t 'views.search_result_products', query: @keywords %></h2>
+    </header>
+
+    <div class="content-body">
+      <% if @products.length > 0 %>
+        <ul class="products-list">
+          <% @products.each do |item| %>
+            <%= render "products/item", product: item %>
+          <% end %>
+        </ul>
+        <%= paginate @products %>
+      <% else %>
+        <p class="no-items active"><%=t 'views.label.no_searched_products' %></p>
+      <% end %>
+    </div>
+  </section>
+
+</div>

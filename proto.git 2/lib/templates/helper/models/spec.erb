@@ -1,0 +1,8 @@
+require 'spec_helper'
+
+describe <%= model_name %> do
+  examples_by_yaml(:<%= single_table_name %>, :validations) do |param, value_set|
+    let(:target) { FactoryGirl.create :<%= single_table_name %> }
+    it_behaves_like 'validator', param, value_set
+  end
+end

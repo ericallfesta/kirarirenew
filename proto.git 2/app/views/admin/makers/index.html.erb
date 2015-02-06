@@ -1,0 +1,44 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'メーカー管理' => nil} %>
+
+<% count = 0 %>
+
+<% @makers.each do |maker| %>
+  <% if count % 3 == 0 %>
+  <div class="row">
+  <% end %>
+
+  <div class="col-md-4">
+      <div class="thumbnail clearfix">
+        <%= image_tag maker.hero_image, width: '100%' if maker.hero_image? %>
+        <div class="caption">
+          <h3><%= maker.name %></h3>
+          <div>
+            <%= truncate maker.description %>
+            <p><%= link_to truncate(maker.website), maker.website %></p>
+          </div>
+          <p class="btn-group pull-right">
+            <%= link_to edit_admin_maker_path(maker), class: 'btn btn-default btn-sm' do %>
+              <i class="glyphicon glyphicon-edit"></i> 編集
+            <% end %>
+            <%= link_to admin_maker_url(maker), class: 'btn btn-default btn-sm' do %>
+              <i class="glyphicon glyphicon-info-sign"></i> 詳細
+            <% end %>
+          </p>
+        </div>
+      </div>
+  </div>
+
+  <% if count % 3 == 2 %>
+  </div>
+  <% end %>
+
+  <% count += 1 %>
+<% end %>
+
+<% if count % 3 != 2 %>
+</div>
+<% end %>
+
+<%= paginate @makers, theme: 'admin' %>
+
+<%= link_to 'メーカーを新規追加', new_admin_maker_path, class: 'btn btn-success btn-block' %>

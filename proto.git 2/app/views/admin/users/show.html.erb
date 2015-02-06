@@ -1,0 +1,9 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ユーザ管理' => admin_products_url, @user.display_name => nil} %>
+
+<p>
+  <strong>ユーザ名: </strong>
+  <%= @user.display_name %>
+</p>
+<p><strong>プロフィール: </strong><%= @user.bio %></p>
+<p><strong>権限: </strong><%= @user.role %></p>
+<p><strong>公開範囲: </strong><%= @user.range_policy %></p>

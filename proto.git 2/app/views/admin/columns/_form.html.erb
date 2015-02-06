@@ -1,0 +1,71 @@
+<%= form_for @column, url: [:admin, @column.serial, @column], namespace: :admin, as: :column, html: { role: :form, class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @column %>
+
+  <% if @column.serial.present? %>
+    <h2 class="col-md-offset-3"><%= @column.serial.title %> <small><%= t('views.column_number', number: @column.serial_num) %></small></h2>
+  <% end %>
+
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :title, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :substance, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :substance, Column::SUBSTANCES, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :writer_id, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.collection_select :writer_id, User.where(column_writer: true), :id, :display_name, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :status, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :status, Column::STATUSES, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :canonical_url, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :canonical_url, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_area :body, class: 'form-control', rows: 20 %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :image, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= render 'admin/shared/image_form', f: f, image_name: 'image' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :published_at, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9 datatime_select">
+        <%= datetime_select :column, :published_at, { default: @column.published_at.presence || @column.created_at }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

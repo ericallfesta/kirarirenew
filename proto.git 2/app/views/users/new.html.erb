@@ -1,0 +1,45 @@
+<div class="content-panel register">
+  <div class="content-body">
+    <h1><%= heading 'signup' %></h1>
+    <p><%=t 'messages.register.welcome' %><br><%=t 'messages.register.free' %></p>
+    <%= form_for @user, url: signup_path, html: { class: 'form-horizontal form' } do |user| %>
+      <%= render 'shared/form_errors', model: @user %>
+
+      <%= user.label :display_name, class: "label" %>
+      <%= user.text_field :display_name, class: 'form-control' %>
+
+      <%= user.label :email, class: "col-sm-2 control-label" %>
+      <%= user.text_field :email, class: 'form-control' %>
+
+      <%= user.label :password, class: "col-sm-2 control-label" %>
+      <%= user.password_field :password, class: 'form-control' %>
+
+      <%= user.label :password_confirmation, class: "col-sm-2 control-label" %>
+      <%= user.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= user.label :gender %>
+      <label class="radio">
+        <%= user.radio_button :gender, 'male' %> <%=t 'views.user.gender.male' %>
+      </label>
+      <label class="radio">
+        <%= user.radio_button :gender, 'female' %> <%=t 'views.user.gender.female' %>
+      </label>
+      <!--
+      <label class="radio">
+        <%= user.radio_button :gender, 'other' %> <%=t 'views.user.gender.other' %>
+      </label>
+      -->
+
+      <div class="term pull-right">
+        <label class="checkbox">
+          <%= user.check_box :terms %>
+          <%= link_to '利用規約', page_url(Page.find_by(slug: 'terms')), target: :blank if Page.find_by(slug: 'terms') %> に同意します
+        </label>
+      </div>
+
+      <div class="actions">
+        <%= user.submit class: 'btn btn-primary col-sm-offset-2' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="mass-container">
+  <h1><%= heading 'columns' %></h1>
+
+  <% if @columns.any? %>
+    <div class="content-panel">
+      <div class="content-body">
+        <header>
+          <ul itemtype="http://data-vocabulary.org/Breadcrumb"  class="breadlist">
+            <li><%= link_to '＜ コラムのトップへ戻る', columns_path %></li>
+          </ul>
+
+          <h1 class="list-heading">すべてのコラム</h1>
+        </header>
+        <section>
+          <ul class="columns-list">
+            <% @columns.each do |column| %>
+              <%= render 'columns/item', column: column %>
+            <% end %>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <% end %>
+</div>

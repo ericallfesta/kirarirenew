@@ -1,0 +1,8 @@
+<section class="content-panel login">
+  <header>
+    <h1><%= heading 'login' %></h1>
+  </header>
+  <%= render 'shared/login' %>
+  <%= or_separator %>
+  <%= link_to t('views.signup_free'), signup_path, class: 'btn btn-important btn-center-block' %>
+</section>

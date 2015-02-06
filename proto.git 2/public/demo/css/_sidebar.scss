@@ -1,0 +1,90 @@
+#sidebar{
+  float: right;
+  width: 300px;
+
+  section{
+
+    &#features_area{
+      margin-bottom: 10px;
+
+      li a{
+        display: block;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 2px;
+        text-indent: -9999px;
+      }
+    }
+    &#feeds_area,
+    &#information_area,
+    &#popular_ranking_area,
+    &#trend_ranking_area,
+    &#myprofile{
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      font-size: 90%;
+    }
+    &#myprofile{
+      text-align: center;
+
+      img{
+        margin: 10px;
+      }
+      .indicators{
+        margin-top: 5px;
+        padding: 5px;
+        background: #eee;
+      }
+    }
+    &#sidebar_pr_banner_bottom{
+      /* dummy */
+      height: 250px;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 250px;
+      background: #fff;
+    }
+
+    .tabs{
+      font-size: 90%;
+
+      li{
+        padding: 3px 5px;
+      }
+    }
+    .timeline{
+      li{
+        border-left: 4px solid #eee;
+        margin-bottom: 5px;
+        padding-left: 10px;
+
+        &.report{
+          border-color: #cec;
+        }
+        &.question{
+          border-color: #dcf;
+        }
+        &.diary{
+          border-color: #fe8;
+        }
+        a{
+          text-decoration: none;
+        }
+      }
+    }
+    .ranking{
+      li{
+        margin: 10px;
+        margin-left: 30px;
+        list-style-type: decimal;
+      }
+    }
+    .more{
+      text-align: right;
+    }
+  }
+
+
+}

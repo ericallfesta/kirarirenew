@@ -1,0 +1,113 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '連載一覧' => nil} %>
+
+<% unless params[:page].present? && params[:page] != 1 %>
+  <div class="media serial">
+    <div class="media-body">
+      <h3 class="media-heading">単独掲載</h3>
+      <div class="pull-right">
+        <%= link_to new_admin_column_path, { class: 'btn btn-default btn-sm' } do %>
+          <i class="glyphicon glyphicon-plus"></i> コラムを追加
+        <% end %>
+      </div>
+      <p>連載に属さない、単独掲載のコラムです。</p>
+
+      <div class="columns">
+        <h4>コラム一覧 <small>(<%= Column.where(serial: nil).count %>件)</small></h4>
+        <ul class="list-unstyled">
+        <% Column.where(serial: nil).reorder(:serial_num).each do |column| %>
+          <li class="media column">
+            <div class="pull-left">
+              <%= image_tag column.image.thumbnail, width: 60, class: 'media-object' %>
+            </div>
+            <div class="media-body">
+              <h3 class="media-heading">
+                <%= column.title %>
+                <small>公開日: <%= l column.published_at %></small>
+              </h3>
+              <div class="btn-group pull-right">
+                <%= link_to column, class: 'btn btn-default btn-xs', target: :blank do %>
+                  <i class="glyphicon glyphicon-info-sign"></i> Kirariコラムページ
+                <% end %>
+                <%= link_to edit_admin_column_path(column), class: 'btn btn-default btn-xs' do %>
+                  <i class="glyphicon glyphicon-edit"></i> 編集
+                <% end %>
+                <%= link_to admin_column_path(column), method: :delete, class: 'btn btn-default btn-xs', data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <i class="glyphicon glyphicon-trash"></i> 削除
+                <% end %>
+              </div>
+              <p><%= column.body.excerpt %></p>
+            </div>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% @serials.each do |serial| %>
+  <div class="media serial">
+    <div class="pull-left">
+      <%= image_tag serial.image.thumbnail, width: 120, class: 'media-object' %>
+    </div>
+
+    <div class="media-body">
+      <h3 class="media-heading">
+        <%= serial.title %>
+        <small><%= serial.writer.display_name %></small>
+      </h3>
+
+      <div class="btn-group pull-right">
+        <%= link_to serial, class: 'btn btn-default btn-sm', target: :blank do %>
+          <i class="glyphicon glyphicon-info-sign"></i> Kirari 連載ページ
+        <% end %>
+        <%= link_to edit_admin_serial_path(serial), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to new_admin_serial_column_url(serial), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-plus"></i> コラムを追加
+        <% end %>
+        <%= link_to admin_serial_path(serial), method: :delete, class: 'btn btn-default btn-sm', data: { confirm: '本当に削除してもよろしいですか？' } do %>
+          <i class="glyphicon glyphicon-trash"></i> 削除
+        <% end %>
+      </div>
+      <p><%= serial.description %></p>
+
+      <div class="columns">
+        <h4>コラム一覧 <small>(<%= serial.columns.length %>件)</small></h4>
+        <ul class="list-unstyled">
+        <% serial.columns.reorder(:serial_num).each do |column| %>
+          <li class="media column">
+            <div class="pull-left">
+              <%= image_tag column.image.thumbnail, width: 60, class: 'media-object' %>
+            </div>
+            <div class="media-body">
+              <h3 class="media-heading">
+                <span class="id">第<%= column.serial_num %>回</span>
+                <%= column.title %>
+                <small>公開日: <%= l column.published_at %></small>
+              </h3>
+              <div class="btn-group pull-right">
+                <%= link_to column, class: 'btn btn-default btn-xs', target: :blank do %>
+                  <i class="glyphicon glyphicon-info-sign"></i> Kirariコラムページ
+                <% end %>
+                <%= link_to edit_admin_column_path(column), class: 'btn btn-default btn-xs' do %>
+                  <i class="glyphicon glyphicon-edit"></i> 編集
+                <% end %>
+                <%= link_to admin_column_path(column), method: :delete, class: 'btn btn-default btn-xs', data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <i class="glyphicon glyphicon-trash"></i> 削除
+                <% end %>
+              </div>
+              <p><%= column.body.excerpt %></p>
+            </div>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @serials, theme: 'admin' %>
+
+<%= link_to "連載を新規追加", new_admin_serial_path, { class: 'btn btn-success btn-block' } %>

@@ -1,0 +1,20 @@
+<div class="product-excerpt">
+  <div class="image">
+    <%= link_to product do %>
+      <%= image_tag product.main_image.src.square, :size => "70x70" %>
+    <% end %>
+  </div>
+  <div class="product-title">
+    <div class="brand"><%= link_to product.brand.name, product.brand %></div>
+    <div class="name"><%= link_to product.name, product %></div>
+    <p class="category tags">
+      <% if product.category.present? %>
+        <span class="tag">
+          <%= link_to product.category.name, search_result_url(category: product.category.id) %>
+        </span>
+      <% else %>
+        未分類
+      <% end %>
+    </p>
+  </div>
+</div>

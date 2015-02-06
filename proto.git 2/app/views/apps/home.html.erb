@@ -1,0 +1,79 @@
+<div class="sectioning-container">
+
+  <% if @features.count > 0 %>
+
+  <% if false %>
+  <section style="margin-bottom: 20px">
+    <%= image_tag 'top_hero.jpg', width: 700, height: 250, alt: '清く、楽しく、美しく　健康美を楽しむクチコミサイト', style: 'display: block' %>
+  </section>
+  <% end %>
+
+  <!-- 下マージンに注意 -->
+  <section class="features-container" id="features-container">
+    <div class="window">
+      <div class="inner">
+        <% @features.each_with_index do |feature, i| %>
+          <section class="item campaign-<%= i + 1 %>" data-order="<%= i %>">
+            <%= link_to feature.url, style: "background-image: url('#{image_path feature.hero_image}');" do %>
+              <h1><%= feature.title %></h1>
+              <p><%= feature.description %></p>
+            <% end %>
+          </section>
+        <% end %>
+      </div>
+    </div>
+    <ul class="slots" role="navigation">
+      <% @features.each_with_index do |feature, i| %>
+        <li><a data-feature-id="<%= feature.id %>" data-order="<%= i %>" href="<%= feature.url %>"><%= feature.title %></a></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <% end %>
+
+  <section id="search-by-bodymap" class="content-panel">
+    <%= render 'shared/bodymap', gender: (logged_in? && @current_user.gender.present?) ? current_user.gender : 'female' %>
+  </section>
+
+  <% if @news.present? %>
+  <section class="content-panel" id="top-news">
+    <header>
+      <h2><%= heading 'news', sub: true %></h2>
+    </header>
+    <div class="content-body">
+      <ul class="wide-image-bricks">
+      <% @news.each do |item| %>
+        <li class="item">
+          <%= link_to news_url(item), { class: 'linefix', data: { linefix: 'top-news' } } do %>
+            <%= image_tag item.image.thumbnail, class: 'thumbnail', size: '200x133' %>
+            <h3><%= item.title %></h3>
+            <time><%=l (item.published_at || item.updated_at), format: :short %></time>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+      <div class="pull-right clear">
+        <%= link_to t('views.label.more'), news_index_url, class: 'btn btn-more btn-small' %>
+      </div>
+    </div>
+  </section>
+  <% end %>
+
+  <% if logged_in? %>
+    <section id="activities" class="content-panel timeline">
+      <header>
+        <h2><%= heading 'topics', sub: true %></h2>
+      </header>
+
+      <% if ! logged_in? || current_user.followed_users.length <= 3 %>
+          <p class="description">あなたが気になるユーザーをフォローしていけば、様々な情報が自動で表示されるようになります。</p>
+      <% end %>
+
+      <ul class="activities-list content-body list">
+        <% @activities.each do |item| %>
+          <%= render 'activities/item', activity: item %>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+</div>

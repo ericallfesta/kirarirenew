@@ -1,0 +1,23 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '要望一覧' => nil} %>
+
+<table class="table table-bordered">
+<% @requests.each do |r| %>
+  <tr>
+    <td>
+      <span class="label label-info"><%= l r.created_at, format: :short %></span><br>
+      <%= r.body %>
+    </td>
+    <td>
+      <pre class="line-break"><%= link_to r.url, r.url %></pre>
+      <small class="text-muted"><%= r.ua %><small>
+    </td>
+    <td>
+      <%= link_to admin_request_url(r), method: :delete, class: 'btn btn-block btn-sm btn-default' do %>
+        <span class="glyphicon glyphicon-trash"></span> 削除
+      <% end %>
+    </td>
+  </tr>
+<% end  %>
+</table>
+
+<%= paginate @requests, theme: 'admin' %>

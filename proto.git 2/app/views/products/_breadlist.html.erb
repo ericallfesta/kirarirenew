@@ -1,0 +1,23 @@
+<ul itemtype="http://data-vocabulary.org/Breadcrumb"  class="breadlist">
+  <% if product.category.present? %>
+    <% (product.category.parents + [product.category]).each do |category| %>
+    <li>
+      <%= link_to search_result_url(category: category.id) do %>
+        <span itemprop="title"><%= category.name %></span>
+      <% end %>
+    </li>
+    <% end %>
+  <% else %>
+    <li>未分類</li>
+  <% end %>
+
+  <% if show_product %>
+    <li>
+      <%= link_to product do %>
+        <span class="brand"><%= product.brand.name %></span>
+        <span class="product-name"><%= product.name %></span>
+      <% end %>
+      <%= after if defined? (after) %>
+    </li>
+  <% end %>
+</ul>

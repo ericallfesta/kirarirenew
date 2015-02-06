@@ -1,0 +1,23 @@
+<% page_heading t('views.heading.search_result') %>
+<div class="sectioning-container mass-container search-result">
+
+  <section class="content-panel">
+    <header>
+      <h2><%=t 'views.search_result_questions', query: @keywords %></h2>
+    </header>
+
+    <div class="content-body">
+      <% if @questions.length > 0 %>
+        <ul class="writings-list">
+          <% @questions.each do |item| %>
+            <%= render "writings/item", writing: item %>
+          <% end %>
+        </ul>
+        <%= paginate @questions %>
+      <% else %>
+        <p class="no-items active"><%=t 'views.label.no_searched_items' %></p>
+      <% end %>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,30 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '固定ページ管理' => nil} %>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Slug</th>
+    <th>Priority</th>
+    <th></th>
+  </tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.title %></td>
+      <td><%= truncate page.body %></td>
+      <td><%= page.slug %></td>
+      <td><%= page.priority %></td>
+      <td>
+        <div class="btn-group col-sm-12">
+          <%= link_to edit_admin_page_path(page), class: 'btn btn-default btn-sm col-sm-12' do %>
+            <i class="glyphicon glyphicon-edit"></i> 編集
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @pages, theme: 'admin' %>
+
+<%= link_to '固定ページを新規追加', new_admin_page_path, class: 'btn btn-success btn-block' %>

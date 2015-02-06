@@ -1,0 +1,36 @@
+<h2>ユーザ情報編集</h2>
+<%= form_for current_user, url: my_profile_url(current_user), html: { class: 'form' } do |user| %>
+  <%= render 'admin/shared/form_errors', model: current_user %>
+
+  <div class="group row-2-8">
+    <%= user.label :display_name %>
+    <%= user.text_field :display_name, placeholder: 'ニックネーム' %>
+  </div>
+
+  <div class="group row-2-8">
+    <%= user.label :email %>
+    <%= user.text_field :email, placeholder: 'メールアドレス' %>
+  </div>
+
+  <div class="group row-2-8">
+    <%= user.label :image %>
+    <%= user.file_field :image %>
+  </div>
+
+  <div class="group row-2-8">
+    <label><%= user.radio_button :gender, 'male' %> 男性</label>
+    <label><%= user.radio_button :gender, 'female' %> 女性</label>
+  </div>
+
+  <div class="group row-2-8">
+    <%= user.label :birthday %>
+    <%= user.date_field :birthday, placeholder: '1980/12/1' %>
+  </div>
+
+  <div class="group row-2-8">
+    <%= user.label :bio %>
+    <%= user.text_area :bio, rows: 10, placeholder: 'プロフィール' %>
+  </div>
+
+  <%= user.submit %>
+<% end %>

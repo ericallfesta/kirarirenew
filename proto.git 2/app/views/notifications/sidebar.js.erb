@@ -1,0 +1,15 @@
+$('#information_area ol.timeline').empty();
+$('#information_area ol.timeline').append('<%=
+  template = '';
+  @notifications.each do |notification|
+    template += render 'notifications/template_for_sidebar', notification: notification
+  end
+  template.gsub(/[\r\n]/, '').html_safe;
+%>');
+$('#information_area .tabs li').each(function() {
+  if ($(this).hasClass('<%= @type %>_tab')) {
+    $(this).children('a').addClass('active');
+  } else {
+    $(this).children('a').removeClass('active');
+  }
+});

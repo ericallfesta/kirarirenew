@@ -1,0 +1,120 @@
+#columns-body {
+	&.page-index {
+		.content-body {
+			h2 {
+				margin: 20px -10px 0;
+				padding: 5px 15px;
+				font-size: 110%;
+				background: #f5f5f5;
+			}
+		}
+	}
+
+	.columns-menu {
+		list-style: none;
+		margin: 5px 0 10px;
+		padding: 0;
+
+		li {
+			a {
+				padding: 5px;
+				display: block;
+				@include border-radius(5px);
+
+				&:hover {
+					background-color: $mainColor;
+					color: $inverseFontColor;
+				}
+			}
+		}
+	}
+
+	.content-body {
+		h2 {
+			margin: 20px 0 0;
+			padding: 10px 0;
+			color: #555;
+			font-weight: normal;
+		}
+	}
+
+	article {
+		padding: 0 30px 40px;
+		@include clearfix;
+
+		header {
+			margin-bottom: 10px;
+
+			h2 {
+				.series-name {
+					display: block;
+					font-size: 70%;
+					font-weight: normal;
+				}
+			}
+			.information {
+				display: block;
+				text-align: right;
+				color: #999;
+
+				time, .writer {
+					font-size: 14px;
+				}
+			}
+		}
+		.hero-image {
+			margin: 20px 0;
+			padding: 0;
+			text-align: center;
+
+			img {
+				vertical-align: top;
+				max-width: 100%;
+				max-height: 512px;
+
+				/* for legacy IEs */
+				width: auto !important;
+				width: 100%;
+				height: auto !important;
+				height: 512px;
+			}
+		}
+		.body {
+			font-size: 95%;
+		}
+		footer {
+			clear: both;
+			margin-top: 20px;
+			padding-top: 10px;
+
+			#writer {
+				margin: 10px 0;
+				border: 1px solid #eee;
+				@include clearfix;
+
+				h3 {
+					margin-bottom: 10px;
+					padding: 5px 10px;
+					font-size: 90%;
+					background: #888;
+					color: #fff;
+				}
+				.image {
+					float: left;
+					padding: 0 10px 10px;
+				}
+				.detail {
+					margin-left: 110px;
+
+					.name {
+						font-weight: bold;
+					}
+					.bio {
+						font-size: 90%;
+						color: #555;
+					}
+				}
+			}
+		}
+	}
+}

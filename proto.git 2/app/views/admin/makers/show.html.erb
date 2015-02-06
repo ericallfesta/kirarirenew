@@ -1,0 +1,16 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'メーカー管理' => admin_makers_url, @maker.name => nil} %>
+
+<h2 class="page-header">
+  <%= @maker.name %>
+  <small><%= link_to @maker.website, @maker.website if @maker.website.present? %></small>
+</h2>
+
+<%= image_tag @maker.hero_image, class: 'auto' if @maker.hero_image? %>
+
+<% if @maker.description.present? %>
+  <p class="well"><%= sanitize @maker.description.gsub(/(\r\n|\r|\n)/, "<br />") %></p>
+<% end %>
+
+<br><br>
+
+<%= link_to "Edit", edit_admin_maker_path(@maker), class: 'btn btn-primary btn-block' %>

@@ -1,0 +1,100 @@
+<%= form_for @product, url: [:admin, @brand, @request_product, @product], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @product %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :kana, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :kana, { class: 'form-control' } %>
+      </div>
+    </div>
+    <% if @brand.blank? && @request_product.present? %>
+    <div class="form-group">
+      <%= f.label :brand, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :brand_id, Brand.all.pluck(:name, :id), { include_blank: false }, { class: 'form-control' } %>
+        <p class="help-block">依頼ブランド名 : <%= @request_product.try :brand || '-' %> <%= link_to "(#{@request_product.brand_url})", @request_product.brand_url, target: :blank if @request_product.try(:brand_url).present? %></p>
+      </div>
+    </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :maker, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :maker_id, Maker.all.pluck(:name, :id), { include_blank: true }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :category, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9 categories">
+        <%= select :category, 'level1', @categories[:level1], { selected: @selected_categories[0].try(:id), include_blank: true }, { class: 'form-control', data: { level: 1 } } %>
+        <%= select :category, 'level2', @categories[:level2], { selected: @selected_categories[1].try(:id), include_blank: true }, { class: 'form-control', data: { level: 2 } } %>
+        <%= select :category, 'level3', @categories[:level3], { selected: @selected_categories[2].try(:id), include_blank: true }, { class: 'form-control', data: { level: 3 } } %>
+        <%= select :category, 'level4', @categories[:level4], { selected: @selected_categories[3].try(:id), include_blank: true }, { class: 'form-control', data: { level: 4 } } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :source_url, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :source_url, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9 row">
+        <div class="col-sm-4">
+          <%= f.number_field :price, { class: 'form-control' } %>
+        </div>
+        <span class="help-block">円(税込み)</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :price_note, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :price_note, { class: 'form-control' } %>
+        <p class="help-block">価格が空欄の場合のみ表示されます</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_area :description, { class: 'form-control', rows: 6 } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :ingredient, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_area :ingredient, { class: 'form-control', rows: 6 } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :state, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :state, ['draft', 'published'], { selected: f.object.state.presence || 'draft', include_blank: false }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :tags, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <div class="tags">
+          <% BodyPart.all.each do |body_part| %>
+            <p><%= body_part.name || '未分類' %></p>
+            <% body_part.tags.each do |tag| %>
+            <a href="#<%= tag.id %>" class="label label-tag <%= 'active' if @product.tags.include? tag %>"><%= tag.name %></a>
+            <% end %>
+          <% end %>
+        </div>
+        <%= f.hidden_field :tags, class: 'form-control', value: @product.tags.map{|tag| tag.id unless tag.group.try(:slug) == 'category' }.compact.join(',') %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,39 @@
+<%= render 'admin/shared/breadcrumb', url_list: {
+  'TOP' => admin_root_url,
+  'メール' => new_admin_contact_url,
+  '送信内容確認' => nil,
+} %>
+
+<section>
+  <p><strong>To:</strong></p>
+  <ul class="list-unstyled">
+    <% if @contact.address.present?  %>
+      <li class="label label-info"><%= @contact.address %></li>
+    <% end %>
+    <% User.all.each do |user| %>
+      <li class="label label-info">&lt;<%= user.display_name %>&gt; <%= user.email %></li>
+    <% end if @contact.to_all.to_i == 1 && @contact.to_admin.to_i != 1 %>
+    <% User.where(role: 'admin').each do |user| %>
+      <li class="label label-info">&lt;<%= user.display_name %>&gt; <%= user.email %></li>
+    <% end if @contact.to_admin.to_i == 1 %>
+  </ul>
+</section>
+
+<section>
+  <p><strong>Subject:</strong></p>
+  <%= @contact.subject %>
+</section>
+
+<section>
+  <p><strong>Body:</strong></p>
+  <%= @contact.body %>
+</section>
+
+<%= form_for @contact, url: [:admin, @contact] do |f| %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :subject %>
+  <%= f.hidden_field :body %>
+  <%= f.hidden_field :to_all %>
+  <%= f.hidden_field :to_admin %>
+  <%= f.submit '送信', class: 'btn btn-primary btn-block btn-large' %>
+<% end %>

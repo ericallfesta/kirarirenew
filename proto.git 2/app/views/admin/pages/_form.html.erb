@@ -1,0 +1,46 @@
+<%= form_for @page, url: [:admin, @page], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @page %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :title, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">本文コピペ用</label>
+      <div class="col-sm-9">
+        <pre>&lt;header&gt;
+  &lt;h1&gt;&#12479;&#12452;&#12488;&#12523;&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;div class="content-body"&gt;
+  &#26412;&#25991;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :body, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_area :body, class: 'form-control', rows: 30 %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :slug, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :slug, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :priority, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.number_field :priority, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,29 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'タググループ管理' => nil} %>
+
+<table class="table table-bordered">
+  <tr>
+    <th><%= TagGroup.human_attribute_name :name %></th>
+    <th><%= TagGroup.human_attribute_name :slug %></th>
+    <th></th>
+  </tr>
+  <% @tag_groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= group.slug %></td>
+      <td>
+        <div class="btn-group col-sm-12">
+          <%= link_to [:edit, :admin, group], class: 'btn btn-default btn-sm col-sm-6' do %>
+            <i class="glyphicon glyphicon-edit"></i> 編集
+          <% end %>
+          <%= link_to [:admin, group], class: 'btn btn-default btn-sm col-sm-6' do %>
+            <i class="glyphicon glyphicon-info-sign"></i> 詳細
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @tag_groups, theme: 'admin' %>
+
+<%= link_to 'タグを新規追加', new_admin_tag_group_path, class: 'btn btn-success btn-block' %>

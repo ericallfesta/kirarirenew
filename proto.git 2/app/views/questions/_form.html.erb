@@ -1,0 +1,30 @@
+<%= form_for @question, html: { class: 'form form-fill form-new-writing', id: 'new-question-form' } do |f| %>
+  <h3><%= t 'views.write_new_question' %></h3>
+  <%= f.hidden_field :product_id %>
+  <div class="group">
+    <%= f.text_field :title, placeholder: t('messages.enter_title') %>
+  </div>
+
+  <div class="group">
+    <%= f.text_area :body, placeholder: t('messages.enter_body'), class: 'autosize' %>
+  </div>
+
+  <div class="group question-images">
+    <p class="trigger-show self-destruct" data-target=".question-images .upload"><span class="icon icon-camera"> </span><%=t 'views.attach_images.label' %></p>
+    <div class="upload">
+      <p><%=t 'views.attach_images.description' %></p>
+      <%= f.fields_for :images, @question.images do |image| %>
+        <% if image.object.new_record? %>
+          <%= image.file_field :src %>
+        <% else %>
+          <%= image_tag image.object.image.src %>
+          <%= image.check_box :_destroy %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit value: t('views.post_question'), class: 'btn btn-submit' %>
+  </div>
+<% end %>

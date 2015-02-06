@@ -1,0 +1,22 @@
+#follows-sidebar {
+	float: left;
+	width: 180px;
+	margin-right: 10px;
+
+	.actions {
+		margin-bottom: 10px;
+
+		.btn-follow {
+			width: 150px;
+			text-align: center;
+		}
+	}
+}
+
+#follows-main {
+	margin-left: 190px;
+}
+
+#follows {
+  @include clearfix;
+}

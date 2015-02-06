@@ -1,0 +1,6 @@
+<%= render 'admin/shared/breadcrumb', url_list: {
+  'TOP' => admin_root_url,
+  @variation.product.brand.name => admin_brand_url(@variation.product.brand),
+  @variation.product.name => admin_product_url(@variation.product),
+  'バリエーション編集' => nil} %>
+<%= render 'form' %>

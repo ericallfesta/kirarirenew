@@ -1,0 +1,22 @@
+<%= form_for @category, url: @category.new_record? ? admin_categories_url : admin_category_url(@category), html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @category %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :parent, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.select :parent, @category.selectable_parent_tags.where.not(group_id: nil).pluck(:name, :id), { selected: @category.parent.try(:id).presence || params[:parent], include_blank: true }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

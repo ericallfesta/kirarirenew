@@ -1,0 +1,26 @@
+.brand-details {
+	header {
+		@include clearfix;
+
+		h1 {
+			font-size: 140%;
+			letter-spacing: 1px;
+			color: #888;
+		}
+
+		.actions {
+      display: block;
+			text-align: right;
+
+      & > * {
+        display: inline-block;
+      }
+		}
+	}
+
+	.description {
+		padding: 20px;
+		background: #fafafa;
+		font-size: 90%;
+	}
+}

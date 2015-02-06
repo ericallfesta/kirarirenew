@@ -1,0 +1,43 @@
+ja:
+  messages:
+    about_bodymap: 気になる症状や改善したい場所から、Kirari に登録されている商品を探すことができます。
+    campaigns_are_empty: キャンペーンでは、ユーザーの皆さんに向けておトクなプレゼント企画等を予定しております。
+    columns_are_empty: コラムでは、健康や美容に関する情報を知識や情報を提供していく予定です。
+    coming_soon: 近日公開予定ですので、もうしばらくお待ちください。
+    enter_body: 本文を入力してください
+    enter_title: タイトルを入力してください
+    failure_to_login: ログインに失敗しました。メールアドレスとパスワードを再度ご確認ください。
+    logged_out: ログアウトしました
+    notification_from_kirari: Kirari からのお知らせ
+    notifications:
+      comment: '%{name}さんのコメント「%{excerpt}」'
+      diary: '%{name}さんが日記を投稿しました「%{title}」'
+      question: '%{name}さんが質問を投稿しました「%{title}」'
+      report: '%{name}さんがレポートを投稿しました「%{title}」'
+      writing: '%{name}さんが新しい%{type}を投稿しました！'
+      user_stamp: 'スタンプを取得「%{label}」'
+      follow: '%{from}さんにフォローされました！'
+      favorite_for:
+        user: '%{name}さんがあなたにキラリを贈りました！'
+        diary: '%{name}さんがあなたの日記にキラリを贈りました！'
+        question: '%{name}さんがあなたの質問にキラリを贈りました！'
+        report: '%{name}さんがあなたのレポートにキラリを贈りました！'
+        writing: '%{name}さんがあなたの投稿にキラリを贈りました！'
+    register:
+      welcome: 'Kirari（キラリ）へようこそ！'
+      free: '当サービスのすべての機能は無料でお使いいただけます。'
+    request:
+      sending: '送信中…'
+      thankyou: 'ご協力ありがとうございました！'
+    success_to_login: Kirari にログインしました！
+    success_to_signup: Kirari へようこそ！
+    unread_notifications: 未読のお知らせ
+    update_password_done: 'パスワードが更新されました'
+    update_user_done: 'ユーザー情報が更新されました'
+    user_has_no_bio: このユーザーの自己紹介はまだ書かれていません。
+    not_permitted: この操作は制限されています。
+    activation_needed_mail:
+      subject: 'Kirari への登録確認'
+    activation_success_mail:
+      subject: 'Kirari へようこそ！'
+    no_kirari: 'キラリが贈られていません'

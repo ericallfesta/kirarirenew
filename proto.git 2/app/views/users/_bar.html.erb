@@ -1,0 +1,11 @@
+  <% additional_class ||= '' %>
+  <div class="user <%= additional_class %>">
+    <span class="user-name">
+      by <%= link_to user.display_name, user %>
+    </span>
+    <span class="user-icon">
+      <%= link_to user, class: 'image' do %>
+        <%= image_tag user.image.thumbnail, alt: ' ', width: 32, height: 32 %>
+      <% end %>
+    </span>
+  </div>

@@ -1,0 +1,9 @@
+<% if f.object.instance_eval "#{image_name}_cache" %>
+  <%= image_tag f.object.instance_eval(image_name), width: 100 %>
+  <label><%= f.check_box "remove_#{image_name}".to_sym %> <%= t 'view.remove' %></label>
+  <%= f.hidden_field "#{image_name}_cache".to_sym %>
+<% elsif f.object.instance_eval("#{image_name}?") %>
+  <%= image_tag f.object.instance_eval(image_name), width: 100 %>
+  <label><%= f.check_box "remove_#{image_name}".to_sym %> <%= t 'view.remove' %></label>
+<% end %>
+<%= f.file_field image_name.to_sym %>

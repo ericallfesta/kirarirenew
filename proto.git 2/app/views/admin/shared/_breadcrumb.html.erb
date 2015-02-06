@@ -1,0 +1,5 @@
+<ol class="breadcrumb">
+  <% url_list.each do |title, url| %>
+  <li><%= url ? link_to(title, url) : title %></li>
+  <% end %>
+</ol>

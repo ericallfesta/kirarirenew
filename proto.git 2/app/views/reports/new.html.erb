@@ -1,0 +1,55 @@
+<% if @report.product_id.nil? %>
+  <div id="search" class="sectioning-container mass-container">
+    <header>
+      <h1><%= heading 'write_report' %></h1>
+      <div class="content-panel">
+        <p class="content-body">あなたが使った商品の感想をレポートを書いて共有しましょう。<br />まずは以下からレポートを書きたい商品を選んでください。</p>
+       </div>
+    </header>
+    <div class="report-target">
+      <%= render 'search/basic/forms' %>
+    </div>
+    <section class="content-panel">
+      <header>
+        <h2><%= t "views.request_product" %></h2>
+      </header>
+      <div class="content-body">
+        <%= form_for RequestProduct.new, html: { class: 'form' } do |f| %>
+          <div class="group row-3-7">
+            <%= f.label :brand %>
+            <%= f.text_field :brand %>
+          </div>
+
+          <div class="group row-3-7">
+            <%= f.label :brand_url %>
+            <%= f.text_field :brand_url %>
+          </div>
+
+          <div class="group row-3-7">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+
+          <div class="group row-3-7">
+            <%= f.label :product_url %>
+            <%= f.text_field :product_url %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t('views.send'), class: 'btn btn-submit' %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+<% else %>
+  <div class="mass-container">
+    <header>
+      <h1><%= heading 'write_report' %></h1>
+    </header>
+    <section id="reports">
+      <%= render 'products/bar', product: @report.product %>
+      <%= render 'form' %>
+    </section>
+  </div>
+<% end %>

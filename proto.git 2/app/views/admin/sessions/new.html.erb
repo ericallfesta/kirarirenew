@@ -1,0 +1,16 @@
+<div class="col-sm-3 center-block">
+  <h3>Please Login</h3>
+
+  <%= form_tag admin_sessions_url, class: 'form', method: :post do %>
+    <div class="form-group">
+      <%= text_field_tag :email, params[:email], class: 'form-control', placeholder: 'Email Address' %>
+    </div>
+    <div class="form-group">
+      <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password'  %>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn btn-primary btn-block btn-large"><%= icon :lock %> Login</button>
+    </div>
+  <% end %>
+</div>

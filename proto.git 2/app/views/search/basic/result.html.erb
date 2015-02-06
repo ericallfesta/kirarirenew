@@ -1,0 +1,31 @@
+<% page_heading t('views.heading.search_result') %>
+<div class="sectioning-container mass-container search-result">
+
+  <% @results.each do |result| %>
+    <section>
+      <header>
+        <h1><%= heading result.heading, sub: true %></h1>
+      </header>
+
+      <div class="content-panel">
+        <div class="content-body">
+          <% if result.length > 0 %>
+            <ul class="<%= result.as %>-list">
+              <% result.each do |item| %>
+                <%= render "#{result.as}/item", :"#{result.singularize}" => item %>
+              <% end %>
+            </ul>
+            <% if result.list.total_pages > 1 && result.allow_list? %>
+              <div class="pull-right">
+                <%= link_to t('views.label.more'), url_for(params.merge( action: result.action )), class: 'btn btn-more btn-small' %>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="no-items active"><%=t 'views.label.no_searched_items' %></p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+
+</div>

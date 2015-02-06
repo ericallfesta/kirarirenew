@@ -1,0 +1,144 @@
+#profile {
+	> header {
+		margin-bottom: 30px;
+	}
+	#user-details {
+		padding: 20px;
+		@include clearfix;
+		overflow: visible;
+
+		h1 {
+			float: left;
+			width: 380px;
+			margin-bottom: 20px;
+			font-size: 140%;
+			letter-spacing: 1px;
+			color: #888;
+		}
+		.actions {
+			float: right;
+			width: 240px;
+			text-align: right;
+		}
+		.details {
+			clear: both;
+			margin: 10px;
+
+			.user-image {
+				float: left;
+				width: 200px;
+			}
+			.user-status {
+				margin-left: 220px;
+				@include clearfix;
+
+				.bio {
+					padding: 20px;
+					background: #fafafa;
+					font-size: 90%;
+
+					&.no-bio {
+						text-align: center;
+					}
+				}
+				.indicators {
+					margin: 10px 0;
+					padding: 0;
+
+					li {
+						float: left;
+						width: 33%;
+						list-style: none;
+
+						.icon {
+							padding-top: 10px;
+							display: block;
+							float: left;
+							width: 36px;
+							height: 36px;
+							font-size: 30px;
+							color: #555;
+						}
+						.label {
+							line-height: 10px;
+							font-size: 10px;
+							color: #aaa;
+						}
+						.num {
+							display: block;
+							font-size: 24px;
+							color: #555;
+						}
+					}
+				}
+			}
+			.user-profile {
+				clear: both;
+
+				h2 {
+					margin: 20px 0;
+					font-size: 100%;
+					color: #aaa;
+					border-bottom: 1px solid #ddd;
+				}
+				dl {
+					font-size: 90%;
+
+					dt {
+						clear: left;
+						float: left;
+						width: 100px;
+						text-align: right;
+						color: #aaa;
+					}
+					dd {
+						margin-left: 120px;
+					}
+				}
+			}
+		}
+	}
+}
+
+#users-body.page-new,
+#users-body.page-create {
+	.register {
+		padding: 20px 150px 10px 150px;
+
+		p {
+			margin: 10px 0;
+			margin-left: 60px;
+			font-size: 70%;
+			line-height: 1.6;
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+			font-size: 80%;
+			color: #888;
+
+			&.radio {
+				float: left;
+				margin: 0 80px 0 0;
+			}
+		}
+
+		input[type=text],
+		input[type=password] {
+			width: 360px;
+		}
+
+		.term {
+			clear: both;
+			margin-top: 20px;
+		}
+	}
+}
+
+#recommend_users_bottom {
+	.description {
+		margin: 10px 20px 20px;
+		font-size: 90%;
+	}
+}

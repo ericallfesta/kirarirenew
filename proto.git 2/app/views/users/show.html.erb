@@ -1,0 +1,99 @@
+<article class="sectioning-container" id="profile">
+  <header>
+    <% if logged_in? && @user.id == current_user.id %>
+      <h1><%= heading 'my_profile' %></h1>
+    <% else %>
+      <h1><%= heading 'user_profile' %></h1>
+    <% end %>
+  </header>
+
+  <section class="content-panel" id="user-details">
+    <header>
+      <h1><%= @user.name %></h1>
+
+      <% if logged_in? %>
+        <div class="actions">
+          <% if @user == current_user %>
+            <%= link_to t('views.action.password_edit'), reset_password_my_profile_index_path, class: 'btn btn-action' %>
+            <%= link_to t('views.action.edit'), edit_my_profile_path(current_user), class: 'btn btn-action' %>
+          <% else %>
+            <%= render 'users/follow', user: @user %>
+          <% end %>
+        </div>
+      <% end %>
+    </header>
+
+    <div class="details">
+      <div class="user-image">
+          <%= image_tag @user.image.thumbnail.to_s, width: 200, height: 200, alt: '', class: 'user-profile' %>
+      </div>
+      <div class="user-status">
+        <% if @user.bio.blank? %>
+          <p class="bio no-bio"><%=t 'messages.user_has_no_bio' %></p>
+        <% else %>
+          <p class="bio"><%= br @user.bio %></p>
+        <% end %>
+        <ul class="indicators">
+          <li>
+            <%= link_to user_followers_path(@user) do %>
+              <%= icon 'follower' %>
+              <span class="label"><%= t("views.user_status.follower") %></span>
+              <span class="num"><%= @user.followers.length %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_following_path(@user) do %>
+              <%= icon 'following' %>
+              <span class="label"><%= t("views.user_status.following") %></span>
+              <span class="num"><%= @user.followees.length %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= icon 'kirari' %>
+            <span class="label"><%= t("views.user_status.kirari") %></span>
+            <span class="num"><%= @user.favorites_total %></span>
+          </li>
+          <li>
+            <%= icon 'report' %>
+            <span class="label"><%= t("views.user_status.report") %></span>
+            <span class="num"><%= @user.reports.length %></span>
+          </li>
+          <li>
+            <%= icon 'question' %>
+            <span class="label"><%= t("views.user_status.question") %></span>
+            <span class="num"><%= @user.questions.length %></span>
+          </li>
+          <li>
+            <%= icon 'diary' %>
+            <span class="label"><%= t("views.user_status.diary") %></span>
+            <span class="num"><%= @user.diaries.length %></span>
+          </li>
+        </ul>
+      </div>
+      <div class="user-profile">
+        <h2>プロフィール</h2>
+        <dl>
+          <dt>性別</dt>
+          <dd><%= @user.gender.present? ? t("views.user.gender.#{@user.gender.presence}") : '-' %></dd>
+
+          <dt>年齢</dt>
+          <dd><%= @user.age %></dd>
+        </dl>
+      </div>
+      <div class="pull-right">
+        <%= fav_button @user %>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-panel timeline">
+    <header>
+      <h2>最近の書き込み</h2>
+    </header>
+    <div class="activities-list content-body list">
+      <% @user.writings.limit(20).each do |writing| %>
+        <%= render 'activities/item', activity: writing %>
+      <% end %>
+    </div>
+  </section>
+</artice>

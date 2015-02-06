@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <h2>Users</h2>
+  </div>
+
+  <% @users.each do |user| %>
+  <div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="thumbnail">
+      <%= image_tag user.image_url :thumb %>
+      <div class="caption">
+        <h3><%= user.display_name %></h3>
+        <p><%= truncate user.bio %></p>
+        <%= link_to 'Detail', user, class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

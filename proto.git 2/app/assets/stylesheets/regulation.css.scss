@@ -1,0 +1,23 @@
+.regulation {
+  background: #fafafa;
+  padding: 10px 30px;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+
+  height: 200px;
+  overflow-y: scroll;
+
+  > h3 {
+    margin: 20px 0 10px;
+    font-size: 12pt;
+  }
+
+  > ul, > ol {
+    padding-top: 0;
+    margin: 10px;
+  }
+
+  > p {
+    padding-left: 8px;
+  }
+}

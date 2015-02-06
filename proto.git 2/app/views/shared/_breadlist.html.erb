@@ -1,0 +1,11 @@
+<% if elements.present? %>
+<div id="breadlist">
+  <ul id="bread-crumb-list">
+    <% elements.each do |element| %>
+    <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a itemprop="url" href="<%= element.path %>"><span itemprop="title"><%= element.name %></span></a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

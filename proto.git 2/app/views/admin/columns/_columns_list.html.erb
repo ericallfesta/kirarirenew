@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <tr>
+    <th><%= Column.human_attribute_name :title %></th>
+    <th><%= Column.human_attribute_name :writer_id %></th>
+    <th><%= Column.human_attribute_name :body %></th>
+    <th></th>
+  </tr>
+<% columns.each do |column| %>
+  <tr>
+    <td>
+      <small class="text-muted"><%= t('views.column_number', number: column.serial_num) if column.serial_num.present? %></small>
+      <%= column.title %>
+    </td>
+    <td><%= column.writer.display_name %></td>
+    <td><%= truncate column.body %></td>
+    <td>
+      <div class="btn-group col-sm-12">
+        <%= link_to edit_admin_column_path(column), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to ['admin', column.serial, column], class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-info-sign"></i> 詳細
+        <% end %>
+      <div>
+    </td>
+  </tr>
+<% end %>
+</table>

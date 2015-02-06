@@ -1,0 +1,38 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '特集管理' => nil} %>
+
+<table class="table table-bordered">
+  <tr>
+    <th><%= Feature.human_attribute_name :title %></th>
+    <th><%= Feature.human_attribute_name :description %></th>
+    <th><%= Feature.human_attribute_name :active %></th>
+    <th><%= Feature.human_attribute_name :priority %></th>
+    <th></th>
+  </tr>
+<% @features.each do |feature| %>
+  <tr>
+    <td><%= feature.title %></td>
+    <td><%= truncate feature.description %></td>
+    <td class="text-center">
+      <% if feature.active %>
+        <i class="glyphicon glyphicon-ok text-danger"></i>
+      <% else %>
+        <i class="glyphicon glyphicon-remove text-muted"></i>
+      <% end %>
+    </td>
+    <td><%= feature.priority %></td>
+    <td>
+      <div class="btn-group col-sm-12">
+        <%= link_to edit_admin_feature_path(feature), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to admin_feature_path(feature), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-info-sign"></i> 詳細
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @features, theme: 'admin' %>
+<%= link_to "特集を新規追加", new_admin_feature_path(), { class: 'btn btn-success btn-block' } %>

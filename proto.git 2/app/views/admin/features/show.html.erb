@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @feature.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @feature.description %>
+</p>
+
+<p>
+  <strong>Hero image:</strong>
+  <%= @feature.hero_image %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @feature.url %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @feature.priority %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @feature.active %>
+</p>
+
+<%= link_to 'Edit', edit_admin_feature_path(@feature) %> |
+<%= link_to 'Back', admin_features_path %>

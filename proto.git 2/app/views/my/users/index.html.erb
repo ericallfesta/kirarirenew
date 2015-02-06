@@ -1,0 +1,20 @@
+<%= image_tag current_user.image, width: 200 %>
+<h3><%= current_user.display_name %></h3>
+
+<p><%= current_user.bio %></p>
+<p><%= current_user.birthday %></p>
+<%= link_to 'Edit', my_profile_edit_url %>
+<%= link_to 'Reset Password', [:reset_password, :my, :profile, :index] %>
+
+<ul>
+  <% current_user.diaries.each do |diary| %>
+  <li>
+    <%= diary.title %>
+    <p><%= truncate diary.body %></p>
+    <div>
+      <%= link_to 'Edit', [:edit, :my, diary] %>
+      <%= link_to 'Destroy', [:my, diary], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </li>
+  <% end %>
+</ul>

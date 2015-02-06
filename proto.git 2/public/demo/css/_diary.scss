@@ -1,0 +1,121 @@
+.diary{
+  h3{
+    margin: 20px 10px 20px;
+    padding: 10px;
+    font-size: 110%;
+    background: #eee;
+
+    small{
+      font-size: 80%;
+      color: #888;
+    }
+  }
+  .intro{
+    margin: 15px;
+  }
+
+  /* single page */
+  &.single{
+    h3{
+      margin: 40px 0 20px;
+    }
+    .sns_buttons{
+      margin: 20px;
+      text-align: right;
+    }
+    & > .body{
+      margin: 30px 0;
+      padding: 0 20px 30px;
+      border-bottom: 1px solid #ccc;
+    }
+    .prev_next{
+      overflow: hidden;
+
+      .caption{
+        font-size: 70%;
+        font-weight: bold;
+        color: #aaa;
+      }
+      .article_title{
+        display: block;
+        font-size: 80%;
+      }
+
+      .next{
+        float: left;
+        width: 50%;
+
+        a{
+          display: block;
+          margin: 10px;
+          padding-left: 20px;
+          background: url('../img/arrow_left.png') left center no-repeat;
+        }
+      }
+      .before{
+        float: right;
+        width: 50%;
+        text-align: right;
+
+        a{
+          display: block;
+          margin: 10px;
+          padding-right: 20px;
+          background: url('../img/arrow_right.png') right center no-repeat;
+        }
+      }
+    }
+    .ranking{
+      margin-bottom: 50px;
+
+      li{
+        margin: 0.3em 50px;
+        list-style: decimal;
+      }
+    }
+    .comments{
+      margin: 10px;
+
+      .no_comment{
+        text-align: center;
+        font-size: 80%;
+        color: #aaa;
+      }
+      li{
+        margin: 10px;
+        font-size: 90%;
+        color: #888;
+
+        .image{
+          clear: left;
+          float: left;
+          width: 30px;
+        }
+        .body{
+          margin-left: 30px;
+
+          p{
+            display: inline;
+          }
+          time{
+            font-size: 90%;
+            color: #aaa;
+          }
+        }
+      }
+      .new_res{
+        margin: 20px;
+        text-align: right;
+
+        textarea{
+          width: 530px;
+          height: 4em;
+        }
+        input[type=submit]{
+          vertical-align: top;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}

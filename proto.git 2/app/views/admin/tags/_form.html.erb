@@ -1,0 +1,33 @@
+<%= form_for @tag, url: [:admin, @tag], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @tag %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :group, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.select :group, TagGroup.where.not(slug: 'category').pluck(:name, :id), { selected: @tag.group.try(:id) }, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :body_part, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <% BodyPart.all.each do |body_part| %>
+          <label class="checkbox-inline">
+            <%= check_box_tag :body_part, body_part.id, @tag.body_parts.include?(body_part), name: 'tag[body_parts][]' %>
+            <%= body_part.name %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

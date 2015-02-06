@@ -1,0 +1,25 @@
+<div class="content-panel">
+  <header>
+    <h2><%= heading 'news' %></h2>
+  </header>
+  <div class="content-body">
+
+    <% if @news.count > 0 %>
+
+    <section>
+      <ul class="news-list">
+        <%= render @news %>
+      </ul>
+    </section>
+
+    <%= paginate @news %>
+
+    <% else %>
+
+    <p class="system-message">
+      <%=t 'messages.news_are_empty' %>
+    </p>
+
+    <% end %>
+  </div>
+</div>

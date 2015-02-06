@@ -1,0 +1,258 @@
+#product_information{
+  header{
+    h2{
+      float: left;
+      width: $unit * 8;
+      margin: 10px 0;
+      font-size: 200%;
+      font-weight: normal;
+    }
+    #sns_buttons{
+      margin: 20px 5px;
+      float: right;
+    }
+    #info_brand_and_tags{
+      clear: both;
+      margin: 0 15px 50px;
+
+      .brand_name{
+      }
+      .tags{
+        float: right;
+        margin: 5px;
+        display: inline-block;
+        font-size: 80%;
+      }
+    }
+  }
+  #info_body{
+    clear: both;
+
+    #info_image{
+      float: left;
+      width: 256px;
+    }
+    #info_details{
+      margin-left: 266px;
+      font-size: 90%;
+
+      #info_description{
+        margin: 10px;
+      }
+    }
+    table{
+      margin: 20px auto;
+
+      th{
+        width: 80px;
+        text-align: right;
+        padding: 5px;
+        background: #888;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+      td{
+        padding: 5px;
+        background: #eee;
+        width: 300px;
+        border-bottom: 1px solid #fff;
+      }
+    }
+    #posts_count{
+      margin: 10px;
+      padding: 5px;
+      text-align: right;
+      background: #eee;
+    }
+  }
+}
+.posts{
+  clear: both;
+  overflow: hidden;
+
+  &#reports{
+    header{
+      background: darken($report_color, 15%);
+    }
+  }
+  &#questions{
+    header{
+      background: darken($question_color, 15%);
+    }
+  }
+  header{
+    position: relative;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+  }
+  .new_post{
+    position: relative;
+    padding: 5px;
+    background: #eee;
+
+    h4{
+      margin: 5px;
+      color: #888;
+      text-align: center;
+    }
+    form{
+      margin: auto;
+      padding: 0 25px;
+
+      select{
+        color: #555;
+      }
+      textarea{
+        width: $unit * 8;
+        height: 50px;
+      }
+      input[type=submit]{
+        padding: 10px 30px;
+        vertical-align: top;
+      }
+      .upload_images{
+        display: none;
+        margin-left: 10px;
+        text-align: left;
+      }
+    }
+  }
+  article{
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+
+    h4{
+      float: left;
+      width: $unit * 2;
+      text-align: center;
+
+      .name{
+        font-size: 80%;
+        font-weight: normal;
+      }
+    }
+    .message{
+      margin-left: $unit * 2;
+      .images{
+        text-align: right;
+
+        li{
+          display: inline;
+        }
+      }
+    }
+    footer{
+      text-align: right;
+      font-size: 80%;
+      color: #aaa;
+
+      .is_helpful{
+        display: inline;
+      }
+      .view_comments{
+        display: inline;
+      }
+    }
+    .comments{
+      display: none;
+      margin: 10px 0 0 $unit * 2;
+      border-top: 1px dotted #ccc;
+
+      .more{
+        a{
+          display: block;
+          margin: 5px;
+          padding: 3px;
+          background: #eee;
+          text-align: center;
+          text-decoration: none;
+          color: #555;
+          border-radius: 5px;
+
+          &:hover{
+            background: #ddd;
+          }
+        }
+      }
+      .no_comment{
+        margin: 10px 50px;
+        font-size: 80%;
+        color: #aaa;
+      }
+      li{
+        margin: 10px;
+        font-size: 90%;
+        color: #888;
+
+        .image{
+          clear: left;
+          float: left;
+          width: 30px;
+        }
+        .body{
+          margin-left: 30px;
+
+          p{
+            display: inline;
+          }
+          time{
+            font-size: 90%;
+            color: #aaa;
+          }
+        }
+      }
+      .new_res{
+        margin-left: 50px;
+
+        textarea{
+          width: 400px;
+          height: 4em;
+        }
+        input[type=submit]{
+          vertical-align: top;
+        }
+      }
+    }
+  }
+}
+.pagination{
+  margin: 30px;
+  text-align: center;
+
+  p{
+    display: inline-block;
+    padding: 0 10px;
+    font-weight: bold;
+    color: #ddd;
+
+    a{
+      text-decoration: none;
+      color: #888;
+    }
+  }
+  ol{
+    display: inline-block;
+    li{
+      display: inline-block;
+
+      .current{
+        padding: 2px 5px;
+        font-weight: bold;
+        background: #eee;
+        border: 1px solid #eee;
+        border-radius: 5px;
+       }
+      a{
+        padding: 2px 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: normal;
+      }
+    }
+  }
+}

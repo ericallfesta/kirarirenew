@@ -1,0 +1,58 @@
+<div class="mass-container">
+  <header>
+    <h1><%= heading 'topics' %></h1>
+  </header>
+
+  <div class="content-panel">
+    <div class="content-body">
+      <div class="tabs-container" id="activities-container">
+        <ul class="tabs tabs-large" role="navigation">
+          <li class="item" data-tab="all">
+            <%= push_state_to t('views.all'), activities_path, class: c(@filter == :all, :active) %>
+          </li>
+          <li class="item" data-tab="reports" >
+            <%= push_state_to t('views.report'), activities_reports_path, class: c(@filter == :reports, :active) %>
+          </li>
+          <li class="item" data-tab="questions">
+            <%= push_state_to t('views.question'), activities_questions_path, class: c(@filter == :questions, :active) %>
+          </li>
+          <li class="item" data-tab="diaries">
+            <%= push_state_to t('views.diary'), activities_diaries_path, class: c(@filter == :diaries, :active) %>
+          </li>
+        </ul>
+
+        <section class="tab-panel active" data-tab="all">
+          <ul class="activities-list list-activities list">
+            <% @activities.each do |item| %>
+              <%= render 'item', activity: item %>
+            <% end %>
+          </ul>
+        </section>
+
+        <section class="tab-panel" data-tab="reports">
+          <ul class="reports-list activities-list list">
+            <% @reports.each do |item| %>
+              <%= render 'item', activity: item %>
+            <% end %>
+          </ul>
+        </section>
+
+        <section class="tab-panel" data-tab="questions">
+          <ul class="list-questions activities-list list">
+            <% @questions.each do |item| %>
+              <%= render 'item', activity: item %>
+            <% end %>
+          </ul>
+        </section>
+
+        <section class="tab-panel" data-tab="diaries">
+          <ul class="list-diaries activities-list list">
+            <% @diaries.each do |item| %>
+              <%= render 'item', activity: item %>
+            <% end %>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

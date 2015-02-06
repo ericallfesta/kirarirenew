@@ -1,0 +1,16 @@
+<%= form_for category, url: evaluations_admin_tag_path, html: { class: 'form' } do |f| %>
+  <% count = 0 %>
+  <%= f.fields_for :evaluations, category.evaluations do |ff| %>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><%= count += 1 %></span>
+        <%= ff.text_field :name, class: 'form-control' %>
+      </div>
+      <%= ff.hidden_field :priority, value: count, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>

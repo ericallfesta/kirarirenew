@@ -1,0 +1,24 @@
+<section class="item data-link<%= ' me' if activity.writer == current_user %>" data-href="<%= url_for activity %>">
+  <div class="image"><%= image_tag activity.writer.image.thumbnail, :size => "48x48", alt: '', class: 'user-profile' %></div>
+  <header>
+    <h1><%= truncate activity.title, length: 30 %></h1>
+  </header>
+  <% unless activity.product.nil? %>
+    <div class="product-information">
+      <%= link_to activity.product do %>
+        <div class="product-icon">
+          <%= image_tag activity.product.main_image.src.square, width: 32, height: 32, alt: '' %>
+        </div>
+        <div class="product-status">
+          <span class="brand"><%= activity.product.brand.name =%></span>
+          <span class="name"><%= activity.product.name =%></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <footer class="status">
+    <span class="user-name"><%= link_to activity.writer.display_name, activity.writer %></span>
+    <time><%= l activity.created_at, format: :mdhm %></time>
+    <span class="comment-count"><%= activity.comments.length %></span>
+  </footer>
+</section>

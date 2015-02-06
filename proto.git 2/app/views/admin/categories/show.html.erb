@@ -1,0 +1,101 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'カテゴリ管理' => admin_categories_url, @category.name => nil} %>
+
+<h2 class="page-header">
+  <%= @category.name %>
+  <span class="id">カテゴリ階層 : <%= @category.level %></span>
+  <small><%= link_to '編集', edit_admin_category_path(@category) %></small>
+</h2>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>親カテゴリ</h3>
+    <ul class="list-unstyled">
+      <% @category.parents.each do |category| %>
+        <li>
+          <%= category.name %>
+          <%= link_to '詳細', admin_category_url(category), class: 'text-sm' %>
+        </li>
+      <% end %>
+      <% if @category.parents.blank? %>
+        <li class="text-muted">親カテゴリは存在しません。</li>
+      <% end %>
+    </ul>
+
+    <hr>
+
+    <h3>
+      子カテゴリ
+      <small><%= link_to '子カテゴリを追加', new_admin_category_path(parent: @category.id) %></small>
+    </h3>
+    <ul class="list-unstyled">
+      <%= render @category.children %>
+      <% if @category.children.blank? %>
+        <li class="text-muted">子カテゴリは存在しません。</li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <h3>
+      レポート 評価項目
+      <small>
+        <%= link_to '編集', '#', data: {
+          toggle: 'modal',
+          target: '#modal-generic',
+          title: "#{@category.name}の評価項目を編集",
+          body: "#edit-evaluations",
+        } %>
+      </small>
+    </h3>
+
+    <ol>
+      <% @category.evaluations.order(:priority).each do |evaluation| %>
+        <li><%= evaluation.name %></li>
+      <% end %>
+    </ol>
+    <% if @category.evaluations.blank? %>
+      <p class="text-muted">評価項目が設定されていません。</p>
+    <% end %>
+
+    <div id="edit-evaluations" class="hide">
+      <%= render 'admin/evaluations/form', category: @category %>
+    </div>
+
+    <hr>
+
+    <h3>
+      レポート 効果効能
+      <small>
+        <%= link_to '追加', '#', data: {
+          toggle: 'modal',
+          target: '#modal-generic',
+          title: "#{@category.name}の効果効能を追加",
+          body: "#new-efficacy",
+        } %>
+      </small>
+    </h3>
+    <ul>
+      <% @category.efficacies.each do |efficacy| %>
+        <li>
+          <%= efficacy.name %>
+          <%= link_to '編集', '#', class: 'text-sm', data: {
+            toggle: 'modal',
+            target: '#modal-generic',
+            title: "#{efficacy.name}を編集",
+            body: "#edit-efficacy-#{efficacy.id}",
+          } %> |
+          <%= link_to '削除', admin_efficacy_url(efficacy), class: 'text-sm', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %>
+          <div id="edit-efficacy-<%= efficacy.id %>" class="hide">
+            <%= render 'admin/efficacies/form', efficacy: efficacy, category: @category %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <% if @category.efficacies.blank? %>
+      <p class="text-muted">効果効能が設定されていません。</p>
+    <% end %>
+    <div id="new-efficacy" class="hide">
+      <%= render 'admin/efficacies/form', efficacy: @category.efficacies.build, category: @category %>
+    </div>
+  </div>
+</div>

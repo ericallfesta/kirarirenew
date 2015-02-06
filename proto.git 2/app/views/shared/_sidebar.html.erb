@@ -1,0 +1,117 @@
+
+<% unless logged_in? %>
+  <section class="start-kirari">
+    <%= link_to 'Kirari をはじめる', signup_path %>
+  </section>
+<% end %>
+
+<% if false %>
+  <section class="ad-top">
+    <%= link_to '#' do %>
+      <%= image_tag "ad-space.png", alt: '', width: 300, height: 250 %>
+    <% end %>
+  </section>
+<% end %>
+
+<% if @sidebar_news.present? && ! is_home? %>
+<section class="content-panel news-list-sidebar">
+  <h1>ニュース</h1>
+  <ul>
+    <% @sidebar_news.each do | news | %>
+      <li>
+        <%= link_to news do %>
+          <div class="image">
+            <%= image_tag news.image, class: 'thumbnail', width: 90 %>
+          </div>
+          <div class="title">
+            <%= news.title %>
+          </div>
+          <div class="date">
+            <time><%=l (news.published_at || news.updated_at), format: :md %></time>
+          </div>
+        <% end %>
+      </li>
+    <% end unless @sidebar_news.nil? %>
+  </ul>
+  <div class="pull-right"><%= link_to t('views.label.more'), news_index_url, class: 'btn btn-more btn-small' %></div>
+</section>
+<% end %>
+
+<% if ! is_home? && Page.find_by(slug: 'howto') %>
+<section>
+  <%= link_to page_url(Page.find_by(slug: 'howto')) do %>
+    <%= image_tag("banner_howto.png", :size => "300x100", :class => 'hover-alpha', :style => 'display: block; line-height: 1', :alt => "Kirari のたのしみかた") %>
+  <% end %>
+</section>
+<% end %>
+
+<% if PopularKeyword.exists? %>
+<section class="popular-keywords">
+  <h1>話題のキーワード</h1>
+  <ul>
+    <% PopularKeyword.all.each do |keyword| %>
+    <li><%= link_to keyword.word, search_result_path(q: keyword.word) %></li>
+    <% end %>
+  </ul>
+</section>
+<% end %>
+
+<% if false %>
+  <section class="features-container">
+    <ul>
+      <% @sidebar_features.each do |feature| %>
+        <li><%= link_to feature.title, feature.url, style: "background-image: url('#{image_path feature.sidebar_image.to_s}')" %></li>
+      <% end unless @sidebar_features.nil? %>
+    </ul>
+  </section>
+<% end %>
+
+<% if logged_in? && ! is_home? && controller.controller_name != 'activities' %>
+<section class="pickups content-panel">
+  <h1><%=t 'views.topics' %></h1>
+  <div class="tab-panel active activities-list-sidebar list" data-tab="all">
+    <% @sidebar_activities.each do |item| %>
+      <%= render 'activities/item_sidebar', activity: item, with_comment: false, with_thumbnail: false, with_actions: false %>
+    <% end %>
+  </div>
+  <div class="pull-right"><%= link_to t('views.label.more'), activities_path, class: 'btn btn-more btn-small' %></div>
+</section>
+<% end %>
+
+<% if @sidebar_ranking_headline.any? %>
+<section class="content-panel rankings products">
+  <h1><%= t 'views.ranking_by_all' %></h1>
+  <ol class="products-list">
+    <% @sidebar_ranking_headline.each_with_index do |product, index| %>
+      <%= render 'products/item_sidebar', product: product, number: index + 1, length: 50 %>
+    <% end %>
+  </ol>
+</section>
+<% end %>
+
+<% recommend_users = (current_user.presence || User).recommend_users(limit: 3) %>
+<% if recommend_users.length > 0 %>
+  <section class="content-panel recommend-users-sidebar">
+    <h1><%= t 'views.recommend_users' %></h1>
+    <% recommend_users.each do |user| %>
+      <%= render 'users/user_sidebar', user: user %>
+    <% end %>
+  </section>
+<% end %>
+
+<section class="new-diaries content-panel">
+  <h1><%=t 'views.new_diaries' %></h1>
+  <div class="tab-panel active activities-list-sidebar list" data-tab="all">
+    <% @sidebar_diaries.each do |item| %>
+      <%= render 'activities/item_sidebar', activity: item, with_comment: false, with_thumbnail: false, with_actions: false %>
+    <% end %>
+  </div>
+</section>
+
+<% if false %>
+<section class="ad-bottom">
+  <%= link_to '#' do %>
+    <%= image_tag "ad-space.png", alt: '', width: 300, height: 250 %>
+  <% end %>
+</section>
+<% end %>

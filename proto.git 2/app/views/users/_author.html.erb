@@ -1,0 +1,6 @@
+  <div class="author">
+    <%= link_to user, class: 'image' do %>
+      <%= image_tag user.image.thumbnail.to_s, width: 64, alt: '' %>
+    <% end %>
+    <h3><%= link_to user.display_name, user %> さん</h3>
+  </div>

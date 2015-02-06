@@ -1,0 +1,68 @@
+  <li class="item data-link" data-href="<%= url_for writing %>">
+    <div class="user-information">
+      <%= link_to writing.writer do %>
+        <div class="image"><%= image_tag writing.writer.image.thumbnail, width: 72, height: 72, alt: '', class: 'user-profile' %></div>
+        <div class="user-name"><%= link_to writing.writer.display_name, writing.writer %></div>
+      <% end %>
+    </div>
+    <div class="body">
+      <div class="status">
+        <h3 class="writing-title"><%= writing.title %></h3>
+        <time><%= l writing.created_at %></time>
+      </div>
+      <p class="content"><%= br writing.body.excerpt %></p>
+      <% unless writing.images.nil? %>
+        <ul class="images">
+          <% writing.images.each do |image| %>
+            <li><%= image_tag image.src.thumbnail, width: 24, alt: '' %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <% unless writing.product.nil? %>
+        <div class="product-information">
+          <div class="product-icon">
+            <%= link_to writing.product do %>
+              <%= image_tag writing.product.main_image.src.square, width: 48, height: 48, alt: '' %>
+            <% end %>
+          </div>
+          <div class="product-status">
+            <h4>
+              <%= link_to writing.product do %>
+                <span class="brand"><%= writing.product.brand.name =%></span>
+                <span class="name"><%= writing.product.name =%></span>
+              <% end %>
+            </h4>
+            <p class="category tags">
+              <% if writing.product.category.present? %>
+                <span class="tag">
+                  <%= link_to writing.product.category.name, search_result_url(category: writing.product.category.id) %>
+                </span>
+              <% else %>
+                未分類
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <div class="kirari">
+        <%= fav_button writing %>
+      </div>
+    </div>
+    <div class="comments">
+      <h4>コメント<span class="count">（<%= writing.comments.length %>）</span></h4>
+      <ul>
+        <% writing.comments.last(3).each do |comment| %>
+          <li>
+            <div class="comment-user">
+              <%= link_to writing.writer do %>
+                <%= image_tag comment.user.image, width: 24, alt: comment.user.name %>
+              <% end %>
+            </div>
+            <p class="comment-body">
+              <%= comment.body %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </li>

@@ -1,0 +1,28 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ニュース管理' => nil} %>
+<% @news.each do |n| %>
+  <div class="media news">
+    <div class="pull-left">
+      <%= image_tag n.image.thumbnail, width: 120, class: 'media-object' %>
+    </div>
+
+    <div class="media-body">
+      <h3 class="media-heading">
+        <small class="label label-<%= n.status == 'publish' ? 'info' : 'danger' %>"><%= n.status.capitalize %></small>
+        <%= n.title %>
+      </h3>
+      <div class="btn-group pull-right">
+        <%= link_to n, class: 'btn btn-default btn-sm', target: :blank do %>
+          <i class="glyphicon glyphicon-info-sign"></i> Kirari ニュースページ
+        <% end %>
+        <%= link_to edit_admin_news_url(n), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+      </div>
+      <p><%= strip_tags(n.body.excerpt) %></p>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @news, theme: 'admin' %>
+
+<%= link_to 'ニュースを新規追加', new_admin_news_path, class: 'btn btn-success btn-block' %>

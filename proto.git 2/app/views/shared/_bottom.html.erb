@@ -1,0 +1,18 @@
+<% if is_home? || controller.controller_name == 'activities' %>
+  <% recommend_users = (current_user.presence || User).recommend_users limit:4 %>
+  <% if ( ! logged_in? || current_user.followed_users.length <= 3 ) && recommend_users.count > 0 %>
+    <section class="content-panel" id="recommend_users_bottom">
+      <header>
+        <h2><%= t 'views.recommend_users' %></h2>
+      </header>
+
+      <p class="description">もっとユーザーをフォローしてみましょう！</p>
+
+      <ul class="content-body list users-bricks">
+        <% (current_user.presence || User).recommend_users(limit: 4).each.with_index do |user, i| %>
+          <%= render 'users/recommend_bottom', user: user, index: i %>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+<% end %>

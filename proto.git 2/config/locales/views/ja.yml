@@ -1,0 +1,194 @@
+---
+ja:
+  views:
+    action:
+      edit: 編集
+      password_edit: パスワード変更
+    activities: トピックス
+    all: すべて
+    attach_images:
+      label: 写真をのせる
+      description: 写真を3枚まで添付することができます。
+      remove: この写真を削除する
+    average_star: 平均評価
+    campaigns: キャンペーン
+    column_categories:
+      beauty: 美容
+      health: 健康
+    columns: コラム
+    column_number: 第%{number}回
+    column_serial_info: "%{serial_title}"
+    diaries: 日記
+    diary: 日記
+    follow: フォローする
+    unfollow: 'フォロー解除'
+    kirari_button:
+      send: キラリを贈る
+      done: キラリを贈りました
+      myself: あなたへのキラリ数
+      my_writing: この投稿へのキラリ数
+    kirari_count: '（%{count}）'
+    heading:
+      campaigns: 'キャンペーン'
+      columns: 'コラム'
+      login: 'ログイン'
+      my_profile: 'マイカルテ'
+      news: 'ニュース'
+      rankings: 'ランキング'
+      search: '商品を探す'
+      search_diaries: '日記を探す'
+      search_products: '商品を探す'
+      search_reports: 'レポートを探す'
+      search_questions: '質問を探す'
+      search_result: '検索結果'
+      serials: '連載コラム'
+      signup: 'Kirari をはじめる'
+      stamps: 'スタンプ'
+      topics: 'トピックス'
+      user_profile: 'ユーザーカルテ'
+      write_report: 'レポートをかく'
+    kirari: キラリ
+    label:
+      followers: '%{name}をフォローしているアカウント'
+      following: '%{user}さんがフォローしているアカウント'
+      more: もっと見る
+      my_profile: Myカルテ
+      new_comment: ここにコメント本文を書いてください。
+      no_followings: まだだれもフォローしていません。
+      no_followers: まだだれからもフォローされていません。
+      no_comments: コメントは投稿されていません。
+      no_questions: 質問は投稿されていません。
+      no_reports: レポートは投稿されていません。
+      no_searched_products: 該当する商品は登録されていません。
+      no_searched_items: 該当する項目はありません
+      official_website: 公式サイト
+      report_of_product: '%{product_name}のレポート'
+      question_of_product: '%{product_name}の質問'
+      reports_number: レポートの数
+      post: 投稿
+      star_list:
+        item0: 最悪...
+        item1: 悪い
+        item2: イマイチ
+        item3: 良い
+        item4: とても良い
+        item5: 最高！
+      user_profile: ユーザーのカルテ
+    list:
+      best3: 評価の高い商品
+      categories: カテゴリー
+      column_categories: コラムカテゴリー
+      comments: コメント
+      rankings: ランキング一覧
+      brand_products: '%{brand}の商品一覧'
+    login: ログイン
+    logout: ログアウト
+    menu:
+      activities: トピックス
+    new_diaries: 新着日記
+    notification:
+      type:
+        campaign: キャンペーン
+        column: コラム
+        notice: その他
+    notifications: 通知
+    no_star: （評価しない）
+    open_serials: 執筆中の連載
+    pagination:
+      first: '&laquo;'
+      last: '&raquo;'
+      next: '&gt;'
+      previous: '&lt;'
+      truncate: '...'
+    pickup_columns: ピックアップコラム
+    placeholder:
+      search: 検索ワードを入力してください
+    post: 投稿する
+    post_question: 質問を投稿する
+    post_report: レポートを投稿する
+    post_diary: 日記を投稿する
+    post_comment: コメントを投稿する
+    price: 価格
+    question: 質問
+    questions: 質問
+    ranking: ランキング
+    rankings:
+      all_products: 'すべての商品'
+      users: 'ユーザー'
+    ranking_of: '%{name}ランキング'
+    ranking_by_all: '評価順ランキング'
+    rate:
+      title: 満足度を選択してください
+      sub_title: '%{name}を評価してください'
+    recent_columns: 最新コラム
+    report: レポート
+    reports: レポート
+    report_detail:
+        department_store: デパート
+        drug_store: スーパー・ドラッグストア
+        specialist_shop: 化粧品専門店
+        convenience_store: コンビニエンスストア
+        net_store: 通販化粧品・コスメ
+        call_sale: 訪問販売
+        salon: 独立店舗・サロン
+        tester: サンプル・テスター
+        every_day: 毎日
+    request_body: 機能改善の要望や登録してほしい商品など、なんでも教えてください。
+    request_form: ご意見・ご要望はこちら
+    search: 検索
+    search_by:
+      brand_name: ブランド名から探す
+      product_name: 商品名から探す
+      category: 商品カテゴリから探す
+      bodymap: 人体図から探す
+      purpose: 目的から探す
+      symptom: 症状から探す
+      query: フリーワードで探す
+      bodymap: イラストから探す
+    search_products: 商品を探す
+    search_products_by_bodymap: 人体図から商品を探す
+    search_result: '%{query} の検索結果'
+    search_result_diaries: '%{query} を含む日記の検索結果'
+    search_result_products: '%{query} を含む商品の検索結果'
+    search_result_questions: '%{query} を含む質問の検索結果'
+    search_result_reports: '%{query} を含むレポートの検索結果'
+    search_with_another_method: 他の方法で商品を探す
+    search_product_top: 商品検索画面に戻る
+    serials: '連載コラム'
+    serial_article_list_of: '%{name}の連載記事一覧'
+    signup: Kirari をはじめる
+    signup_free: 会員登録（無料）
+    site_copy: '健康美を楽しむクチコミサイト Kirari（キラリ）'
+    tags_of: '%{name}に関連するキーワード'
+    timeline: タイムライン
+    topics: トピックス
+    user:
+      gender:
+        female: 女性
+        male: 男性
+        other: その他
+    user_status:
+      follower: フォローされている
+      following: フォローしている
+      kirari: Kirari の数
+      report: レポートの数
+      question: 質問の数
+      diary: 日記の数
+    user_information: ユーザー情報
+    with_title: '%{name}さん'
+    write_new_comment: コメントをかく
+    write_new_diary: 新しく日記をかく
+    write_new_question: 質問をかく
+    write_new_report: レポートをかく
+    writing:
+      placeholder:
+        question: この商品に関する質問
+        report: この商品を使ってみての感想
+      type:
+        diary: 日記
+        question: 質問
+        report: レポート
+    recommend_users: おすすめユーザー
+    request_product: 商品登録を依頼する
+    send: 送信する
+    price_unit: 円 （税別）

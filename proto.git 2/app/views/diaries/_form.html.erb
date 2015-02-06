@@ -1,0 +1,21 @@
+<%= form_for @diary, html: { class: 'form write-diary' } do |f| %>
+  <%= render 'shared/form_errors', model: @diary %>
+  <div class="group row-2-8">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="group row-2-8">
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: 20 %>
+  </div>
+
+  <div class="group row-2-8">
+    <label>写真</label>
+    <%= render 'shared/images_form', f: f, images: @diary.images %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit value: t('views.post_diary'), class: 'btn btn-submit' %>
+  </div>
+<% end %>

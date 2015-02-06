@@ -1,0 +1,388 @@
+$unit: 64px;
+$slide_height: 300px;
+$main_color: #9ad359;
+$tag_color: #88c;
+$bg_color: #f9f5f2;
+$report_color: #cec;
+$question_color: #dcf;
+$diary_color: #fe8;
+$btn_write_color: #fa6;
+
+@mixin wrapper(){
+  width: $unit * 16;
+  margin: auto;
+  padding: 0 20px;
+}
+
+@import 'index';
+@import 'sidebar';
+@import 'product';
+@import 'list';
+@import 'search';
+@import 'column';
+@import 'diary';
+@import 'campaign';
+@import 'timeline';
+@import 'ranking';
+@import 'bodymap';
+
+/* common styles */
+
+body{
+  font-size: 90%;
+  color: #555;
+  line-height: 1.5;
+}
+
+a:link{
+  color: #55f;
+  text-decoration: none;
+}
+a:visited{
+  color: #85a;
+  text-decoration: none;
+}
+a:hover{
+  color: #faa;
+  text-decoration: none;
+}
+a:active{
+  color: #f00;
+  text-decoration: none;
+}
+
+.mark_fav{
+  margin: 5px;
+  padding: 3px;
+  vertical-align: top;
+  font-size: 16px;
+  border-radius: 12px;
+  color: #ee0 !important;
+  cursor: pointer;
+}
+
+.tags li{
+  display: inline-block;
+
+  a:link{
+    display: block;
+    padding: 0.1em 0.5em;
+    color: #fff !important;
+    background: $tag_color;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  a:visited{
+    color: #eee !important;
+  }
+}
+
+.tabs{
+  margin: 5px 0;
+  text-align: right;
+
+  li{
+    display: inline-block;
+    padding: 7px;
+    border: 1px solid #ccc;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 90%;
+
+    &.active{
+      background: #fff;
+    }
+  }
+}
+
+.indicators{
+  overflow: hidden;
+
+  .indicator{
+    display: inline-block;
+    min-width: 50px;
+    text-align: center;
+    margin: 2px;
+    padding: 5px 10px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: #fff;
+
+    a{
+      text-decoration: none;
+      color: #555;
+    }
+    .num{
+      display: block;
+      font-size: 150%;
+      font-weight: bold;
+    }
+    .unit{
+      display: block;
+      font-size: 90%;
+    }
+  }
+}
+
+/* layouts */
+
+#global_header{
+  #header_top{
+    overflow: hidden;
+    border: 1px solid #555;
+    background: #555;
+    color: #eee;
+
+    .inner{
+      @include wrapper;
+
+      h1{
+        float: left;
+        padding: 5px 0;
+        font-weight: normal;
+      }
+      #login{
+        float: right;
+
+        li{
+          display: inline-block;
+        }
+        a:link{
+          display: block;
+          padding: 5px;
+          color: #eee;
+          text-decoration: none;
+        }
+        a:visited{
+          color: #ccc;
+          text-decoration: none;
+        }
+        a:hover{
+          color: #fff;
+          background: #6a6;
+          text-decoration: none;
+        }
+        a:active{
+          color: #f00;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  #header_middle{
+    @include wrapper;
+    clear: both;
+    overflow: hidden;
+    padding: 15px 0;
+
+    #go_top{
+      float: left;
+    }
+    #header_pr_banner{
+      float: right;
+    }
+  }
+
+  #global_navigation{
+    clear: both;
+    background: $main_color;
+    overflow: hidden;
+
+    ul{
+      @include wrapper;
+
+      li{
+        display: block;
+        float: left;
+
+        a:link{
+          display: block;
+          padding: 12px 20px;
+          color: #fff;
+          text-decoration: none;
+        }
+        a:visited{
+          color: #fff;
+          text-decoration: none;
+        }
+        a:hover{
+          color: #fff;
+          background: #8bbf50;
+          text-decoration: none;
+        }
+        a:active{
+          color: #fff;
+          background: #82b34b;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  #header_bottom{
+    @include wrapper;
+    padding: 8px;
+    overflow: hidden;
+    font-size: 70%;
+
+    form{
+      float: left;
+
+      input{
+        padding: 5px;
+        font-size: 100%;
+
+        &[type=text]{
+          width: 200px;
+        }
+        &[type=submit]{
+          padding: 5px 10px;
+        }
+      }
+    }
+    .tags{
+      float: right;
+
+      h2{
+        display: inline;
+        font-size: 100%;
+        font-weight: normal;
+      }
+      ul{
+        display: inline;
+      }
+    }
+    &:after{
+      content: ".";
+      clear: both;
+      visibility: hidden;
+    }
+  }
+}
+
+#breadlist{
+  background: $bg_color;
+
+  ul{
+    @include wrapper;
+    height: 30px;
+    overflow: hidden;
+    border-width: 7px 0;
+    border-style: solid;
+    border-color: $bg_color;
+
+    li{
+      display: inline-block;
+
+      a{
+        position: relative;
+        display: block;
+        float: left;
+        padding: 5px 0 5px 45px;
+        background: #fff;
+      }
+      a:before{ /* separator */
+        content: ' ';
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+        border-left: 30px solid $bg_color;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        margin-left: 5px;
+        left: 100%;
+        z-index: 1;
+      }
+      a:after{ /* arrow */
+        content: ' ';
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+        border-left: 30px solid #fff;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        left: 100%;
+        z-index: 2;
+      }
+
+      &:nth-child(1) a{
+        background: lighten($main_color, 10%);
+        font-weight: bold;
+        color: #fff;
+      }
+      &:nth-child(1) a:after{
+        border-left: 30px solid lighten($main_color, 10%);
+      }
+      &:nth-child(2) a{
+        background: lighten($main_color, 30%);
+        color: #888;
+      }
+      &:nth-child(2) a:after{
+        border-left: 30px solid lighten($main_color, 30%);
+      }
+      &:nth-child(3) a{
+        background: lighten($main_color, 40%);
+        color: #888;
+      }
+      &:nth-child(3) a:after{
+        border-left: 30px solid lighten($main_color, 40%);
+      }
+      &:last-child a{
+        background: transparent;
+        color: #888;
+      }
+      &:last-child a:after{
+        border-left: 30px solid transparent;
+      }
+    }
+  }
+}
+
+#main{
+  padding-bottom: 20px;
+  overflow: hidden;
+  background: $bg_color;
+
+  .inner{
+    @include wrapper;
+    overflow: hidden;
+
+    #content{
+      float: left;
+      width: ($unit * 16 - 340px);
+      padding: 10px;
+      border: 1px solid #ddd;
+      background: #fff;
+
+      h2{
+        margin: 20px 10px 30px;
+        font-size: 200%;
+        font-weight: normal;
+
+        small{
+          font-size: 50%;
+        }
+      }
+    }
+  }
+}
+
+#global_footer{
+  clear: both;
+  background:#555;
+  color: #ccc;
+
+  .inner{
+    @include wrapper;
+
+    padding: 15px;
+  }
+}

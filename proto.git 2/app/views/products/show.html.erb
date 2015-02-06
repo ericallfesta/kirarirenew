@@ -1,0 +1,55 @@
+<div class="mass-container">
+  <header class="content-panel">
+    <%= render 'products/detail' %>
+  </header>
+
+  <section id="reports" class="content-panel">
+    <header>
+      <h2><span class="icon icon-report"></span><span>みんなのレポート</span> <span class="count"><%= @product.reports.count %>件</span></h2>
+      <div class="new-writing-button">
+        <%= push_state_to icon('write')+t('views.write_new_report'), "#{request.path_info}#report", class: 'btn btn-new-writing self-destruct' %>
+      </div>
+    </header>
+    <div class="content-body">
+      <%= render 'reports/form' %>
+    </div>
+    <div class="content-body">
+      <ul class="activities-list reports-list list">
+        <% @reports.each do |writing| %>
+          <%= render 'activities/item', activity: writing %>
+        <% end %>
+      </ul>
+      <!--TODO <div class="pull-right">
+        <%= link_to t('views.label.more'), product_reports_path(@product), class: 'btn btn-more btn-small' %>
+      </div>-->
+      <% if @product.reports.count == 0 %>
+        <p class="no-items"><%=t 'views.label.no_reports' %></p>
+      <% end %>
+    </div>
+  </section>
+
+  <section id="questions" class="content-panel">
+    <header>
+      <h2><span class="icon icon-question"></span><span>みんなの質問</span> <span class="count"><%= @product.questions.count %>件</span></h2>
+      <div class="new-writing-button">
+        <%= push_state_to icon('write')+t('views.write_new_question'), "#{request.path_info}#question", class: 'btn btn-new-writing self-destruct' %>
+      </div>
+    </header>
+    <div class="content-body">
+      <%= render 'questions/form' %>
+    </div>
+    <div class="content-body">
+      <div class="activities-list reports-list list">
+        <% @questions.each do |writing| %>
+          <%= render 'activities/item', activity: writing %>
+        <% end %>
+      </div>
+      <!-- TODO<div class="pull-right">
+        <%= link_to t('views.label.more'), product_reports_path(@product), class: 'btn btn-more btn-small' %>
+      </div>-->
+      <% if @product.questions.count == 0 %>
+        <p class="no-items"><%=t 'views.label.no_questions' %></p>
+      <% end %>
+    </div>
+  </section>
+</div>

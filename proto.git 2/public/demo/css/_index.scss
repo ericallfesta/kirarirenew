@@ -1,0 +1,204 @@
+#index{
+  clear: both;
+  overflow: hidden;
+  margin: 20px 0;
+
+  #features{
+    background: url('../img/bg_slide.gif') top center repeat-y;
+    margin-bottom: 20px;
+
+    .inner{
+      @include wrapper;
+      position: relative;
+
+      #feature_selector{
+        float: left;
+        width: $unit * 3;
+        height: $slide_height;
+        background: #333;
+
+        a{
+          display: block;
+          width: $unit * 3 - 30px;
+          padding: 10px 15px;
+          border-bottom: 1px solid #888;
+          text-align: right;
+          font-size: 90%;
+          color: #fff;
+          background: #555;
+
+          &.active{
+            position: relative;
+            background: #aaa;
+          }
+        }
+      }
+    }
+
+    section{
+      position: absolute;
+      top: 0;
+      left: ($unit * 3 + 20px);
+      width: 832px;
+      height: 300px;
+      display: none;
+
+      &#feature1{
+        display: block;
+      }
+      a{
+        display: block;
+        width: auto;
+        height: $slide_height;
+        text-indent: -9999px;
+      }
+    }
+  }
+
+  #dashboard{
+    clear: both;
+    background: $bg_color;
+    overflow: hidden;
+
+    .inner{
+      @include wrapper;
+      background: #fff;
+      overflow: hidden;
+
+      section{
+        margin-bottom: 40px;
+        padding: 20px 15px;
+
+        &:last-child{
+          border-bottom: none;
+        }
+        &:not(:last-child):after{
+          content: ".";
+          text-indent: -9999px;
+          position: relative;
+          top: 43px;
+          display: block;
+          margin: auto;
+          width: 300px;
+          height: 7px;
+          background: url('../img/bg_hr.gif') center bottom no-repeat;
+        }
+
+        h2{
+          margin-bottom: 10px;
+          text-align: center;
+          padding: 7px;
+          color: #555;
+          background: #eee;
+          font-size: 100%;
+        }
+      }
+
+      .left{
+        float: left;
+        width: ($unit * 8 - 1px);
+        border-right: 1px solid #eee;
+
+        #search_area{
+          text-align: center;
+          border-left: 2px solid #cec;
+
+          #q{
+            width: $unit * 6;
+            padding: 5px;
+          }
+          input[type=submit]{
+            padding: 5px 10px;
+          }
+          #popular-tags{
+            margin: 10px;
+            text-align: right;
+
+            h3{
+              display: inline;
+            }
+            ul{
+              display: inline;
+
+              li{
+                display: inline-block;
+              }
+            }
+          }
+        }
+        #rankings_area{
+          border-left: 2px solid #ede;
+        }
+      }
+    }
+
+    .right{
+      float: right;
+      width: $unit * 8;
+
+      .timeline{
+        li{
+          margin-bottom: 10px;
+
+          .user{
+            width: 80px;
+            padding: 10px 0;
+            text-align: center;
+
+            .user_name{
+              display: block;
+              padding: 5px;
+              font-size: 70%;
+            }
+          }
+          .balloon{
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+
+            .post_category{
+              font-size: 70%;
+            }
+            .subject{
+              font-weight: bold;
+            }
+            .brand_name{
+              font-size: 80%;
+              opacity: 0.5;
+            }
+            .image{
+              padding: 5px;
+            }
+            .more{
+              text-align: right;
+              font-size: 80%;
+            }
+          }
+        }
+      }
+
+      #feeds_area{
+        border-right: 2px solid #cde;
+
+        li{
+          .user{
+            float: left;
+          }
+          .balloon{
+            margin-left: 80px;
+          }
+          .image{
+            float: right;
+          }
+          p{
+            min-height: 80px;
+          }
+        }
+      }
+
+      #information_area{
+        border-right: 2px solid #eec;
+      }
+    }
+  }
+}

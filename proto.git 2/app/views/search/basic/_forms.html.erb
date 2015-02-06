@@ -1,0 +1,60 @@
+<div id="search-conditions">
+  <section id="search-by-kana" class="content-panel">
+    <header>
+      <h2><%= t 'views.search_by.brand_name' %></h2>
+    </header>
+    <div class="content-body">
+      <ul class="kana">
+        <% kana_list.each do |consonant, list| %>
+        <li>
+          <ul class="<%= consonant %>">
+            <% list.each do |l| %>
+            <li><%= link_to l, '#', class: 'word', data: { kana: l } %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+
+      <ul class="brands"></ul>
+    </div>
+  </section>
+
+  <section id="search-by-categories" class="content-panel">
+    <header>
+      <h2><%= t "views.search_by.category" %></h2>
+    </header>
+    <div class="content-body">
+      <ul class="category-hierarchy" data-hierarchy-level="1">
+        <% TagGroup.category.tags.root.each do |tag| %>
+        <li><%= link_to tag.name, "#", class: 'search_item tag-item', data: { id: tag.id } %></li>
+        <% end %>
+      </ul>
+      <ul class="category-hierarchy" data-hierarchy-level="2"></ul>
+      <ul class="category-hierarchy" data-hierarchy-level="3"></ul>
+      <ul class="category-hierarchy" data-hierarchy-level="4"></ul>
+    </div>
+  </section>
+
+  <section id="search-by-query" class="content-panel">
+    <header>
+      <h2><%=t "views.search_by.query" %></h2>
+    </header>
+    <div class="content-body">
+      <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: t('views.placeholder.search') %>
+      <%= submit_tag t('views.search'), class: 'search-submit' %>
+    </div>
+  </section>
+
+  <section id="search-by-bodymap" class="content-panel bodymap">
+    <%= render 'shared/bodymap', gender: (logged_in? && @current_user.gender.present?) ? current_user.gender : 'female' %>
+  </section>
+</div>
+
+<section id="search-results" class="content-panel">
+  <p class="back-to-product-search"><%= link_to t('views.search_product_top'), search_basic_url %></p>
+  <ul class="tags" id="search-queries"></ul>
+  <ul id="current-products-list" class="products-list content-body"></ul>
+  <%= raw emboss 'products/item', with: :product, jst: true %>
+  <nav class="pagination" id="search-pagination"></nav>
+</section>

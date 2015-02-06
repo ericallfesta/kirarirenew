@@ -1,0 +1,182 @@
+.article-container {
+	article {
+		position: relative;
+
+		header{
+			position: relative;
+
+			h1 {
+				padding: 0 0 10px;
+				margin: 0 20px;
+				font-weight: normal;
+				font-size: 22pt;
+				line-height: 1.4;
+			}
+
+			.status {
+				position: relative;
+				height: 90px;
+				margin: 20px -10px;
+				padding: 10px 30px;
+				border-width: 1px 0;
+				border-style: solid;
+				border-color: $lightGray;
+				@include clearfix;
+
+				.stars {
+					float: right;
+				}
+
+				.left {
+					position: absolute;
+					bottom: 20px;
+					left: 30px;
+					width: 70%;
+
+					.product-excerpt {
+						@include product-excerpt;
+					}
+				}
+				.right {
+					position: absolute;
+					bottom: 20px;
+					right: 30px;
+					width: 30%;
+
+					.stars {
+						display: block;
+						width: 100%;
+						text-align: right;
+						font-size: 110%;
+
+						.no-star {
+							font-size: 80%;
+							margin-right: -10px;
+							margin-left: 10px;
+						}
+					}
+					.user {
+						clear: both;
+						float: right;
+						margin: 5px 0;
+
+						img {
+							vertical-align: middle;
+						}
+					}
+				}
+
+				time {
+					clear: both;
+					float: right;
+				}
+			}
+
+			.edit {
+				position: absolute;
+				top: 0;
+				right: 0;
+
+				a {
+					padding: 5px 10px;
+					font-size: 80%;
+					background: #555;
+					color: #fff !important;
+					text-decoration: none !important;
+
+					&:hover {
+						background: #888;
+					}
+				}
+			}
+		}
+
+		.images {
+			margin: 0 0 0 25px;
+			padding: 0;
+			@include clearfix;
+
+			li {
+				float: left;
+				list-style-type: none;
+				margin: 0 20px 0 0;
+				padding: 0;
+			}
+		}
+
+		.article-body {
+			margin: 20px 30px;
+			padding-bottom: 30px;
+			@include clearfix;
+
+			.inner {
+				margin-right: auto;
+				width: 600px;
+			}
+
+			.evaluation-chart {
+				float: right;
+			}
+		}
+
+		.thumbnail {
+			float: left;
+			margin-right: 20px;
+		}
+
+		.kirari {
+			position: absolute;
+			bottom: 20px;
+			right: 30px;
+			width: 100%;
+		}
+
+		&.diary {
+			header {
+				.status {
+					height: 70px;
+				}
+			}
+		}
+	}
+
+	.comments {
+		header {
+			h2 {
+				.num {
+					font-size: 80%;
+				}
+			}
+		}
+
+		#current-comments-list {
+			margin: 20px 10px;
+
+			article {
+				position: relative;
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid $lightGray;
+				@include clearfix;
+
+				.user-information {
+					width: 80px;
+					float: left;
+					text-align: center;
+					font-size: 70%;
+				}
+
+				.body {
+					margin: 0 0 20px 90px;
+				}
+
+				footer {
+					position: absolute;
+					margin-left: 90px;
+					bottom: 0;
+					right: 0;
+				}
+			}
+		}
+	}
+}

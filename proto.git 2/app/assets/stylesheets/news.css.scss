@@ -1,0 +1,29 @@
+#content .news.content-panel {
+  padding: 30px;
+
+  > header {
+    @include clearfix;
+    margin: 0;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 22px;
+      line-height: 25px;
+    }
+
+    > span time {
+      float: right;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+  }
+
+  img.eye-catch {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .news-body {
+    margin-bottom: 20px;
+  }
+}

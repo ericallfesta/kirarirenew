@@ -1,0 +1,11 @@
+<%= form_tag requests_path, id: 'request-form', :'krr-view' => 'RequestFormView' do %>
+  <h3><%=t 'views.request_form' %></h3>
+  <%= text_area_tag :body, '', placeholder: t('views.request_body') %>
+  <%= submit_tag :send %>
+  <div class="overlay">
+    <%=t 'messages.request.sending' %>
+  </div>
+  <div class="complete">
+    <%=t 'messages.request.thankyou' %>
+  </div>
+<% end %>

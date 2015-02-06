@@ -1,0 +1,22 @@
+<div class="mass-container">
+  <h1><%= heading 'serials' %></h1>
+
+  <section class="content-panel">
+    <div class="content-body">
+      <header>
+        <ul itemtype="http://data-vocabulary.org/Breadcrumb"  class="breadlist">
+          <li><%= link_to '＜ コラムのトップへ戻る', columns_path %></li>
+        </ul>
+
+        <h1 class="list-heading"><%= t 'views.serial_article_list_of', name: @serial.title %></h1>
+        <div class="intro"><p><%= br @serial.description %></p></div>
+      </header>
+
+      <ul class="columns-list">
+        <% @serial.columns.published.order(serial_num: :asc).each do |column| %>
+          <%= render 'columns/item', column: column %>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</div>

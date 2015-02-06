@@ -1,0 +1,9 @@
+<%= form_tag login_path, method: :post, class: 'form form-rounded' do %>
+  <div class="controls centering">
+    <%= text_field_tag :email, params[:email], placeholder: t('activerecord.attributes.user.email') %>
+  </div>
+  <div class="controls centering">
+    <%= password_field_tag :password, '', placeholder: t('activerecord.attributes.user.password') %>
+  </div>
+  <%= submit_tag 'ログイン', class: 'btn btn-primary btn-center-block' %>
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for @popular_keyword, url: [:admin, @popular_keyword], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @popular_keyword %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :word, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :word, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :priority, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.number_field :priority, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :deleted %> 非表示にする
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,10 @@
+var $target = $('article.w<%= @writing.id %> .comments');
+$target.children('.more').remove();
+$target.children('ol').empty();
+$target.children('ol').append('<%=
+  template = ''
+  @comments.each do |comment|
+    template += render 'products/comment', comment: comment
+  end
+  template.gsub(/[\r\n]/, '').html_safe
+%>');

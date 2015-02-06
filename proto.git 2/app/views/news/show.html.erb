@@ -1,0 +1,16 @@
+<article class="content-panel news">
+  <header>
+    <h1><%= page_heading @news.title %></h1>
+    <span><time><%= l @news.published_at || @news.updated_at %></time></span>
+    <%= render 'shared/social', url: news_url(@news, only_path: false) %>
+  </header>
+
+  <%= image_tag @news.image, class: 'eye-catch' %>
+
+  <div class="news-body">
+    <%= allow_markup @news.body %>
+  </div>
+  <footer>
+    <%= render 'shared/social', url: news_url(@news, only_path: false) %>
+  </footer>
+</article>

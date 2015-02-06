@@ -1,0 +1,101 @@
+<%= render 'products/breadlist', product: @product, show_product: false %>
+<h1>
+  <span class="brand-name"><%= link_to @product.brand.name, @product.brand %></span>
+  <span class="product-name"><%= page_heading @product.name %></span>
+</h1>
+<p class="stars"><%= star @product.star %> <span class="numeric"><%= @product.star %></span></p>
+
+<div class="images product-images">
+  <div class="active-image"><%= image_tag @product.main_image.src.square, width: 250, alt: '', id: 'product-image-viewer' %></div>
+  <ul>
+    <% @product.variations.each_with_index do | variation, i | %>
+      <% variation.images.each do | variation_image | %>
+        <li class="image-select <%= 'active' if @product.main_image == variation_image %> variation-image" data-viewer="#product-image-viewer" data-src="<%= variation_image.src.square %>" data-variation-id="<%= variation.id %>">
+          <%= image_tag variation_image.src.square, width: 31, alt: '' %>
+        </li>
+      <% end %>
+    <% end %>
+    <% @product.self_images.each do | image | %>
+      <li class="image-select <%= 'active' if @product.main_image == image %> common-image" data-viewer="#product-image-viewer" data-src="<%= image.src.square %>">
+        <%= image_tag image.src.square, width: 31, alt: '' %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="product-summaries variations">
+  <% if @product.variations.present? %>
+    <!-- multi-variations pattern -->
+    <% @product.variations.each_with_index do | variation, i | %>
+      <div class="variation <%= 'active' if i == 0 %>" data-variation-id="<%= variation.id %>">
+        <h2 class="variation-title"><%= variation.name %></h2>
+        <dl>
+          <dt><%= Product.human_attribute_name :main_price %></dt>
+          <dd>
+            <%= number_to_currency(variation.display_price, unit: '').presence || '-' %><br>
+          </dd>
+
+          <dt><%= Product.human_attribute_name :ingredient %></dt>
+          <dd class="toggle-ellipsis" data-height="100" data-closable="true"><%= variation.ingredient.presence || @product.ingredient.presence || '-' %></dd>
+
+          <dt><%= Product.human_attribute_name :maker %></dt>
+          <dd>
+            <%= @product.maker.try(:name) || @product.brand.name %><br>
+            <% if variation.website.present? %>
+              <%= link_to('商品公式ページ', variation.website, target: :blank) %>
+            <% elsif @product.source_url.present? %>
+              <%= link_to('商品公式ページ', @product.source_url, target: :blank) %>
+            <% end %>
+          </dd>
+
+          <% if variation.note.present? %>
+            <dt><%= Product.human_attribute_name :note %></dt>
+            <dd><%= variation.note %></dd>
+          <% end %>
+        </dl>
+      </div>
+    <% end %>
+  <% else %>
+    <!-- no variations pattern -->
+    <div class="variation active">
+      <dl>
+        <dt><%= Product.human_attribute_name :main_price %></dt>
+        <dd>
+          <%= number_to_currency(@product.display_price, unit: '').presence || '-' %><br>
+        </dd>
+
+        <dt><%= Product.human_attribute_name :ingredient %></dt>
+        <dd class="toggle-ellipsis" data-height="100" data-closable="true"><%= @product.ingredient.presence || '-' %></dd>
+
+        <dt><%= Product.human_attribute_name :maker %></dt>
+        <dd>
+          <%= @product.maker.try(:name) || @product.brand.name %><br>
+          <% if @product.source_url.present? %>
+            <%= link_to('商品公式ページ', @product.source_url, target: :blank) %>
+          <% end %>
+        </dd>
+      </dl>
+    </div>
+  <% end %>
+</div>
+
+<div class="description toggle-ellipsis" data-height="100">
+  <p><%= br @product.description %></p>
+</div>
+
+<ul class="tags">
+   <% @product.tags.where.not(group: TagGroup.category).each do |tag| %>
+    <li class="tag"><%= link_to tag.name, search_result_path(tag: tag.id) %></li>
+   <% end %>
+</ul>
+
+<div class="disclaimer">
+  <p>Kirari 掲載商品データについては、その完全性・正確性を保証するものではありません。<br>購入前にパッケージ等でよくご確認ください。</p>
+</div>
+
+<div class="social-buttons">
+  <div class="fb-like" dapta-href="<%= product_url(@product, only_path: false) %>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+  <div class="button-wrapper">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= product_url(@product, only_path: false) %>" data-lang="ja">Tweet</a>
+  </div>
+</div>

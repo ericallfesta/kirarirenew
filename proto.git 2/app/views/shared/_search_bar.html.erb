@@ -1,0 +1,18 @@
+<div id="header_bottom">
+  <%= form_tag search_root_path, method: :get do %>
+    <%= text_field :search, :q, value: params[:search].try(:[], :q), placeholder: 'キーワードを入力してください' %>
+    <%= submit_tag '検索' %>
+    <% [[:product, '商品'], [:brand, 'ブランド'], [:column, 'コラム'], [:diary, '日記']].each do |k, v| %>
+      <%= hidden_field :target, k, value: '1' %>
+    <% end %>
+  <% end %>
+
+  <div class="tags">
+    <h2>注目キーワード:</h2>
+    <ul>
+      <li><a href="#tag1">ダイエット食品</a></li>
+      <li><a href="#tag2">美肌</a></li>
+      <li><a href="#tag3">ノンシリコンシャンプー</a></li>
+    </ul>
+  </div>
+</div>

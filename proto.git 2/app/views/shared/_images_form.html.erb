@@ -1,0 +1,18 @@
+<ul class="image-uploader">
+  <%= f.fields_for :images, images do |image| %>
+    <% if image.object.src_cache %>
+      <li class="remove">
+        <%= image_tag image.object.src %>
+        <%= image.hidden_field :src_cache %>
+        <label><%= image.check_box :_destroy %> <%= t 'views.attach_images.remove' %></label>
+      </li>
+    <% elsif image.object.new_record? %>
+      <li><%= image.file_field :src %></li>
+    <% else %>
+      <li class="remove">
+        <%= image_tag image.object.src %>
+        <label><%= image.check_box :_destroy %> <%= t 'views.attach_images.remove' %></label>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

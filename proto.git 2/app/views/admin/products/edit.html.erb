@@ -1,0 +1,8 @@
+<%= render 'admin/shared/breadcrumb', url_list: {
+  'TOP' => admin_root_url,
+  'ブランド管理' => admin_brands_url,
+  @product.brand.name => admin_brand_url(@product.brand),
+  '商品一覧' => admin_brand_products_url(@product.brand),
+  @product.name => admin_product_url(@product),
+  '編集' => nil} %>
+<%= render 'form' %>

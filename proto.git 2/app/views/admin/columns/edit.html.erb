@@ -1,0 +1,2 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, '連載一覧' => admin_serials_url, "#{@column.serial.try(:title) || '単独掲載'} コラム一覧" => ['admin', @column.serial.presence || 'columns'], @column.title =>  ['admin', @column.serial, @column], '編集' => nil} %>
+<%= render 'form' %>

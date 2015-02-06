@@ -1,0 +1,4 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'タグ管理' => admin_tags_url, @tag.name => nil} %>
+<p><strong>Tag Group name</strong>: <%= @tag.group.try :name %></p>
+<p><strong>Tag name</strong>: <%= @tag.name %></p>
+<p><%= link_to "Edit", [:edit, :admin, @tag], class: 'btn btn-primary btn-block' %></p>

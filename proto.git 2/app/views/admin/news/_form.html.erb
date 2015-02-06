@@ -1,0 +1,45 @@
+<%= form_for @news, url: [:admin, @news], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @news %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :title, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_area :body, class: 'form-control', rows: 30 %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :image, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= render 'admin/shared/image_form', f: f, image_name: 'image' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :status, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.select :status, News::STATUSES, { include_blank: false }, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :published_at, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9 datatime_select">
+        <%= datetime_select :news, :published_at, { default: @news.published_at.presence || @news.updated_at }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

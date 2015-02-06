@@ -1,0 +1,138 @@
+#rankings_area{
+  a:link{
+    text-decoration: none;
+    color: #555;
+  }
+  a:visited{
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover{
+    text-decoration: none;
+    color: #888;
+  }
+  a:active{
+    text-decoration: none;
+    color: #f00;
+  }
+  h3{
+    clear: both;
+    margin: 20px 0;
+  }
+  .best5{
+    li{
+      overflow: hidden;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #ccc;
+
+      &:nth-child(1){
+        background: url('../img/rank1.png') no-repeat 5px 0;
+      }
+      &:nth-child(2){
+        background: url('../img/rank2.png') no-repeat 5px 0;
+      }
+      &:nth-child(3){
+        background: url('../img/rank3.png') no-repeat 5px 0;
+      }
+      &:nth-child(4){
+        background: url('../img/rank4.png') no-repeat 5px 0;
+      }
+      &:nth-child(5){
+        background: url('../img/rank5.png') no-repeat 5px 0;
+      }
+      &:last-child{
+        border-bottom: none;
+      }
+      a{
+        display: block;
+        overflow: hidden;
+
+        .detail{
+          clear: both;
+          float: left;
+          width: ($unit * 8 - 150px);
+          padding-left: 50px;
+
+          .name{
+            margin: 2px 0;
+            font-weight: bold;
+          }
+          .brand{
+            font-size: 90%;
+          }
+          .stars{
+            margin-top: 5px;
+          }
+        }
+        .image{
+          float: right;
+          width: 60px;
+        }
+      }
+    }
+  }
+  .best6-,
+  .best10-{
+    float: left;
+    width: 330px;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    li{
+      clear: left;
+      padding: 10px 10px 10px 0;
+      border-top: 1px dotted #ccc;
+      font-weight: bold;
+
+      &:before{
+        display: block;
+        float: left;
+        content: '.';
+        text-indent: -9999px;
+        width: 20px;
+        margin: 0 5px;
+        background: url('../img/rank6-.png');
+      }
+      a{
+        position: relative;
+        display: block;
+        margin-left: 40px;
+
+        .name{
+          margin-right: 0.5em;
+        }
+        .brand{
+          font-size: 90%;
+          font-weight: normal;
+        }
+        .stars{
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+  .best6-{
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+
+    li{
+      &:nth-child(2):before{ background-position: -20px 0 }
+      &:nth-child(3):before{ background-position: -40px 0 }
+      &:nth-child(4):before{ background-position: -60px 0 }
+      &:nth-child(5):before{ background-position: -80px 0 }
+    }
+  }
+  .best10-{
+    margin-left: 10px;
+
+    li{
+      &:nth-child(1):before{ background-position: -100px 0 }
+      &:nth-child(2):before{ background-position: -120px 0 }
+      &:nth-child(3):before{ background-position: -140px 0 }
+      &:nth-child(4):before{ background-position: -160px 0 }
+      &:nth-child(5):before{ background-position: -180px 0 }
+    }
+  }
+}

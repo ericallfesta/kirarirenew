@@ -1,0 +1,99 @@
+.btn {
+	background-color: #999999;
+	color: $inverseFontColor;
+	padding: 5px 15px;
+	display: inline-block;
+	text-decoration: none;
+	line-height: 20px;
+	height: 20px;
+	@include box-sizing(content-box);
+	@include border-radius(20px);
+
+	&.btn-more {
+		background-color: #d17d87;
+	}
+
+	&.btn-primary {
+		background-color: #4277da;
+	}
+
+	&.btn-important {
+		background-color: #fd554d;
+	}
+
+	&.btn-website {
+		background-color: #d17d87;
+	}
+
+	&.btn-follow {
+		&.no-follow {
+			background-color: $mainColor;
+		}
+
+		&.follow {
+			background-color: $lightGray;
+		}
+	}
+
+	&.btn-new-writing {
+		background-color: $newWritingColor;
+		padding: 5px 12px;
+		height: auto;
+		font-size: 12pt;
+		@include border-radius(10px);
+
+		.icon {
+			margin-right: 8px;
+		}
+	}
+
+	&.btn-nav {
+		background-color: $mainColor;
+	}
+
+	&:hover {
+		opacity: 0.8;
+		text-decoration: none;
+	}
+
+	a:link, a:visited, &:link, &:visited {
+		color: $inverseFontColor;
+	}
+
+	&.btn-small {
+		font-size: 9.5pt;
+		line-height: 14px;
+		height: 14px;
+		padding: 4px 12px;
+	}
+
+	&.btn-center-block {
+		margin-left: 30%;
+		margin-right: 30%;
+		width: 40%;
+		text-align: center;
+	}
+
+	&.btn-block {
+		display: block;
+		height: 30px;
+		@include box-sizing(border-box);
+	}
+}
+
+.follow-actions
+  .btn-follow {
+    display: none;
+
+    &.active {
+      display: inline-block;
+    }
+  }
+
+.krr-btn-container {
+	position: relative;
+
+	.users {
+		display: none;
+	}
+}

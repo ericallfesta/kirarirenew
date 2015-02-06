@@ -1,0 +1,96 @@
+<h1 class="page-header font-play"><%= icon :home %> Dashboard</h1>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">商品登録数</div>
+      <table class="table table-bordered table-condensed table-hover">
+        <% Product.unscoped.order('created_at').where(state: :published).group('DATE_FORMAT(created_at, "%Y-%m")').count.each do |row| %>
+          <tr><td><%= row[0] %></td><td class="right"><%= row[1] %></td></tr>
+        <% end %>
+        <tr class="active"><td>TOTAL</td><td class="right"><%= Product.where(state: :published).count %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">ユーザ数</div>
+      <table class="table table-bordered table-condensed table-hover">
+        <% User.unscoped.order('created_at').where.not(role: [:admin, :enterprise]).group('DATE_FORMAT(created_at, "%Y-%m")').count.each do |row| %>
+          <tr><td><%= row[0] %></td><td class="right"><%= row[1] %></td></tr>
+        <% end %>
+        <tr class="active"><td>TOTAL</td><td class="right"><%= User.where.not(role: [:admin, :enterprise]).count %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">レポート数</div>
+      <table class="table table-bordered table-condensed table-hover">
+        <% Report.unscoped.order('created_at').group('DATE_FORMAT(created_at, "%Y-%m")').count.each do |row| %>
+          <tr><td><%= row[0] %></td><td class="right"><%= row[1] %></td></tr>
+        <% end %>
+        <tr class="active"><td>TOTAL</td><td class="right"><%= Report.count %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">日記数</div>
+      <table class="table table-bordered table-condensed table-hover">
+        <% Diary.unscoped.order('created_at').group('DATE_FORMAT(created_at, "%Y-%m")').count.each do |row| %>
+          <tr><td><%= row[0] %></td><td class="right"><%= row[1] %></td></tr>
+        <% end %>
+        <tr class="active"><td>TOTAL</td><td class="right"><%= Diary.count %></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= icon :bubbles4 %> 商品登録依頼</div>
+      <div class="list-group">
+      <% RequestProduct.where(status: :waiting).order(created_at: :desc).limit(3).each do |r| %>
+        <p class="list-group-item"><%= r.name %></p>
+      <% end %>
+      <% if RequestProduct.where(status: :waiting).count == 0 %>
+        <p class="list-group-item">未確認の商品登録依頼はありません</p>
+      <% else %>
+      <%= link_to '詳細を確認する',  admin_request_products_path, class: 'list-group-item text-center' %>
+      <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= icon :drawer2 %> 要望</div>
+      <div class="list-group">
+      <% Request.order(created_at: :desc).limit(3).each do |r| %>
+        <%= link_to r.url, class: 'list-group-item', target: :blank do %>
+          <span class="label label-info"><%= l r.created_at, format: :short %></span><br><br>
+          <p><%= r.body %></p>
+          <pre class="line-break"><%= r.url %></pre>
+          <small class="text-muted"><%= r.ua %></small>
+        <% end %>
+      <% end  %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= icon(:users) %> 新規ユーザ</div>
+      <div class="list-group">
+        <% User.unscoped.where.not(role: [:admin, :enterprise]).order(created_at: :desc).limit(15).each do |user| %>
+          <%= link_to user, class: 'list-group-item' do %>
+            <span class="label label-info"><%= l user.created_at, format: :short %></span>
+            <%= image_tag user.image.thumbnail, width: 30, class: 'circle' if user.image? %>
+            <%= user.name %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

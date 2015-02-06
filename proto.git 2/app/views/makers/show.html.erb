@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @maker.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @maker.body %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @maker.website %>
+</p>
+
+<p>
+  <strong>Hero image:</strong>
+  <%= @maker.hero_image %>
+</p>
+
+<%= link_to 'Edit', edit_maker_path(@maker) %> |
+<%= link_to 'Back', makers_path %>

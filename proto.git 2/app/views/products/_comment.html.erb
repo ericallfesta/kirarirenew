@@ -1,0 +1,4 @@
+<li>
+  <div class="image"><%= image_tag comment.user.image.thumbnail.to_s, width: 24, alt: comment.user.display_name%></div>
+  <div class="body"><p><%= br comment.body %></p>&nbsp;&nbsp;<time>（<%= l comment.created_at %>）</time></div>
+</li>

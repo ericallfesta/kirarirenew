@@ -1,0 +1,16 @@
+<ul class="column_series_list">
+  <% @serials.each do |serial| %>
+  <li class="item">
+    <div class="image">
+      <%= link_to serial do %>
+        <%= image_tag serial.image.thumbnail, width: 128, height: 128 %>
+      <% end %>
+    </div>
+    <div class="data">
+      <div class="series_title"><%= link_to serial.title, serial%></div>
+      <div class="name"><%= link_to truncate(serial.description, length: 100), serial %></div>
+      <div class="date"><%= l serial.published_at, format: :short %></div>
+    </div>
+  </a></li>
+  <% end %>
+</ul>

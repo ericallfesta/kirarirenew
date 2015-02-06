@@ -1,0 +1,6 @@
+<li class="diary">
+  <div class="post_category"><%= t "views.writing.type.#{activity.type.downcase}" %></div>
+  <div class="subject"><%= link_to activity.title, activity %></div>
+  <p><%= truncate activity.body, length: 200 %></p>
+  <div class="more"><%= link_to 'もっと見る', activity %></div>
+</li>

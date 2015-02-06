@@ -1,0 +1,39 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ブランド管理' => admin_brands_url, @brand.name => nil} %>
+
+<%= image_tag @brand.hero_image, class: 'auto thumbnail' if @brand.hero_image? %>
+<h2 class="page-header">
+  <%= @brand.name %>
+  <small><%= link_to @brand.website, @brand.website, target: '_brank' if @brand.website.present? %></small>
+</h2>
+
+<div class="clearfix">
+  <div class="btn-group pull-right">
+    <%= link_to @brand, class: 'btn btn-default btn-sm' do %>
+      <i class="glyphicon glyphicon-info-sign"></i> Kirari ブランドページ
+    <% end %>
+    <%= link_to edit_admin_brand_path(@brand), class: 'btn btn-default btn-sm' do %>
+      <i class="glyphicon glyphicon-edit"></i> 編集
+    <% end %>
+    <%= link_to admin_brand_products_path(@brand), class: 'btn btn-default btn-sm' do %>
+      <i class="glyphicon glyphicon-shopping-cart"></i> 商品一覧
+      <small class="text-muted"> ( <%= @brand.products.count %>件 ) </small>
+    <% end %>
+    <%= link_to new_admin_brand_product_path(@brand), class: 'btn btn-default btn-sm' do %>
+      <i class="glyphicon glyphicon-plus"></i> 商品登録
+    <% end %>
+  </div>
+</div>
+
+<p><%= @brand.description.to_s.gsub /(\r\n|\n)/, '<br>' %></p>
+
+<div class="panel panel-default product-pages-list">
+  <div class="panel-heading">商品ページ一覧</div>
+
+  <ul class="list-group">
+  <% @brand.products.each do |product| %>
+    <li class="list-group-item with-link">
+      <%= link_to "#{product.name}: #{product_url(product)}", product_url(product) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

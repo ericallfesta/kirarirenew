@@ -1,0 +1,53 @@
+<div class="article-container">
+  <article class="content-panel question">
+    <header>
+      <%= render 'products/breadlist', product: @question.product, show_product: true, after: ' の質問' %>
+      <h1>
+        <span class="writing_title"><%= @question.title %></span>
+      </h1>
+      <div class="status">
+        <div class="left">
+          <%= render 'products/bar', product: @question.product %>
+        </div>
+        <div class="right">
+          <%= render 'users/bar', user: @question.writer %>
+          <time><%= l @question.created_at %></time>
+        </div>
+      </div>
+    </header>
+
+    <% unless @question.images.nil? %>
+      <ul class="images">
+        <% @question.images.each do |image| %>
+          <li><a href="<%= image.src %>" class="image-popup"><%= image_tag image.src.thumbnail, size: '200x200', alt: '' %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="article-body">
+      <p>
+        <%= br @question.body %>
+      </p>
+    </div>
+    <div class="kirari">
+      <%= fav_button @question %>
+    </div>
+  </article>
+
+  <section class="comments content-panel">
+    <header>
+      <h2><%=t 'views.list.comments' %> <span class="num"><%= @question.comments.count %>件</span></h2>
+    </header>
+
+    <div id="current-comments-list">
+      <% @question.comments.each do |comment| %>
+        <%= render 'comments/item', comment: comment %>
+      <% end %>
+      <p class="no-items <%= c(@question.comments.empty?, :active) %>"><%=t 'views.label.no_comments' %></p>
+    </div>
+
+    <%= render 'comments/form', writing: @question if logged_in? %>
+  </section>
+
+  <%= raw emboss 'comments/item', with: :comment, jst: true %>
+</div>

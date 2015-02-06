@@ -1,0 +1,59 @@
+---
+ja:
+  activerecord:
+    attributes:
+      brand:
+        description: ブランド説明
+        name: ブランド名
+        website: Webサイト
+      category:
+        name: カテゴリ名
+      comment:
+        body: 本文
+      diary:
+        body: 本文
+        title: タイトル
+      product:
+        brand_id: ブランド
+        category_id: カテゴリ
+        description: 商品説明
+        ingredient: 成分
+        maker: メーカー
+        kana: かな
+        tags: タグ
+        image: メイン画像
+        name: 商品名
+        price: 価格
+        main_price: 価格
+        slug: スラッグ
+        source_url: 公式ページURL
+        note: 備考
+        category: カテゴリ
+        valiation: バリエーション
+      user:
+        bio: プロフィール
+        birthday: 誕生日
+        display_name: ニックネーム
+        email: メールアドレス
+        gender: 性別
+        image: プロフィール画像
+        old_password: 現在のパスワード
+        new_password: 新しいパスワード
+        password: パスワード
+        password_confirmation: パスワード - 確認
+        range_policy: 公開範囲
+        role: 権限
+        terms: 利用規約
+        username: ユーザID
+      request_product:
+        name: 商品名
+        brand: ブランド名
+        product_url: 商品の参考URL
+        brand_url: ブランドの参考URL
+    models:
+      brand: ブランド
+      category: カテゴリ
+      product: 商品
+      user: ユーザー
+    errors:
+      invalid_value: が違います

@@ -1,0 +1,14 @@
+<li class="question">
+  <div class="post_category"><%= t "views.writing.type.#{activity.type.downcase}" %></div>
+  <div class="subject">
+    <%= link_to activity.product.name, activity.product %>
+    <span class="brand_name"><%= link_to "（#{activity.product.brand.name}）", activity.product.brand %></span>
+  </div>
+  <div class="image">
+    <%= link_to activity.product do %>
+      <%= image_tag activity.product.image, width:64, height: 64 %>
+    <% end %>
+  </div>
+  <p><%= truncate activity.body, length: 200 %></p>
+  <div class="more"><%= link_to 'もっと見る', activity.product %></div>
+</li>

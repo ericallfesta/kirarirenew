@@ -1,0 +1,132 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ブランド管理' => admin_brands_path, @brand.name => [:admin, @brand], '商品一覧' => nil} %>
+
+<% @products.each do |product| %>
+  <div class="media product">
+    <div class="pull-left">
+      <%= image_tag product.main_image.src, width: 120, class: 'media-object' %>
+    </div>
+    <div class="media-body">
+      <h3>
+        <% if product.category.present? %>
+          <span class="label label-success"><%= product.category.name %></span>
+        <% else %>
+          <span class="label label-danger">カテゴリが登録されていません</span>
+        <% end %>
+        <span class="label label-<%= product.state == 'published' ? 'info' : 'danger' %>"><%= product.state.capitalize %></span>
+        <span class="id">#<%= product.id %></span>
+        <%= product.name %>
+        <small><%= "(#{product.kana})" if product.kana.present? %></small>
+      </h3>
+      <div class="btn-group pull-right">
+        <%= link_to product, class: 'btn btn-default btn-sm', target: :blank do %>
+          <i class="glyphicon glyphicon-info-sign"></i> Kirari 商品ページ
+        <% end %>
+        <%= link_to admin_product_path(product), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-info-sign"></i> 詳細
+        <% end %>
+        <%= link_to edit_admin_product_path(product), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to '#', class: 'btn btn-default btn-sm', data: {
+                                                            toggle: 'modal',
+                                                            target: '#modal-generic',
+                                                            title: "#{product.name}に画像を追加",
+                                                            body: "#product-image-form-#{product.id}",
+                                                          } do %>
+          <i class="glyphicon glyphicon-camera"></i> 画像追加
+        <% end %>
+        <%= link_to new_admin_product_variation_path(product), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-plus"></i> バリエーションを追加
+        <% end %>
+      </div>
+
+      <p>
+        <% product.tags.each do |tag| %>
+          <span class="label label-default"><%= tag.name %></span>
+        <% end %>
+      </p>
+      <p><%= link_to_if product.source_url.present?, product.source_url, product.source_url %></p>
+      <p><%= truncate product.description, length: 100 %></p>
+      <p class="text-muted">価格: <%= product.display_price.presence || '-' %></p>
+      <% if product.main_ingredient.present? %>
+      <p class="text-muted">成分: <%= truncate product.main_ingredient, length: 100 %></p>
+      <% end %>
+
+      <ul class="images">
+        <% if product.image? %>
+          <li>
+            <%= image_tag product.image.square %>
+          </li>
+        <% end %>
+        <% product.self_images.each do |image| %>
+          <li class="<%= image.primary ? 'primary' : '' %>">
+            <%= link_to image_tag(image.src.square), image.src.url, target: :blank %>
+            <%= link_to content_tag(:span, '', class: 'glyphicon glyphicon-trash'), admin_product_image_url(product, image), method: :delete, class: 'btn btn-danger btn-block btn-xs', data: { confirm: '本当に削除してもよろしいですか？' } %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div id="product-image-form-<%= product.id %>" class="hide">
+        <%= render 'admin/products/images/form', product: product, image: product.images.build %>
+      </div>
+
+      <div class="variations">
+        <h4>バリエーション <small>(<%= product.variations.length %>件)</small></h4>
+        <ul class="list-unstyled">
+          <% product.variations.each do |variation| %>
+          <li class="media variation">
+            <div class="pull-left">
+              <%= image_tag variation.images.first.src.square, width: 80, class: 'media-object' if variation.images.first.present? %>
+            </div>
+            <div class="media-body">
+              <p><%= variation.name %>: <%= variation.display_price.presence || ' - ' %></p>
+              <div class="btn-group pull-right">
+                <%= link_to edit_admin_variation_url(variation), class: 'btn btn-default btn-xs' do %>
+                  <span class="glyphicon glyphicon-edit"></span> 編集
+                <% end %>
+                <%= link_to '#', class: 'btn btn-default btn-xs', data: {
+                                                                    toggle: 'modal',
+                                                                    target: '#modal-generic',
+                                                                    title: "#{product.name}のバリエーションに画像を追加",
+                                                                    body: "#product-variation-image-form-#{variation.id}",
+                                                                  } do %>
+                  <span class="glyphicon glyphicon-camera"></span> 画像追加
+                <% end %>
+                <%= link_to admin_variation_url(variation), method: 'delete', class: 'btn btn-default btn-xs', data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <span class="glyphicon glyphicon-trash"></span> 削除
+                <% end %>
+              </div>
+              <% if variation.note.present? %>
+                <p><%= truncate variation.note %></p>
+              <% end %>
+              <% if variation.ingredient.present? %>
+                <p class="text-muted">成分: <%= truncate variation.ingredient %></p>
+              <% end %>
+              <ul class="images">
+                <% variation.images.each do |image| %>
+                  <li class="<%= image.primary ? 'primary' : '' %>">
+                    <%= link_to image_tag(image.src.square), image.src.url, target: :blank %>
+                    <%= link_to content_tag(:span, '', class: 'glyphicon glyphicon-trash'), admin_product_variation_image_url(product, variation, image), method: :delete, class: 'btn btn-danger btn-block btn-xs', data: { confirm: '本当に削除してもよろしいですか？' } %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div id="product-variation-image-form-<%= variation.id %>" class="hide">
+              <%= render 'admin/variations/images/form', product: product, variation: variation, image: variation.images.build %>
+            </div>
+          </li>
+          <% end %>
+
+          <% if product.variations.blank? %>
+            <li class="text-muted">バリエーションが登録されていません。</li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @products, theme: 'admin' unless params[:paginate] == '0' %>
+
+<%= link_to "#{@brand.name}の商品を新規登録", new_admin_brand_product_path(@brand), { class: 'btn btn-success btn-block' } %>

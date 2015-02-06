@@ -1,0 +1,23 @@
+<ul class="nav nav-sidebar">
+  <li class="<%= 'active' if controller_name == 'apps' && action_name == 'home' %>"><%= link_to icon(:home) + ' Dashboard', admin_root_url %></li>
+</ul>
+<ul class="nav nav-sidebar">
+  <li class="nav-product">
+    <a href="#product-links" data-toggle="collapse" data-parent="#nav-product">商品管理 <span class="caret"></span></a>
+    <ul id="product-links" class="nested collapse <%= 'in' if %(makers brands categories tags request_products evaluations efficacies).include? controller_name %>">
+      <li class="<%= 'active' if %w(brands products).include? controller_name %>"><%= link_to 'ブランド管理', admin_brands_url %></li>
+      <li class="<%= 'active' if controller_name == 'makers' %>"><%= link_to 'メーカー管理', admin_makers_url %></li>
+      <li class="<%= 'active' if controller_name == 'request_products' %>"><%= link_to '商品登録依頼', admin_request_products_url %></li>
+      <li class="<%= 'active' if controller_name == 'tags' %>"><%= link_to 'タグ管理', admin_tags_url %></li>
+      <li class="<%= 'active' if %w(categories evaluations efficacies).include? controller_name %>"><%= link_to 'カテゴリ管理', admin_categories_url %></li>
+    </ul>
+  </li>
+  <li class="<%= 'active' if controller_name == 'serials' %>"><%= link_to 'コラム管理', admin_serials_url %></li>
+  <li class="<%= 'active' if controller_name == 'news' %>"><%= link_to 'ニュース管理', admin_news_index_url %></li>
+  <li class="<%= 'active' if controller_name == 'features' %>"><%= link_to '特集管理', admin_features_url %></li>
+  <li class="<%= 'active' if controller_name == 'contacts' %>"><%= link_to 'メール', new_admin_contact_url %></li>
+  <li class="<%= 'active' if controller_name == 'requests' %>"><%= link_to '要望一覧', admin_requests_url %></li>
+  <li class="<%= 'active' if controller_name == 'pages' %>"><%= link_to '固定ページ管理', admin_pages_url %></li>
+  <li class="<%= 'active' if controller_name == 'popular_keywords' %>"><%= link_to '話題のキーワード管理', admin_popular_keywords_url %></li>
+  <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to 'ユーザ管理', admin_users_url %></li>
+</ul>

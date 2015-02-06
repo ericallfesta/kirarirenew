@@ -1,0 +1,15 @@
+  <% thumbnail = 64 if thumbnail.nil? %>
+  <% number = 1 if number.nil? %>
+  <li class="item"><%= link_to [rank.product.brand, rank.product] do %>
+    <div class="rank">
+      <%= "#{number} 位" %>
+    </div>
+    <div class="image">
+      <%= image_tag rank.product.image.thumbnail.to_s, width: thumbnail, height: thumbnail %>
+    </div>
+    <div class="inner">
+      <div class="name"><%= rank.product.name %></div>
+      <div class="brand"><%= rank.product.brand.name %></div>
+      <div class="stars"><%= rank.product.star_symbols %> <%= rank.product.star.round(1) %></div>
+    </div>
+  <% end %></li>

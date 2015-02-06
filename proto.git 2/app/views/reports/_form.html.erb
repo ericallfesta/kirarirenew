@@ -1,0 +1,92 @@
+<%= form_for @report, html: { class: 'form form-fill form-new-writing', id: 'new-report-form' } do |f| %>
+  <h3><%= t 'views.write_new_report' %></h3>
+  <%= f.hidden_field :product_id %>
+
+  <div class="group">
+    <%= f.text_field :title, placeholder: t('messages.enter_title') %>
+  </div>
+
+  <div class="group">
+    <div class="group ratings">
+      <h4>あなたの評価は…？</h4>
+      <%= f.fields_for :report_evaluations, @report.report_evaluations do |evaluation_form| %>
+        <div class="rating-group">
+          <h5 class="widthfix" data-widthfix="rating-heading"><%= evaluation_form.object.evaluation.name %></h5>
+          <div class="give-stars">
+            <%= evaluation_form.hidden_field :evaluation_id %>
+            <%= evaluation_form.hidden_field :star, class: 'star-value' %>
+            <div class="stars">
+              <%= star_list.inject(''.html_safe) { |r, star| r + raw(star) } %>
+            </div>
+            <span class="description"></span>
+          </div>
+          <div class="no-star-container">
+            <label><input type="checkbox" id="no-star" name="no-star">評価をしない</label>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="rating-group comprehensive">
+        <h5 class="widthfix" data-widthfix="rating-heading">総合満足度</h5>
+        <div class="give-stars">
+          <%= f.hidden_field :star, class: 'star-value' %>
+          <div class="stars">
+            <%= star_list.inject(''.html_safe) { |r, star| r + raw(star) } %>
+          </div>
+          <span class="description"></span>
+        </div>
+        <div class="no-star-container">
+          <label><input type="checkbox" id="no-star" name="no-star">評価をしない</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <%= f.text_area :body, placeholder: t('messages.enter_body'), class: 'autosize' %>
+  </div>
+
+  <%= f.fields_for :detail, @report.detail do |detail_form| %>
+    <div class="group place-and-times">
+      <label class="half">
+        購入場所
+          <%= detail_form.select :bought_place, ReportDetail::BOUGHT_PLACES.map { |slug| [t("views.report_detail.#{slug}"), slug ] }, selected: @report.detail.bought_place, prompt: '選択してください' %>
+      </label>
+      <label class="half">
+        使用回数
+        <%= detail_form.select :use_times, ReportDetail::USE_TIMES.map { |slug| [t("views.report_detail.#{slug}"), slug ] }, selected: @report.detail.use_times, prompt: '選択してください' %>
+      </label>
+    </div>
+  <% end %>
+
+  <% if @report.selectable_efficacies.present? %>
+  <div class="group efficacies">
+    <p>感じた効果・効能にチェック</p>
+    <% @report.selectable_efficacies.each do |efficacy| %>
+      <label class="checkbox">
+        <%= f.check_box :efficacy_ids, { checked: @report.efficacies.include?(efficacy), name: 'report[efficacy_ids][]' }, efficacy.id, nil %>
+        <%= efficacy.name %>
+      </label>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="group report-images">
+    <p class="trigger-show self-destruct" data-target=".report-images .upload"><span class="icon icon-camera"> <%=t 'views.attach_images.label' %></p>
+    <div class="upload">
+      <p><%=t 'views.attach_images.description' %></p>
+      <%= f.fields_for :images, @report.images do |image| %>
+        <% if image.object.new_record? %>
+          <%= image.file_field :src %>
+        <% else %>
+          <%= image_tag image.object.image.src %>
+          <%= image.check_box :_destroy %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit value: t('views.post_report'), class: 'btn btn-submit' %>
+  </div>
+<% end %>

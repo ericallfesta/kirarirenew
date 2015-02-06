@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/script.js"></script>
+  <title>kirari user</title>
+</head>
+<body class="home">
+  <!-- 共通ヘッダ -->
+  <header id="global_header">
+    <div id="header_top">
+      <div class="inner">
+        <h1>“健康”をカジュアルに楽しむ口コミサイト Kirari（キラリ）</h1>
+        <div id="login">
+          <ul>
+            <li><a href="#">ログイン</a></li>
+            <li><a href="#">新規登録</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="header_middle">
+      <div id="go_top">
+        <a href="#"><img src="img/title_logo_only.jpg" alt="kirari トップページ" height="60"></a>
+      </div>
+
+      <div id="header_pr_banner">
+        <a href="#">
+          <img src="img/dummy/dummy_header_bunner.jpg" alt="ad banner area (header)">
+        </a>
+      </div>
+    </div>
+
+    <nav id="global_navigation">
+      <ul id="main_contents">
+        <li><a href="#">ランキング</a></li>
+        <li><a href="#">商品を探す</a></li>
+        <li><a href="#">日記</a></li>
+        <li><a href="#">コラム</a></li>
+        <li><a href="#">キャンペーン</a></li>
+      </ul>
+    </nav>
+
+    <!-- サブページのみの検索バー -->
+    <div id="header_bottom">
+      <form action="#" method="GET">
+        <input type="text" value="">
+        <input type="submit" value="検索">
+      </form>
+
+      <div class="tags">
+        <h2>注目キーワード:</h2>
+        <ul>
+          <li><a href="#tag1">ダイエット食品</a></li>
+          <li><a href="#tag2">美肌</a></li>
+          <li><a href="#tag3">ノンシリコンシャンプー</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- / サブページのみの検索バー -->
+  </header>
+  <!-- / 共通ヘッダ -->
+
+  <!-- サブページにはパンくずリストをつける -->
+  <div id="breadlist">
+    <ul id="bread-crumb-list">
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="#"><span itemprop="title">TOP</span></a>
+      </li>
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="#"><span itemprop="title">かおりん♪ さんのプロフィール</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="main">
+    <div class="inner">
+
+      <div id="content">
+        <section id="user_information">
+          <header>
+            <h2>かおりん♪<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"></span></h2>
+            <!--↑お気に入りに既に登録されている場合はmarkedを付与する-->
+          </header>
+
+          <div id="info_body">
+            <div id="info_image"><img src="img/dummy/dummy3.jpg" width="256" alt=""></div>
+            <div id="info_details">
+              <p id="info_description">かおりです。<br>よろしくお願いしますヾ(o´ｪ｀o)ﾉ</p>
+              <table>
+                <tr>
+                  <th scope="row">年齢</th>
+                  <td>33</td>
+                </tr>
+                <tr>
+                  <th scope="row">性別</th>
+                  <td>女</td>
+                </tr>
+              </table>
+              <div id="posts_count" class="indicators">
+                <p class="indicator"><a href="#reports"><span class="num">50</span><span class="unit">レポート</span></a></p>
+                <p class="indicator"><a href="#questions"><span class="num">30</span><span class="unit">質問</span></a></p>
+                <p class="indicator"><a href="#questions"><span class="num">30</span><span class="unit">お気に入り</span></a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="user_timeline">
+          <!--表示件数は任せる-->
+          <header>
+            <h3>タイムライン</h3>
+          </header>
+
+          <h4><time ><span class="month_day">2014年1月4日</span><span class="weekday">（土）</span></time></h4>
+
+          <ol class="timeline panel">
+            <li class="report">
+              <div class="post_category">使用レポート</div>
+              <div class="subject"><a href="#">商品名商品名商品名商品名商品名</a><span class="brand_name">（<a href="#">ブランド名</a>）</span></div>
+              <div class="image"><a href="#"><img src="img/dummy/dummy2.jpg" width="64" height="64" alt="商品名商品名商品名商品名商品名"></a></div>
+              <p>本文本文本文本文本文本文本文</p>
+              <div class="more"><a href="#">もっと見る</a></div>
+            </li>
+            <li class="diary">
+              <div class="post_category">日記</div>
+              <div class="subject"><a href="#">記事タイトル記事タイトル記事タイトル</a></div>
+              <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文...</p>
+              <div class="more"><a href="#">もっと見る</a></div>
+            </li>
+            <li class="question">
+              <div class="post_category">質問</div>
+              <div class="subject"><a href="#">商品名商品名商品名商品名商品名</a><span class="brand_name">（<a href="#">ブランド名</a>）</span></div>
+              <div class="image"><a href="#"><img src="img/dummy/dummy2.jpg" width="64" height="64" alt="商品名商品名商品名商品名商品名"></a></div>
+              <p>本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文...</p>
+              <div class="more"><a href="#">もっと見る</a></div>
+            </li>
+          </ol>
+
+          <h4><span class="month_day">1月3日</span><span class="weekday">（金）</span></h4>
+
+          <ol class="timeline panel">
+            <li class="report">
+              <div class="post_category">レポート</div>
+              <div class="subject"><a href="#">商品名商品名商品名商品名商品名</a><span class="brand_name">（<a href="#">ブランド名</a>）</span></div>
+              <div class="image"><a href="#"><img src="img/dummy/dummy2.jpg" width="64" height="64" alt="商品名商品名商品名商品名商品名"></a></div>
+              <p>本文本文本文本文本文本文本文</p>
+              <div class="more"><a href="#">もっと見る</a></div>
+            </li>
+          </ol>
+
+          <h4>2013年<span class="month_day">12月31日</span><span class="weekday">（火）</span></h4>
+
+          <ol class="timeline panel">
+            <li class="report">
+              <div class="post_category">レポート</div>
+              <div class="subject"><a href="#">商品名商品名商品名商品名商品名</a><span class="brand_name">（<a href="#">ブランド名</a>）</span></div>
+              <div class="image"><a href="#"><img src="img/dummy/dummy2.jpg" width="64" height="64" alt="商品名商品名商品名商品名商品名"></a></div>
+              <p>本文本文本文本文本文本文本文</p>
+              <div class="more"><a href="#">もっと見る</a></div>
+            </li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+      </div>
+
+      <aside id="sidebar">
+        <section id="sidebar_pr_banner_top">
+          <a href="#" target="_blank"><img src="img/dummy/dummy_sidebar_bunner.jpg" alt="ad banner area (sidebar)"></a>
+        </section>
+        <section id="features_area">
+          <ul>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side1.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side2.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side3.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side4.jpg')">タイトル</a></li>
+          </ul>
+        </section>
+        <section id="feeds_area">
+          <h2>新着情報ピックアップ！</h2>
+          <ul class="tabs">
+            <li class="active">すべて</li>
+            <li>レポート</li>
+            <li>質問</li>
+            <li>日記</li>
+          </ul>
+          <ol class="timeline panel" id="feeds_all">
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="diary">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="question">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="information_area">
+          <h2>Kirari からのお知らせ</h2>
+          <ul class="tabs">
+            <li class="active">すべて</li>
+            <li>コラム</li>
+            <li>キャンペーン</li>
+            <li>その他</li>
+          </ul>
+          <ol class="timeline panel" id="info_all">
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="campaign">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="etc">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="popular_ranking_area">
+          <h2>評価の高い商品</h2>
+          <ol class="ranking">
+            <li><a href="#">商品名商品名商品名商品名商品名商品名商品名商品名</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="trend_ranking_area">
+          <h2>最近話題になっている商品</h2>
+          <ol class="ranking">
+            <li><a href="#">商品名商品名商品名商品名商品名商品名商品名商品名</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="myprofile">
+          <!--自分のプロフィールページでは表示しない-->
+          <h2>【ユーザー名】</h2>
+          <img src="img/dummy/dummy3.jpg" width="128" alt="">
+          <div class="indicators">
+            <p class="indicator"><a href="#reports"><span class="num">10</span><span class="unit">レポート</span></a></p>
+            <p class="indicator"><a href="#questions"><span class="num">3</span><span class="unit">質問</span></a></p>
+            <p class="indicator"><a href="#questions"><span class="num">2</span><span class="unit">日記</span></a></p>
+          </div>
+        </section>
+        <section id="sidebar_pr_banner_bottom">
+          ad sense (300x250)
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <footer id="global_footer">
+    <div class="inner">
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+    </div>
+  </footer>
+</body>
+</html>

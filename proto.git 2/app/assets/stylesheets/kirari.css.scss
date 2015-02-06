@@ -1,0 +1,128 @@
+
+.krr-btn-container {
+	position: relative;
+	width: 100%;
+	padding-top: 5px;
+	text-align: right;
+
+	.btn-kirari {
+		font-size: 9.5pt;
+		line-height: 14px;
+		height: 14px;
+		padding: 4px 8px 4px 12px;
+		border: solid 1px $mainColor;
+		background-color: $mainColor;
+		color: white;
+		@include border-radius(10px);
+
+		&:link {
+			background-color: $mainColor;
+			color: white;
+		}
+
+		&:hover {
+			opacity: 1;
+			background-color: lighten($mainColor, 10%);
+			border-color: lighten($mainColor, 10%);
+		}
+
+		&.done {
+			border: solid 1px #888;
+			background-color: #888;
+			color: white;
+			cursor: default;
+		}
+
+		&.me {
+			border: solid 1px #ccc;
+			background-color: #ccc;
+		}
+	}
+	.count {
+		height: 20px;
+		margin-left: 7px;
+		padding: 3px 8px;
+		border: 1px solid #ccc;
+		font-size: 80%;
+		color: #888;
+		background: #fff;
+		cursor: pointer;
+		@include border-radius(8px);
+		@include left-arrow(#fff, #aaa, 4px);
+
+		&:hover {
+			background: #fafafa;
+			@include left-arrow(#fafafa, #aaa, 4px);
+		}
+	}
+	.users {
+		display: none;
+	}
+}
+
+.kirari-user-list {
+	font-size: 12pt;
+	background: #fff;
+	color: #000;
+	border: 1px solid #ddd;
+	@include border-radius(10px);
+
+	p {
+		margin: 5px 0;
+		text-align: center;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	ul {
+		margin: 10px 5px;
+		padding: 0;
+		max-height: 200px;
+		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: scroll;
+
+		li {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+
+			&:last-child {
+				border-bottom: none;
+			}
+			&.no-kirari {
+				text-align: center;
+				font-size: 80%;
+				color: #aaa;
+			}
+			a {
+				display: block;
+				line-height: 1;
+				padding: 2px 5px;
+				text-align: left;
+				color: #000 !important;
+				text-decoration: none !important;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: 90%;
+
+				&:hover {
+					background: $mainColor;
+				}
+				img {
+					margin-right: 10px;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+	.close {
+		margin: 10px;
+		background: #fafafa;
+		border: 1px solid #eee;
+
+		&:hover {
+			background: #eee;
+		}
+	}
+}

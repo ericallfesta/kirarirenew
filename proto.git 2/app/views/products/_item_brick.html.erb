@@ -1,0 +1,24 @@
+<li class="item data-link" data-href="<%= url_for product %>">
+  <% if defined? number %>
+    <div class="rank rank<%= number %>"><span class="num"><%= number %></span> 位</div>
+  <% end %>
+  <div class="image">
+    <%= image_tag product.main_image.src.square, :size => "140x140" %>
+  </div>
+  <div class="inner">
+    <div class="product-title linefix" data-linefix="2">
+      <div class="brand"><%= product.brand.name %></div>
+      <div class="name"><%= product.name %></div>
+    </div>
+    <div class="details">
+      <ul class="category tags linefix" data-linefix="3">
+        <% if product.category.present? %>
+          <li class="tag">
+            <%= link_to product.category.name, search_result_url(category: product.category.id) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="stars"><%= star product.star %> <%= product.star.round(1) unless product.star.nil? %></div>
+  </div>
+</li>

@@ -1,0 +1,122 @@
+#user_information{
+  overflow: hidden;
+
+  header{
+    h2{
+      float: left;
+      width: $unit * 8;
+      margin: 10px 0;
+      font-size: 200%;
+      font-weight: normal;
+    }
+  }
+  #info_body{
+    clear: both;
+
+    #info_image{
+      float: left;
+      margin: 0 10px;
+      width: 256px;
+    }
+    #info_details{
+      margin-left: 266px;
+      font-size: 90%;
+
+      #info_description{
+        margin: 10px;
+      }
+    }
+    table{
+      margin: 20px auto;
+
+      th{
+        width: 80px;
+        text-align: right;
+        padding: 5px;
+        background: #888;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+      td{
+        padding: 5px;
+        background: #eee;
+        width: 300px;
+        border-bottom: 1px solid #fff;
+      }
+    }
+    #posts_count{
+      margin: 10px;
+      padding: 5px;
+      text-align: right;
+      background: #eee;
+    }
+  }
+}
+
+#user_timeline{
+  clear: both;
+  overflow: hidden;
+
+  & > .more{
+    text-align: center;
+
+    a{
+      display: block;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  }
+  .tabs{
+    margin: 10px;
+  }
+  h3{
+    margin: 10px 0;
+    padding: 10px;
+    background: #eee;
+  }
+  h4{
+    float: left;
+    width: $unit * 3;
+    text-align: right;
+    color: #aaa;
+
+    .weekday{
+      font-size: 80%;
+    }
+  }
+  .timeline{
+    margin-left: $unit * 3;
+    overflow: hidden;
+
+    li{
+      margin: 0 10px 10px;
+      padding: 10px;
+      oveflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      .post_category{
+        font-size: 70%;
+      }
+      .subject{
+        font-weight: bold;
+      }
+      .brand_name{
+        font-size: 80%;
+        opacity: 0.5;
+      }
+      .image{
+        float: right;
+        padding: 5px;
+      }
+      p{
+        min-height: 80px;
+      }
+      .more{
+        text-align: right;
+        font-size: 80%;
+      }
+    }
+  }
+}

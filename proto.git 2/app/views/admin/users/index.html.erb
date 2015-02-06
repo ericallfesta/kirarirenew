@@ -1,0 +1,31 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ユーザ管理' => nil} %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name :display_name %></th>
+      <th><%= User.human_attribute_name :bio %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <span class="label label-<%= { 'general' => 'default', 'admin' => 'danger', 'enterprise' => 'success', 'guest' => 'default'}.try(:[], user.role) %>"><%= user.role.capitalize %></span>
+          <%= user.display_name %>
+        </td>
+        <td><%= truncate user.bio %></td>
+        <td>
+          <%= link_to user, class: 'btn btn-default btn-sm col-sm-12', target: :blank do %>
+            <i class="glyphicon glyphicon-info-sign"></i> 詳細
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users, theme: 'admin' %>
+<%= link_to 'ユーザを新規追加', new_admin_user_path(), { class: 'btn btn-success btn-block' } %>

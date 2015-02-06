@@ -1,0 +1,44 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ブランド管理' => nil} %>
+
+<% @brands.each do |brand| %>
+  <div class="media">
+    <% if brand.hero_image? %>
+    <div class="pull-left">
+      <%= image_tag brand.hero_image, width: 100, class: 'media-object' %>
+    </div>
+    <% elsif brand.image? %>
+    <div class="pull-left">
+      <%= image_tag brand.image, width: 100, class: 'media-object' %>
+    </div>
+    <% end %>
+    <div class="media-body">
+      <h3>
+        <span class="id">#<%= brand.id %></span>
+        <%= brand.name %>
+        <small><%= "(#{brand.kana})" if brand.kana.present? %></small>
+        <%= link_to_if brand.website.present?, brand.website, brand.website %>
+      </h3>
+      <div class="btn-group pull-right">
+        <%= link_to edit_admin_brand_path(brand), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to admin_brand_path(brand), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-info-sign"></i> 詳細
+        <% end %>
+        <%= link_to admin_brand_products_path(brand), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-shopping-cart"></i> 商品一覧
+          <small class="text-muted"> ( <%= brand.products.count %>件 ) </small>
+        <% end %>
+        <%= link_to new_admin_brand_product_path(brand), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-plus"></i> 商品登録
+        <% end %>
+      </div>
+
+      <p><%= truncate brand.description, length: 100 %></p>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @brands, theme: 'admin' %>
+
+<%= link_to 'ブランドを新規追加', new_admin_brand_path, class: 'btn btn-success btn-block' %>

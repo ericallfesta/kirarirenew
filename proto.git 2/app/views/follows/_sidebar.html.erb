@@ -1,0 +1,26 @@
+<aside id="follows-sidebar">
+  <div class="image">
+    <%= image_tag @target.image, width: 180, height: 180, alt: '', class: 'user-profile' %>
+  </div>
+
+  <div class="actions">
+    <%= render 'users/follow', user: @target if logged_in? && ( @target.is_a?(Brand) || @target.id != current_user.id ) %>
+  </div>
+
+  <ul class="indicator-buttons">
+    <li class="indicator">
+      <%= icon :following %>
+      <%= link_to user_following_path(@target) do %>
+        <span class="num"><%= @target.follows.count %></span>
+        <span class="unit">Following</span>
+      <% end %>
+    <li>
+    <li class="indicator">
+      <%= icon :follower %>
+      <%= link_to user_followers_path(@target) do %>
+        <span class="num"><%= @target.followers.count %></span>
+        <span class="unit">Followers</span>
+      <% end %>
+    </li>
+  </ul>
+</aside>

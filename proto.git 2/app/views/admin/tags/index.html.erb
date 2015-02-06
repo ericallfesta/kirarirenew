@@ -1,0 +1,31 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'タグ管理' => nil} %>
+
+<table class="table table-bordered">
+  <tr>
+    <th><%= Tag.human_attribute_name :name %></th>
+    <th><%= Tag.human_attribute_name :group %></th>
+    <th><%= Tag.human_attribute_name :body_parts %></th>
+    <th></th>
+  </tr>
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td><%= tag.group.name %></td>
+    <td><%= tag.body_parts.map{ |v| v.name }.join(', ') %></td>
+    <td>
+      <div class="btn-group col-sm-12">
+        <%= link_to edit_admin_tag_path(tag), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-edit"></i> 編集
+        <% end %>
+        <%= link_to admin_tag_path(tag), class: 'btn btn-default btn-sm col-sm-6' do %>
+          <i class="glyphicon glyphicon-info-sign"></i> 詳細
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @tags, theme: 'admin' %>
+
+<%= link_to 'タグを新規追加', new_admin_tag_path, class: 'btn btn-success btn-block' %>

@@ -1,0 +1,209 @@
+@mixin list_template{
+  margin: 0 10px;
+  border-top: 1px solid #ccc;
+
+  .item{
+    a{
+      position: relative;
+      display: block;
+      clear: left;
+      overflow: hidden;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+      color: #555;
+
+      &:visited{
+        color: #333
+      }
+      &:hover{
+        color: #888;
+        background: #eef;
+      }
+      &:active{
+        color: #f88;
+      }
+      .image{
+        float: left;
+        width: 148px;
+        text-align: center;
+      }
+      .data{
+        margin-left: 158px;
+
+        .name{
+          font-size: 120%;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.product_list{
+  @include list_template;
+
+  .detail{
+    margin-top: 10px;
+
+    li{
+      display: inline;
+      margin-right: 5px;
+      padding-right: 5px;
+
+      &:not(:last-child){
+        border-right: 1px solid #aaa;
+      }
+    }
+  }
+  .stars{
+    margin-top: 10px;
+    font-size: 150%;
+    color: #fa0;
+  }
+  .posts_count{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 80%;
+
+    li{
+      display: inline;
+    }
+  }
+}
+
+.column_list{
+  @include list_template;
+
+  .body{
+    margin: 10px 10px 20px 0;
+    font-size: 90%;
+  }
+  .date{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 80%;
+    color: #888;
+  }
+}
+
+.diary_list{
+  @include list_template;
+
+  .user_name{
+    display: block;
+    font-size: 90%;
+  }
+  .body{
+    margin: 10px 10px 20px 0;
+    font-size: 90%;
+  }
+  .comments_count{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 80%;
+    color: #888;
+  }
+  .date{
+    position: absolute;
+    bottom: 10px;
+    left: 160px;
+    font-size: 80%;
+    color: #888;
+  }
+}
+
+.column_series_list{
+  .item{
+    display: inline-block;
+    width: $unit * 3;
+    margin: 10px;
+    padding: 5px;
+    vertical-align: top;
+
+    .image{
+     text-align: center;
+    }
+    .series_title{
+      a{
+       font-size: 90%;
+        font-weight: bold;
+        color: #555;
+
+        &:visited{
+          color: #333;
+        }
+        &:hover{
+          color: #888;
+        }
+        &:active{
+          color: #c00;
+        }
+      }
+    }
+    .name{
+      a{
+        font-size: 80%;
+        color: #aaa;
+
+        &:visited{
+          color: #999;
+        }
+        &:hover{
+          color: #ccc;
+        }
+        &:active{
+          color: #c00;
+        }
+      }
+    }
+    .date{
+      text-align: right;
+      font-size: 75%;
+      color: #888;
+    }
+  }
+}
+
+.brand_list,
+.category_list{
+  margin: 5px;
+  overflow: hidden;
+
+  li{
+    float: left;
+    width: 50%;
+
+    a{
+      display: block;
+      margin: 3px;
+      padding: 5px 10px;
+      background: #fafafa;
+      border: 1px solid #eee;
+    }
+  }
+}
+
+.add_list_filters{
+  margin: 10px;
+  padding: 10px;
+  text-align: right;
+  background: #eee;
+
+  .filter{
+    margin: 5px;
+
+    h3{
+      display: inline;
+    }
+    ul{
+      display: inline;
+
+      li{
+        display: inline-block;
+      }
+    }
+  }
+}

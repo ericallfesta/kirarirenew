@@ -1,0 +1,74 @@
+<div class="article-container">
+  <article class="content-panel report">
+    <header>
+      <%= render 'products/breadlist', product: @report.product, show_product: true, after: ' のレポート' %>
+      <h1>
+        <span class="writing_title"><%= @report.title %></span>
+      </h1>
+      <div class="status">
+        <div class="left">
+          <%= render 'products/bar', product: @report.product %>
+        </div>
+        <div class="right">
+          <div class="stars"><%= star @report.star %> <%= @report.star.round(1) unless @report.star.nil? %></div>
+          <%= render 'users/bar', user: @report.writer %>
+          <time><%= l @report.created_at %></time>
+        </div>
+      </div>
+    </header>
+
+    <% unless @report.images.nil? %>
+      <ul class="images">
+        <% @report.images.each do |image| %>
+          <li><a href="<%= image.src %>" class="image-popup"><%= image_tag image.src.thumbnail, size: '200x200', alt: '' %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="article-body">
+      <% unless @report.report_evaluations.empty? %>
+        <div class="evaluation-chart">
+          <canvas width="250" height="250"></canvas>
+          <div class="chartInput">
+            <% @report.report_evaluations.each do |r| %>
+              <input type="hidden" value="<%= r.star.round(1) unless r.star.nil? %>" data-label="<%= r.evaluation.name %>">
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <!--
+      <p>効果効能</p>
+      <ul>
+      <% @report.efficacies.each do |efficacy| %>
+        <li><%= efficacy.name %></li>
+      <% end %>
+      </ul>
+      -->
+
+      <p>
+        <%= br @report.body %>
+      </p>
+    </div>
+
+    <div class="kirari">
+      <%= fav_button @report %>
+    </div>
+  </article>
+
+  <section class="comments content-panel">
+    <header>
+      <h2><%=t 'views.list.comments' %> <span class="num"><span class="figure"><%= @report.comments.count %></span>件</span></h2>
+    </header>
+
+    <div id="current-comments-list">
+      <% @report.comments.each do |comment| %>
+        <%= render 'comments/item', comment: comment %>
+      <% end %>
+      <p class="no-items <%= c(@report.comments.empty?, :active) %>"><%=t 'views.label.no_comments' %></p>
+    </div>
+
+    <%= render 'comments/form', writing: @report if logged_in? %>
+  </section>
+
+  <%= raw emboss 'comments/item', with: :comment, jst: true %>
+</div>

@@ -1,0 +1,25 @@
+.font-play {
+  font-family: 'Play', 'Lucida Grande', Meiryo, sans-serif;;
+}
+
+.font-mono {
+  font-family: 'Droid Sans Mono', Osaka-mono, monospace;
+}
+
+.auto {
+  width: 100%;
+}
+
+.circle {
+  @include border-radius(50%);
+}
+
+.id {
+  @extend .font-mono;
+  color: #aaa;
+  font-size: 8pt;
+}
+
+.text-sm {
+  font-size: 80%;
+}

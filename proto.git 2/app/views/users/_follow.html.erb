@@ -1,0 +1,14 @@
+<% if logged_in? && (user != current_user) %>
+  <div class="follow-actions">
+    <%= link_to t('views.unfollow'),
+      user_follow_path(user),
+      remote: true,
+      method: :delete,
+      class: "btn btn-follow follow #{'active' if current_user.follow?(user)}" if logged_in? %>
+    <%= link_to t('views.follow'),
+      user_follow_path(user),
+      remote: logged_in?,
+      method: :post,
+      class: "btn btn-follow no-follow #{'active' unless logged_in? && current_user.follow?(user)}" %>
+  </div>
+<% end %>

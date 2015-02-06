@@ -1,0 +1,88 @@
+table.table tr.right th,
+table.table tr.right td,
+table.table tr th.right,
+table.table tr td.right {
+  text-align: right;
+}
+
+table.table tr.center th,
+table.table tr.center td,
+table.table tr th.center,
+table.table tr td.center {
+  text-align: right;
+}
+
+.center-block {
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.panel {
+  .panel-heading {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 5px 0;
+    }
+  }
+
+  &.panel-default {
+    .panel-heading {
+      background: #555;
+      color: #fff;
+      border-bottom: #fff;
+
+      small {
+        color: #ccc;
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  img {
+    @include inline-block;
+  }
+  small {
+    @include inline-block;
+    padding: 8px 0 0 5px;
+    font-size: 9pt;
+    @extend .font-play;
+  }
+}
+
+.nav.navbar-nav {
+  li.environments {
+    padding: 17px 5px;
+
+    .label {
+      font-size: 10pt;
+    }
+  }
+}
+
+.media {
+  @include clearfix;
+
+  .media-object {
+    @include border-radius(3px);
+    border: 1px solid #eee;
+  }
+
+  .media-body {
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+    }
+
+    .btn-group {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}

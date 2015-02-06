@@ -1,0 +1,11 @@
+<article id="area-ranking">
+  <header>
+    <h1><%= @target.nil? ? t('views.ranking_by_all') : t('views.ranking_of', name: @target.name ) %></h1>
+  </header>
+
+  <ol class="ranking products-list products-list-bordered">
+    <% @products.each_with_index do |product| %>
+      [<%= product.score_rank %>] <%= product.name %>
+    <% end %>
+  </ol>
+</article>

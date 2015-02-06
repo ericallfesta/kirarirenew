@@ -1,0 +1,148 @@
+$feature_height: 250px;
+
+#apps-body.page-home {
+	.sectioning-container{
+		section{
+			clear: both;
+
+			h2{
+				color: #666666;
+			}
+		}
+
+		.features-container {
+			text-align: right;
+			position: relative;
+			margin-bottom: 20px;
+			height: $feature_height;
+
+			ul.slots { /* disabled */
+				display: none !important;
+
+				/* display: inline-block; */
+				z-index: 11;
+				position: relative;
+				top: -31px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				@include clearfix;
+
+				li {
+					text-decoration: none;
+					display: block;
+					float: left;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					a {
+						display: inline-block;
+						margin-left: 2px;
+						padding: 3px 10px;
+						background: #000;
+						opacity: 0.3;
+						color: #fff;
+						text-decoration: none;
+						font-weight: bold;
+						font-size: 11pt;
+
+						&:hover {
+							background: #333;
+						}
+						&.active {
+							color: #000;
+							background: rgba(255, 255, 255, 0.8);
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			.go-prev, .go-next{
+				z-index: 10;
+				position: absolute;
+				top: 0;
+				width: 43px;
+				height: $feature_height;
+				overflow: hidden;
+				cursor: pointer;
+				transition: opacity 500ms ease;
+			}
+			.go-prev{
+				left: 0;
+				opacity: 0;
+				&:hover{
+					opacity: 1;
+					background: asset-url('features/arrows.png') 0 center no-repeat;
+				}
+			}
+
+			.go-next{
+				right: 0;
+				opacity: 0;
+				&:hover{
+					opacity: 1;
+					background: asset-url('features/arrows.png') -43px center no-repeat;
+				}
+			}
+
+			.window {
+				height: $feature_height;
+				overflow: hidden;
+
+				.inner {
+					position: relative;
+
+					section {
+						display: none;
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
+				}
+			}
+
+			.item {
+				text-align: left;
+				position: absolute;
+				width: 100%;
+
+				a {
+					display: block;
+					height: $feature_height;
+					background-repeat: no-repeat;
+					background-size: 700px 250px;
+				}
+
+				h1, p {
+					visibility: hidden;
+					padding: 0;
+					margin: 0;
+				}
+			}
+		}
+
+		#search-by-bodymap {
+			border-top: solid 1px #e3e3e3;
+
+			header{
+				h2 {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+
+	#activities {
+		.description {
+			margin: 10px 20px 20px;
+			font-size: 90%;
+		}
+	}
+}

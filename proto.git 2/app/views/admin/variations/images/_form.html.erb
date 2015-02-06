@@ -1,0 +1,14 @@
+<%= form_for image, url: admin_product_variation_images_url(product, variation), html: { class: 'form' } do |f| %>
+  <%= f.hidden_field :variation_id %>
+  <div class="form-group">
+    <%= f.file_field :src %>
+  </div>
+  <div class="form-group">
+    <label>
+      <%= f.check_box :primary %> メイン画像に設定
+    </label>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>

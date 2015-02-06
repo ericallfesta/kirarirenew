@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/script.js"></script>
+  <title>kirari product</title>
+</head>
+<body class="home">
+  <!-- 共通ヘッダ -->
+  <header id="global_header">
+    <div id="header_top">
+      <div class="inner">
+        <h1>“健康”をカジュアルに楽しむ口コミサイト Kirari（キラリ）</h1>
+        <div id="login">
+          <ul>
+            <li><a href="#">ログイン</a></li>
+            <li><a href="#">新規登録</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="header_middle">
+      <div id="go_top">
+        <a href="#"><img src="img/title_logo_only.jpg" alt="kirari トップページ" height="60"></a>
+      </div>
+
+      <div id="header_pr_banner">
+        <a href="#">
+          <img src="img/dummy/dummy_header_bunner.jpg" alt="ad banner area (header)">
+        </a>
+      </div>
+    </div>
+
+    <nav id="global_navigation">
+      <ul id="main_contents">
+        <li><a href="#">ランキング</a></li>
+        <li><a href="#">商品を探す</a></li>
+        <li><a href="#">日記</a></li>
+        <li><a href="#">コラム</a></li>
+        <li><a href="#">キャンペーン</a></li>
+      </ul>
+    </nav>
+
+    <!-- サブページのみの検索バー -->
+    <div id="header_bottom">
+      <form action="#" method="GET">
+        <input type="text" value="">
+        <input type="submit" value="検索">
+      </form>
+
+      <div class="tags">
+        <h2>注目キーワード:</h2>
+        <ul>
+          <li><a href="#tag1">ダイエット食品</a></li>
+          <li><a href="#tag2">美肌</a></li>
+          <li><a href="#tag3">ノンシリコンシャンプー</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- / サブページのみの検索バー -->
+  </header>
+  <!-- / 共通ヘッダ -->
+
+  <!-- サブページにはパンくずリストをつける -->
+  <div id="breadlist">
+    <ul id="bread-crumb-list">
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="#"><span itemprop="title">TOP</span></a>
+      </li>
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="#"><span itemprop="title">商品を探す</span></a>
+      </li>
+      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="#"><span itemprop="title">【ブランドで探す】 資生堂</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="main">
+    <div class="inner">
+
+      <div id="content">
+        <h2>資生堂<small>（300件）</small><span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></h2>
+        <div class="add_list_filters">
+          <div class="filter tags">
+            <h3>カテゴリで絞り込む：</h3>
+            <ul>
+              <li><a href="#tag1">ダイエット食品</a></li>
+              <li><a href="#tag2">美肌</a></li>
+              <li><a href="#tag3">ノンシリコンシャンプー</a></li>
+            </ul>
+          </div>
+
+          <div class="filter sort">
+            <h3>順番：</h3>
+            <ul>
+              <li>評価</li>
+              <li><a href="#">価格</a></li>
+              <li><a href="#">レポート数</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <ul class="product_list">
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <!--以下繰り返し。ページあたり10件-->
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <li class="item"><a href="#">
+            <div class="image">
+              <img src="img/dummy/dummy2.jpg" width="128" height="128">
+            </div>
+            <div class="data">
+              <div class="name">ＴＳＵＢＡＫＩ シャイニング　シャンプーＮｃ<span class="mark_fav marked" data-target="Ajaxで送信するデータ（商品ID等）"><!--お気に入りに既に登録されている場合はmarkedを付与する--></span></div>
+              <ul class="detail">
+                <li class="brand">資生堂</li>
+                <li class="category">シャンプー</li>
+                <li class="price">1,980円</li>
+              </ul>
+              <div class="stars">★★★★☆ 4.3</div>
+              <div class="posts_count">
+                <ul>
+                  <li class="reports">レポート：10件</li>
+                  <li class="questions">質問：8件</li>
+                </ul>
+              </div>
+            </div>
+          </a></li>
+          <!--繰り返し終わり-->
+        </ul>
+
+        <div class="pagination">
+          <p>&lt;</p>
+          <ol>
+            <li><span class="current">1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+          </ol>
+          <p><a href="#">&gt;</a></p>
+        </div>
+      </div>
+
+      <aside id="sidebar">
+        <section id="sidebar_pr_banner_top">
+          <a href="#" target="_blank"><img src="img/dummy/dummy_sidebar_bunner.jpg" alt="ad banner area (sidebar)"></a>
+        </section>
+        <section id="features_area">
+          <ul>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side1.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side2.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side3.jpg')">タイトル</a></li>
+            <li><a href="#" style="background: url('img/dummy/dummy_feature_side4.jpg')">タイトル</a></li>
+          </ul>
+        </section>
+        <section id="feeds_area">
+          <h2>新着情報ピックアップ！</h2>
+          <ul class="tabs">
+            <li class="active">すべて</li>
+            <li>レポート</li>
+            <li>質問</li>
+            <li>日記</li>
+          </ul>
+          <ol class="timeline panel" id="feeds_all">
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="diary">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="question">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+            <li class="report">
+              <a href="#"><span class="product_name">商品名商品名商品名商品名～最大２０字～</span>
+              本文は38からユーザー名の字数を引いた字数...</a>
+              （<a href="#" class="username">ユーザー名</a>）
+            </li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="information_area">
+          <h2>Kirari からのお知らせ</h2>
+          <ul class="tabs">
+            <li class="active">すべて</li>
+            <li>コラム</li>
+            <li>キャンペーン</li>
+            <li>その他</li>
+          </ul>
+          <ol class="timeline panel" id="info_all">
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="campaign">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="etc">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+            <li class="column">
+              <a href="#">記事タイトル最大２１字記事タイトル最大２１字...</a>
+            </li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="popular_ranking_area">
+          <h2>評価の高い商品</h2>
+          <ol class="ranking">
+            <li><a href="#">商品名商品名商品名商品名商品名商品名商品名商品名</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="trend_ranking_area">
+          <h2>最近話題になっている商品</h2>
+          <ol class="ranking">
+            <li><a href="#">商品名商品名商品名商品名商品名商品名商品名商品名</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+            <li><a href="#">商品名＋ブランド名で４２文字以内。オーバーしたら商品名を省略する</a>（<a href="#">ブランド名</a>）</li>
+          </ol>
+          <div class="more"><a href="#">もっと見る</a></div>
+        </section>
+        <section id="myprofile">
+          <!--自分のプロフィールページでは表示しない-->
+          <h2>【ユーザー名】</h2>
+          <img src="img/dummy/dummy3.jpg" width="128" alt="">
+          <div class="indicators">
+            <p class="indicator"><a href="#reports"><span class="num">10</span><span class="unit">レポート</span></a></p>
+            <p class="indicator"><a href="#questions"><span class="num">3</span><span class="unit">質問</span></a></p>
+            <p class="indicator"><a href="#questions"><span class="num">2</span><span class="unit">日記</span></a></p>
+          </div>
+        </section>
+        <section id="sidebar_pr_banner_bottom">
+          ad sense (300x250)
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <footer id="global_footer">
+    <div class="inner">
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+      <p>footer</p>
+    </div>
+  </footer>
+</body>
+</html>

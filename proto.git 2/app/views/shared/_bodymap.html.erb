@@ -1,0 +1,35 @@
+  <header>
+    <h2>イラストから探す</h2>
+    <p>改善したい場所、目的から、Kirari に登録されている商品を探すことができます。</p>
+  </header>
+  <div class="<%= (defined? gender) ? gender : 'x' %>" id="bodymap">
+    <div class="parts">
+      <% body_groups.each do |group| %>
+        <ul class="part-group <%= group %>">
+          <% BodyPart.grouped(group).each do |body_part| %>
+            <% next if body_part.empty? %>
+            <li>
+              <%= link_to '#', class: "part #{body_part.slug}", data: { 'target' => body_part.slug } do %>
+                <span class="pop long"><%= body_part.name %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="panels">
+      <% BodyPart.where(group_code: body_groups.map(&:to_s)).each do |body_part| %>
+        <div class="panel <%= body_part.slug %>">
+          <h3><span class="part <%= body_part.slug %>"></span><span class="caption"><%= t('views.tags_of', name: body_part.name) %></span></h3>
+          <span class="close">&#x2716;</span>
+          <ul class="tags tags-list">
+            <% body_part.tags.where.not(group: TagGroup.category).each do |tag| %>
+              <% next if tag.products_count <= 0 %>
+              <li class="tag"><%= link_to tag.name, search_tag_path(tag), data: { tag: tag.id } %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>

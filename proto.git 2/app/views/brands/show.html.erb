@@ -1,0 +1,42 @@
+<section class="brand-details content-panel">
+  <% if @brand.hero_image? %>
+    <%= image_tag @brand.hero_image, width: '100%' %>
+  <% end %>
+
+  <header>
+    <h1><%= page_heading @brand.name %> <small><%= @brand.products.published.count %>件</small></h1>
+    <div class="actions">
+      <%= link_to t('views.label.official_website'), @brand.website, class: 'btn btn-website btn-small', target: '_blank' if @brand.website.present? %>
+      <div class="kirari">
+        <%= fav_button @brand %>
+      </div>
+      <%= render 'follow', brand: @brand %>
+    </div>
+  </header>
+
+  <div class="content-body">
+    <% if @brand.description.present? %>
+    <p class="description"><%= br @brand.description %></p>
+    <% end %>
+  </div>
+</section>
+
+<section class="content-panel">
+  <header>
+    <h2><%=t 'views.list.brand_products', brand: @brand.name %></h2>
+  </header>
+
+  <div class="content-body">
+    <% if @products.length > 0 %>
+      <ul class="products-list">
+        <% @products.each do |product| %>
+          <%= render 'products/item', product: product %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="no-items active"><%=t 'views.label.no_searched_products' %></p>
+    <% end %>
+
+    <%= paginate @products %>
+  </div>
+</section>

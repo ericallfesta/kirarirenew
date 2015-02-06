@@ -1,0 +1,134 @@
+#rankings-body {
+	h1 {
+		margin-bottom: 20px;
+	}
+	.pickup {
+		@include clearfix;
+
+		h2 {
+			float: left;
+			width: 143px;
+			height: 415px;
+			background: #ccc asset-url('background_ranking_heading.png');
+
+			.ranking-type {
+				display: block;
+				width: 124px;
+				margin-top: 150px;
+				text-align: center;
+				font-size: 12px;
+				font-weight: normal;
+				color: #fff;
+			}
+			.best3 {
+				display: block;
+				text-indent: -9999px;
+			}
+		}
+		.rank {
+			top: 5px;
+			left: -5px;
+			position: relative;
+			width: 52px;
+			height: 42px;
+			text-indent: -9999px;
+			background: asset-url('icon_ranks.png') no-repeat;
+		}
+		&.products {
+			h2 {
+				background-color: $rankingProductColor;
+			}
+			.rank {
+				&.rank1 {
+					background-position: 0 0;
+				}
+				&.rank2 {
+					background-position: -52px 0;
+				}
+				&.rank3 {
+					background-position: -104px 0;
+				}
+			}
+		}
+		&.users {
+			h2 {
+				background-color: $rankingUserColor;
+			}
+			.rank {
+				&.rank1 {
+					background-position: 0 -42px;
+				}
+				&.rank2 {
+					background-position: -52px -42px;
+				}
+				&.rank3 {
+					background-position: -104px -42px;
+				}
+			}
+		}
+		.ranking-items {
+			width: 520px;
+			margin: 0;
+			margin-left: 170px;
+			padding: 0;
+		}
+		.more {
+			margin: 0 10px;
+		}
+	}
+}
+
+#sidebar {
+	.rankings {
+		.item {
+			overflow: visible;
+
+			a {
+				position: relative;
+				display: block;
+				overflow: hidden;
+				margin: 0 -10px;
+				@include list-hover-effects-sidebar;
+
+				.rank {
+					position: absolute;
+					left: 33px;
+					text-indent: -9999px;
+					width: 39px;
+					height: 31px;
+					background: asset-url('icon_ranks_small.png') no-repeat;
+
+					&.rank1 {
+						background-position: 0 0;
+					}
+					&.rank2 {
+						background-position: -39px 0;
+					}
+					&.rank3 {
+						background-position: -78px 0;
+					}
+				}
+				.image {
+					margin-top: 30px;
+					margin-left: 10px;
+				}
+				.inner {
+					margin-left: 90px;
+
+					.product-title {
+						margin-bottom: 15px;
+					}
+					.stars {
+						position: absolute;
+						right: 10px;
+						bottom: 5px;
+					}
+				}
+			}
+
+			&:last-child {
+				border-bottom: none !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,66 @@
+<div class="article-container">
+  <article class="content-panel diary">
+    <header>
+      <%= render 'diaries/breadlist', user: @diary.writer %>
+      <h1>
+        <span class="writing_title"><%= @diary.title %></span>
+      </h1>
+      <div class="status">
+        <div class="right">
+          <%= render 'users/bar', user: @diary.writer %>
+          <time><%= l @diary.created_at %></time>
+        </div>
+      </div>
+      <% if logged_in? && @diary.is_mine?(current_user) %>
+        <div class="edit"><%= link_to t('views.action.edit'), edit_diary_path(@diary) %></div>
+      <% end %>
+    </header>
+
+    <% unless @diary.images.nil? %>
+      <ul class="images">
+        <% @diary.images.each do |image| %>
+          <li><a href="<%= image.src %>" class="image-popup"><%= image_tag image.src.thumbnail, size: '200x200', alt: '' %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="article-body">
+      <p>
+        <%= auto_link br(@diary.body) %>
+      </p>
+    </div>
+    <div class="kirari">
+      <%= fav_button @diary %>
+    </div>
+  </article>
+
+  <ul class="next-prev-navigation" role="navigation">
+    <% if @next.present? %>
+      <li class="next">
+        <%= icon 'arrow-left' %> <%= link_to @next.title, @next %>
+      </li>
+    <% end %>
+    <% if @prev.present? %>
+      <li class="prev">
+        <%= link_to @prev.title, @prev %> <%= icon 'arrow-right' %></i>
+      </li>
+    <% end %>
+  </ul>
+
+  <section class="comments content-panel">
+    <header>
+      <h2><%=t 'views.list.comments' %> <span class="num"><%= @diary.comments.count %>件</span></h2>
+    </header>
+
+    <div id="current-comments-list">
+      <% @diary.comments.each do |comment| %>
+        <%= render 'comments/item', comment: comment %>
+      <% end %>
+      <p class="no-items <%= c(@diary.comments.empty?, :active) %>"><%=t 'views.label.no_comments' %></p>
+    </div>
+
+    <%= render 'comments/form', writing: @diary if logged_in? %>
+  </section>
+
+  <%= raw emboss 'comments/item', with: :comment, jst: true %>
+</div>

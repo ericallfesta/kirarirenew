@@ -1,0 +1,53 @@
+<%= form_for @serial, url: [:admin, @serial], namespace: :admin, as: :serial, html: { role: :form, class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @serial %>
+
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :title, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :writer_id, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.collection_select :writer_id, User.where(column_writer: true), :id, :display_name, {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :status, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.select :status, Serial::STATUSES ,{}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :image, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= render 'admin/shared/image_form', f: f, image_name: 'image' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :published_at, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9 datatime_select">
+        <%= datetime_select :serial, :published_at, { default: @serial.published_at.presence || @serial.created_at }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,7 @@
+<section class="item data-link" data-href="<%= url_for user %>">
+  <div class="image"><%= image_tag user.image, :size => "48x48", alt: '', class: 'user-profile' %></div>
+  <div class="status">
+    <h1><%= user.name %></h1>
+    <div class="bio"><%= truncate user.bio, length: 33 %></div>
+  </div>
+</section>

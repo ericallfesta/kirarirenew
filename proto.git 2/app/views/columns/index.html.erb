@@ -1,0 +1,74 @@
+<div class="mass-container">
+  <h1><%= heading 'columns' %></h1>
+
+  <% if @recently.any? %>
+    <div class="content-panel">
+      <div class="content-body">
+        <div class="intro"><p>美容・健康の専門家が、あなたの身体に役立つ情報をお届けします！</p></div>
+        <section>
+          <h2><%=t 'views.recent_columns' %></h2>
+
+          <ul class="wide-image-bricks">
+            <% @recently.each do |column| %>
+              <li class="item">
+                <%= link_to column, { class: 'linefix', data: { linefix: 'column-bricks' } } do %>
+                  <%= image_tag column.image.thumbnail, class: 'thumbnail', size: '200x200' %>
+                  <h3>
+                    <div class="title linefix" data-linefix="column-item-headings"><%= column.title %></div>
+                    <div class="serial_info"><%= t('views.column_serial_info', serial_title: column.serial.title) if column.serial_num.present? %></div>
+                  </h3>
+                  <time><%=l column.published_at, format: :short %></time>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <div class="pull-right clear">
+            <%= link_to t('views.label.more'), all_columns_url, class: 'btn btn-more btn-small' %>
+          </div>
+        </section>
+
+        <% if @serials.any? %>
+          <section>
+            <h2>連載</h2>
+            <ul class="wide-image-bricks">
+              <% @serials.each do |serial| %>
+                <li class="item">
+                  <%= link_to serial, { class: 'linefix', data: { linefix: 'serial-bricks' } } do %>
+                    <%= image_tag serial.image.thumbnail, class: 'thumbnail', size: '200x200' %>
+                    <h3><%= serial.title %></h3>
+                    <time><%=l serial.published_at, format: :short %></time>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <div class="pull-right clear">
+              <%= link_to t('views.label.more'), serials_url, class: 'btn btn-more btn-small' %>
+            </div>
+          </section>
+        <% end %>
+
+        <% if false %>
+          <section>
+            <h2><%=t 'views.pickup_columns' %></h2>
+
+            <ul class="columns-list">
+              <% @pickup.each do |column| %>
+                <%= render 'item', column: column %>
+              <% end %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="content-panel">
+      <div class="coming-soon">
+        <p><%=t 'messages.columns_are_empty' %></p>
+        <p><%=t 'messages.coming_soon' %></p>
+      </div>
+    </div>
+
+  <% end %>
+</div>

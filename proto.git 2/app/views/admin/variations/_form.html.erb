@@ -1,0 +1,48 @@
+<%= form_for @variation, url: @variation.new_record? ? admin_product_variations_url : admin_variation_url, html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'admin/shared/form_errors', model: @variation %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control', placeholder: 'e.g. お得パック' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :website, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :website, class: 'form-control', placeholder: 'e.g. http://google.com' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-3">
+        <%= f.number_field :price, class: 'form-control' %>
+      </div>
+      <div class="help-block col-sm-6">円(税抜き)</div>
+    </div>
+    <div class="form-group">
+      <%= f.label :price_note, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_field :price_note, { class: 'form-control' } %>
+        <p class="help-block">価格が空欄の場合のみ表示されます</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :ingredient, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_area :ingredient, { class: 'form-control', rows: 6 } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :note, { class: 'col-sm-3 control-label' } %>
+      <div class="col-sm-9">
+        <%= f.text_area :note, { class: 'form-control', rows: 6 } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

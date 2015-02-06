@@ -1,0 +1,25 @@
+<div class="mass-container">
+  <div class="sectioning-container">
+    <header>
+      <h1><%= heading 'stamps' %></h1>
+    </header>
+
+    <section class="content-panel stamps">
+      <div class="content-body">
+        <p class="intro">Kirari の機能を使用していくとスタンプをGETできます！<br>まだ使用していない機能があれば、ぜひお試しください。</p>
+        <ul>
+          <% Stamp.all.each do |stamp| %>
+          <li>
+            <% if @user.stamps.include?(stamp) %>
+              <%= image_tag(stamp.image) %>
+            <% else %>
+              <%= image_tag(stamp.unacquired_image) %>
+            <% end %>
+            <p><%= stamp.label %></p>
+          </li>
+          <% end%>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

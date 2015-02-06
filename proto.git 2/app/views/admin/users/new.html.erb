@@ -1,0 +1,82 @@
+<%= render 'admin/shared/breadcrumb', url_list: {'TOP' => admin_root_url, 'ユーザ管理' => admin_users_url, '新規登録' => nil} %>
+
+<%= form_for @user, url: [:admin, @user], namespace: :admin, as: :user, html: { role: :form, class: 'form-horizontal' } do |user| %>
+  <%= render 'admin/shared/form_errors', model: @user %>
+
+  <fieldset>
+    <div class="form-group">
+      <%= user.label :display_name, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.text_field :display_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= user.label :email, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= user.label :password, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= user.label :password_confirmation, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="radio col-sm-2">
+          <label>
+            <%= user.radio_button :gender, 'male' %> 男性
+          </label>
+        </div>
+        <div class="radio col-sm-7">
+          <label>
+            <%= user.radio_button :gender, 'female' %> 女性
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= user.label :role, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.select :role, User::ROLES, {}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= user.label :brand, class: "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= user.select :brand, Brand.pluck(:name, :id), { include_blank: true, selected: @user.brand.try(:id) }, class: 'form-control' %>
+        <p class="help-block">Enterpriseユーザを作成する場合のみ選択してください。</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="checkbox">
+          <label>
+            <%= user.check_box :column_writer %>
+            <%= user.label :column_writer %>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= user.submit class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
